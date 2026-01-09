@@ -1,0 +1,3123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milano Multiservice Hub | Luxury Urban Services & Executive Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* ===== CSS VARIABLES & RESET ===== */
+        :root {
+            --primary: #0C1A2D;
+            --primary-dark: #081120;
+            --primary-light: #1A2D4A;
+            --secondary: #C6A777;
+            --secondary-light: #DBC4A4;
+            --secondary-dark: #A6895C;
+            --accent: #B8860B;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A4A4A;
+            --text-light: #8A8A8A;
+            --background: #F8F7F4;
+            --background-alt: #F0EEE9;
+            --card-bg: #FFFFFF;
+            --border: #E8E6E1;
+            --success: #2E7D32;
+            --warning: #ED6C02;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --section-padding: 120px 0;
+            --container-width: 1400px;
+            --header-height: 90px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text-medium);
+            line-height: 1.7;
+            background-color: var(--background);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        h2.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-medium);
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .container-narrow {
+            max-width: 1100px;
+        }
+
+        .section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .section-light {
+            background-color: var(--background-alt);
+        }
+
+        .section-dark {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section-dark h2,
+        .section-dark h3,
+        .section-dark h4,
+        .section-dark p {
+            color: white;
+        }
+
+        .section-dark h2:after {
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-accent {
+            color: var(--secondary);
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .mb-0 { margin-bottom: 0; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        .mb-5 { margin-bottom: 3rem; }
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mt-5 { margin-top: 3rem; }
+        .p-3 { padding: 1.5rem; }
+        .p-4 { padding: 2rem; }
+        .p-5 { padding: 3rem; }
+
+        .rounded {
+            border-radius: var(--radius);
+        }
+
+        .rounded-lg {
+            border-radius: var(--radius-lg);
+        }
+
+        .shadow-sm {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .shadow {
+            box-shadow: var(--shadow);
+        }
+
+        .shadow-lg {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .opacity-0 { opacity: 0; }
+        .opacity-50 { opacity: 0.5; }
+        .opacity-100 { opacity: 1; }
+
+        /* ===== ELEGANT BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: width 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 8px 25px rgba(12, 26, 45, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(12, 26, 45, 0.25);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 8px 25px rgba(198, 167, 119, 0.2);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(198, 167, 119, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline-light:hover {
+            background-color: white;
+            color: var(--primary);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-lg {
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* ===== LUXURY HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(232, 230, 225, 0.3);
+        }
+
+        .header.scrolled {
+            height: 80px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(12, 26, 45, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .logo:hover .logo-icon:before {
+            transform: translateX(100%);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-medium);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 1px;
+            transition: width 0.4s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            font-weight: 500;
+            background: white;
+        }
+
+        .lang-selector:hover {
+            background-color: var(--background-alt);
+            border-color: var(--secondary);
+        }
+
+        .flag {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .flag-it {
+            background: linear-gradient(to right, #009246 33%, white 33%, white 66%, #CE2B37 66%);
+        }
+
+        .flag-en {
+            background: linear-gradient(to bottom, #012169 0%, #012169 33%, white 33%, white 66%, #C8102E 66%);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: var(--background-alt);
+        }
+
+        /* ===== LUXURY HERO SECTION ===== */
+        .hero {
+            padding: 14rem 0 8rem;
+            background: linear-gradient(135deg, #F8F7F4 0%, #F0EEE9 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(12, 26, 45, 0.03), rgba(198, 167, 119, 0.03));
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+            z-index: 0;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            color: var(--primary);
+            border: 1px solid var(--border);
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .hero-title span {
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .hero-title span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(198, 167, 119, 0.2);
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+            max-width: 90%;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.8s ease;
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(12, 26, 45, 0.1), rgba(12, 26, 45, 0.3));
+        }
+
+        .hero-image-badge {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 300px;
+        }
+
+        /* ===== TRUST INDICATORS ===== */
+        .trust-bar {
+            background-color: var(--card-bg);
+            padding: 3rem 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            margin-top: -4rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            z-index: 10;
+            border: 1px solid var(--border);
+        }
+
+        .trust-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .trust-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--success), #1B5E20);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.2);
+        }
+
+        .trust-text {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        /* ===== PREMIUM SERVICES SECTION ===== */
+        .services-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .services-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-medium);
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover:before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-header {
+            padding: 3rem 3rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(12, 26, 45, 0.1), rgba(255, 255, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            box-shadow: 0 10px 25px rgba(12, 26, 45, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-icon:before {
+            transform: translateX(100%);
+        }
+
+        .service-body {
+            padding: 2rem 3rem;
+            flex-grow: 1;
+        }
+
+        .service-title {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .service-description {
+            margin-bottom: 1.5rem;
+            min-height: 100px;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .service-footer {
+            padding: 2rem 3rem;
+            background-color: var(--background-alt);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-tag {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.5rem 1.25rem;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(198, 167, 119, 0.2);
+        }
+
+        /* ===== EXECUTIVE OFFICE POD SECTION ===== */
+        .office-pod-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 8rem 0;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .office-pod-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-image: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .office-pod-hero h1, .office-pod-hero p {
+            color: white;
+        }
+
+        .office-showcase {
+            display: flex;
+            gap: 5rem;
+            margin: 6rem 0;
+            align-items: center;
+        }
+
+        .office-image {
+            flex: 1;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+            position: relative;
+        }
+
+        .office-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .office-features {
+            flex: 1;
+        }
+
+        .office-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .office-feature-item {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            height: 100%;
+        }
+
+        .office-feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary);
+        }
+
+        .office-feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-section {
+            margin: 6rem 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .price-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .price-card.featured {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(198, 167, 119, 0.15);
+        }
+
+        .price-card.featured:before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 2rem;
+            right: -3rem;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 3.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transform: rotate(45deg);
+        }
+
+        .price-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .price-card.featured:hover {
+            transform: scale(1.05) translateY(-15px);
+        }
+
+        .price-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .price-features {
+            margin-bottom: 3rem;
+            flex-grow: 1;
+        }
+
+        .price-features li {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .price-features li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* ===== LUXURY BOOKING SECTION ===== */
+        .booking-section {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 5rem;
+            margin-top: 5rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(198, 167, 119, 0.1);
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: white;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: var(--secondary);
+            background-color: rgba(198, 167, 119, 0.05);
+        }
+
+        .time-slot.selected {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(12, 26, 45, 0.03), rgba(198, 167, 119, 0.03));
+            z-index: -1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 6rem;
+            color: rgba(12, 26, 45, 0.05);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .testimonial-rating {
+            color: var(--warning);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-content {
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            color: var(--text-medium);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 15px rgba(12, 26, 45, 0.15);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(12, 26, 45, 0.1), rgba(255, 255, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(12, 26, 45, 0.1);
+        }
+
+        .hours-list {
+            width: 100%;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .map-container {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 350px;
+            border: 1px solid var(--border);
+        }
+
+        /* ===== WHATSAPP BUTTON ===== */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 3rem;
+            right: 3rem;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            animation: none;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        /* ===== PREMIUM FOOTER ===== */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 6rem 0 3rem;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .footer-logo .logo-icon {
+            background: linear-gradient(135deg, white, #E2E8F0);
+            color: var(--primary);
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+            color: var(--primary);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .newsletter-btn {
+            padding: 1rem 1.5rem;
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--secondary-light);
+        }
+
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== LOADING ANIMATION ===== */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        .loader-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .loader-progress {
+            height: 100%;
+            width: 0;
+            background: var(--secondary);
+            animation: load 2s ease-in-out forwards;
+        }
+
+        @keyframes load {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1400px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-title {
+                font-size: 3.8rem;
+            }
+            
+            .hero-image-container {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero-container,
+            .office-showcase {
+                flex-direction: column;
+                gap: 4rem;
+            }
+            
+            .hero {
+                padding: 12rem 0 6rem;
+            }
+            
+            .hero:before {
+                width: 100%;
+                height: 50%;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+            }
+            
+            .hero-subtitle {
+                max-width: 100%;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .nav {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+            
+            .nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .header-actions .btn {
+                display: none;
+            }
+            
+            .office-features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-card.featured {
+                transform: none;
+            }
+            
+            .price-card.featured:hover {
+                transform: translateY(-15px);
+            }
+            
+            .booking-section {
+                padding: 4rem;
+            }
+            
+            .trust-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            
+            .section {
+                padding: 6rem 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-button {
+                bottom: 2rem;
+                right: 2rem;
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .booking-section {
+                padding: 3rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+                justify-content: space-between;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .service-header,
+            .service-body,
+            .service-footer {
+                padding: 2rem;
+            }
+            
+            .testimonial-card {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .section {
+                padding: 5rem 0;
+            }
+            
+            .booking-section {
+                padding: 2.5rem;
+            }
+            
+            .trust-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .office-pod-hero {
+                padding: 6rem 0;
+            }
+            
+            .hero-badge {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.8rem;
+            }
+            
+            .logo-text .logo-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/390212345678" class="whatsapp-button" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">MH</div>
+                <div class="logo-text">
+                    <div class="logo-title">Milano Multiservice</div>
+                    <div class="logo-subtitle">Premium Urban Solutions</div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav" id="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#office-pod" class="nav-link">Office Pod</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="lang-selector" role="button" aria-label="Language selector">
+                    <div class="flag flag-it"></div>
+                    <span>IT</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <a href="#booking" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i> Milano's Premier Multiservice Hub
+                </div>
+                <h1 class="hero-title">Urban Excellence, <span>Perfected</span></h1>
+                <p class="hero-subtitle lead">Redefining urban convenience with premium services crafted for Milan's discerning residents, professionals, and visitors. Experience unparalleled quality and sophistication in every interaction.</p>
+                
+                <div class="hero-actions">
+                    <a href="#services" class="btn btn-primary btn-lg">
+                        <i class="fas fa-compass"></i> Explore Our Services
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-lg">
+                        <i class="fas fa-map-marker-alt"></i> Visit Our Hub
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">9</div>
+                        <div class="stat-label">Premium Services</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15K+</div>
+                        <div class="stat-label">Satisfied Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Premium Support</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="hero-image" style="background: linear-gradient(135deg, #0C1A2D 0%, #1A2D4A 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                        <div style="text-align: center; padding: 3rem;">
+                            <i class="fas fa-building" style="font-size: 5rem; margin-bottom: 2rem; color: var(--secondary);"></i>
+                            <h3 style="color: white; margin-bottom: 1.5rem;">Milano Multiservice Hub</h3>
+                            <p style="color: rgba(255, 255, 255, 0.8);">Elegant, efficient, and exceptionally professional</p>
+                        </div>
+                    </div>
+                    <div class="hero-image-overlay"></div>
+                    <div class="hero-image-badge">
+                        <i class="fas fa-star" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                        <div>
+                            <div style="font-weight: 700; color: var(--primary);">Rated 4.9/5</div>
+                            <div style="font-size: 0.85rem; color: var(--text-light);">By 1200+ clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="container trust-container">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="trust-text">Fully Secure & Insured</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="trust-text">Open 7 Days a Week</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div class="trust-text">Multilingual Specialists</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="trust-text">Certified Professionals</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section section-light" id="services">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="text-center">Our Premium Services</h2>
+                <p class="lead text-center" style="max-width: 900px; margin: 0 auto;">Each service is meticulously designed to provide exceptional value, combining functionality with the sophistication that defines Milan.</p>
+            </div>
+            
+            <div class="services-categories">
+                <button class="category-btn active" data-category="all">All Services</button>
+                <button class="category-btn" data-category="essential">Essential</button>
+                <button class="category-btn" data-category="business">Business</button>
+                <button class="category-btn" data-category="premium">Premium</button>
+                <button class="category-btn" data-category="specialized">Specialized</button>
+            </div>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Service 1: Mobile & SIM Cards -->
+                <div class="service-card" data-category="essential">
+                    <div class="service-tag">Essential</div>
+                    <div class="service-header">
+                        <div class="service-icon">📱</div>
+                        <div>
+                            <h3 class="service-title">Mobile & Connectivity Solutions</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Complete mobile ecosystem services</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Stay seamlessly connected with our comprehensive mobile solutions, from premium accessories to international SIM cards and expert troubleshooting.</p>
+                        <ul class="service-features">
+                            <li>Premium phone accessories & cases</li>
+                            <li>International & local SIM cards</li>
+                            <li>Mobile top-ups & data packages</li>
+                            <li>Device setup & troubleshooting</li>
+                            <li>Screen protector installation</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €5</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2: Bill Payments & Money Transfer -->
+                <div class="service-card" data-category="essential">
+                    <div class="service-header">
+                        <div class="service-icon">💸</div>
+                        <div>
+                            <h3 class="service-title">Financial Services Hub</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Secure financial transactions</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Handle all your financial transactions securely and efficiently with our comprehensive payment and transfer services, backed by robust security protocols.</p>
+                        <ul class="service-features">
+                            <li>PagoPA & utility bill payments</li>
+                            <li>Fines, taxes, bollettini processing</li>
+                            <li>International money transfers</li>
+                            <li>Multi-currency transactions</li>
+                            <li>Secure encrypted processing</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €1</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3: Print, Copy, Scan & Photos -->
+                <div class="service-card" data-category="business">
+                    <div class="service-header">
+                        <div class="service-icon">🖨️</div>
+                        <div>
+                            <h3 class="service-title">Document Excellence Center</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Professional document services</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Professional printing, scanning, copying, and official photo services with meticulous attention to detail and rapid turnaround times.</p>
+                        <ul class="service-features">
+                            <li>High-resolution printing (B&W/Color)</li>
+                            <li>Professional scanning & digitization</li>
+                            <li>Official passport/ID photos</li>
+                            <li>Document binding & finishing</li>
+                            <li>Large format printing</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €0.20</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 4: Parcel Pickup & Drop-off -->
+                <div class="service-card" data-category="business">
+                    <div class="service-tag">Popular</div>
+                    <div class="service-header">
+                        <div class="service-icon">📦</div>
+                        <div>
+                            <h3 class="service-title">Logistics & Parcel Management</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Comprehensive shipping solutions</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Your reliable partner for all shipping and parcel needs, offering secure handling, storage, and dispatch services for individuals and businesses.</p>
+                        <ul class="service-features">
+                            <li>Amazon Hub Locker+ services</li>
+                            <li>DHL, UPS, Poste Italiane agency</li>
+                            <li>Secure package storage (up to 7 days)</li>
+                            <li>Professional packing services</li>
+                            <li>International shipping assistance</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €3</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 5: Luggage Storage -->
+                <div class="service-card" data-category="premium">
+                    <div class="service-header">
+                        <div class="service-icon">🧳</div>
+                        <div>
+                            <h3 class="service-title">Secure Luggage Solutions</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Premium storage for travelers</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Premium luggage storage solutions with advanced security, insurance options, and flexible duration to accommodate all traveler needs.</p>
+                        <ul class="service-features">
+                            <li>24/7 monitored secure storage</li>
+                            <li>Flexible hourly/daily/weekly rates</li>
+                            <li>Insurance coverage options</li>
+                            <li>Climate-controlled environment</li>
+                            <li>Express check-in/check-out</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €5/hour</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 6: Office Pod -->
+                <div class="service-card" data-category="premium">
+                    <div class="service-tag">Premium</div>
+                    <div class="service-header">
+                        <div class="service-icon">💼</div>
+                        <div>
+                            <h3 class="service-title">Executive Office Pod</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Private professional workspace</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">An exclusive, sound-isolated workspace designed for productivity, featuring premium amenities and state-of-the-art technology.</p>
+                        <ul class="service-features">
+                            <li>Acoustically engineered privacy</li>
+                            <li>1 Gbps dedicated fiber internet</li>
+                            <li>Ergonomic Herman Miller seating</li>
+                            <li>Dual monitor setup available</li>
+                            <li>Complimentary premium beverages</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €12/hour</div>
+                        <a href="#office-pod" class="btn btn-secondary">
+                            <i class="fas fa-calendar-alt"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 7: Smart Assistance -->
+                <div class="service-card" data-category="specialized">
+                    <div class="service-header">
+                        <div class="service-icon">🧠</div>
+                        <div>
+                            <h3 class="service-title">Digital Concierge Service</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Expert digital assistance</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Navigate the digital landscape with expert guidance on bureaucratic processes, technology setup, and online service management.</p>
+                        <ul class="service-features">
+                            <li>SPID & digital identity assistance</li>
+                            <li>Bureaucratic form completion</li>
+                            <li>Technology setup & troubleshooting</li>
+                            <li>Multilingual specialist support</li>
+                            <li>Appointment scheduling assistance</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €15/hour</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 8: Ethiopian & Eritrean Spices -->
+                <div class="service-card" data-category="specialized">
+                    <div class="service-header">
+                        <div class="service-icon">🌶️</div>
+                        <div>
+                            <h3 class="service-title">Authentic Culinary Imports</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Premium spices & traditional products</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Curated selection of authentic Ethiopian and Eritrean spices, coffee, and traditional products, sourced directly from trusted producers.</p>
+                        <ul class="service-features">
+                            <li>Premium spice selections</li>
+                            <li>Traditional coffee ceremonies</li>
+                            <li>Authentic cultural products</li>
+                            <li>Expert culinary guidance</li>
+                            <li>Direct import relationships</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">From €8</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 9: Ticket Office -->
+                <div class="service-card" data-category="essential">
+                    <div class="service-header">
+                        <div class="service-icon">🎫</div>
+                        <div>
+                            <h3 class="service-title">Premium Ticketing Services</h3>
+                            <p style="color: var(--text-light); font-size: 1rem;">Comprehensive booking solutions</p>
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <p class="service-description">Access premium ticketing services for transportation, events, and attractions with personalized assistance and expert recommendations.</p>
+                        <ul class="service-features">
+                            <li>Transportation ticket booking</li>
+                            <li>Event & concert ticket access</li>
+                            <li>Tourist attraction passes</li>
+                            <li>Personalized booking assistance</li>
+                            <li>VIP access opportunities</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        <div class="service-price">No service fee</div>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Pod Section -->
+    <section class="office-pod-hero" id="office-pod">
+        <div class="container text-center">
+            <h1>The Executive Office Pod</h1>
+            <p class="lead" style="max-width: 900px; margin: 0 auto 2.5rem;">An exclusive workspace sanctuary designed for ultimate productivity, privacy, and professional excellence in the heart of Milan.</p>
+            <a href="#booking" class="btn btn-secondary btn-lg">
+                <i class="fas fa-calendar-check"></i> Reserve Your Pod
+            </a>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Professional Excellence, Uncompromised Privacy</h2>
+            <p class="lead text-center" style="max-width: 900px; margin: 0 auto 4rem;">Our Executive Office Pods represent the pinnacle of workspace design, combining cutting-edge technology with ergonomic comfort for unparalleled productivity.</p>
+            
+            <div class="office-showcase">
+                <div class="office-image">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #0C1A2D 0%, #1A2D4A 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                        <div style="text-align: center; padding: 3rem;">
+                            <i class="fas fa-door-closed" style="font-size: 5rem; margin-bottom: 2rem; color: var(--secondary);"></i>
+                            <h3 style="color: white;">Executive Office Pod</h3>
+                            <p style="color: rgba(255, 255, 255, 0.8);">Sound-isolated, technology-enhanced workspace</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="office-features">
+                    <h3>Engineered for Excellence</h3>
+                    <div class="office-features-grid">
+                        <div class="office-feature-item">
+                            <div class="office-feature-icon">
+                                <i class="fas fa-volume-mute"></i>
+                            </div>
+                            <h4>Acoustic Excellence</h4>
+                            <p>Triple-layer acoustic insulation with 45dB noise reduction for complete confidentiality</p>
+                        </div>
+                        
+                        <div class="office-feature-item">
+                            <div class="office-feature-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <h4>Ultra-Fast Connectivity</h4>
+                            <p>Dedicated 1 Gbps fiber connection with enterprise-grade router for seamless video conferencing</p>
+                        </div>
+                        
+                        <div class="office-feature-item">
+                            <div class="office-feature-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h4>Premium Ergonomics</h4>
+                            <p>Herman Miller ergonomic chair, height-adjustable desk, and multiple charging stations</p>
+                        </div>
+                        
+                        <div class="office-feature-item">
+                            <div class="office-feature-icon">
+                                <i class="fas fa-air-freshener"></i>
+                            </div>
+                            <h4>Climate Controlled</h4>
+                            <p>Individual temperature and air quality control with HEPA filtration system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-section">
+                <h2 class="text-center">Flexible Premium Plans</h2>
+                <p class="text-center" style="max-width: 700px; margin: 0 auto 2rem;">Choose the plan that matches your professional needs. All plans include premium amenities and priority support.</p>
+                
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <div class="price-header">
+                            <h3>Flexi-Hour</h3>
+                            <div class="price-amount">€12</div>
+                            <div class="price-period">per hour</div>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check text-accent"></i> 1-hour minimum booking</li>
+                            <li><i class="fas fa-check text-accent"></i> High-speed WiFi included</li>
+                            <li><i class="fas fa-check text-accent"></i> Ergonomic workspace</li>
+                            <li><i class="fas fa-check text-accent"></i> Climate control</li>
+                            <li><i class="fas fa-times" style="color: var(--text-light);"></i> No extended access</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline btn-block">Select Plan</a>
+                    </div>
+                    
+                    <div class="price-card featured">
+                        <div class="price-header">
+                            <h3>Professional Half-Day</h3>
+                            <div class="price-amount">€45</div>
+                            <div class="price-period">4 hours (save €3)</div>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check text-accent"></i> 4 consecutive hours</li>
+                            <li><i class="fas fa-check text-accent"></i> Premium WiFi & printer access</li>
+                            <li><i class="fas fa-check text-accent"></i> Complimentary beverages</li>
+                            <li><i class="fas fa-check text-accent"></i> Priority booking rights</li>
+                            <li><i class="fas fa-check text-accent"></i> Meeting room access (30 min)</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-secondary btn-block">Most Popular</a>
+                    </div>
+                    
+                    <div class="price-card">
+                        <div class="price-header">
+                            <h3>Executive Full-Day</h3>
+                            <div class="price-amount">€80</div>
+                            <div class="price-period">8 hours (save €16)</div>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check text-accent"></i> Full business day access</li>
+                            <li><i class="fas fa-check text-accent"></i> Premium amenities package</li>
+                            <li><i class="fas fa-check text-accent"></i> Complimentary lunch delivery</li>
+                            <li><i class="fas fa-check text-accent"></i> Meeting room access (2 hours)</li>
+                            <li><i class="fas fa-check text-accent"></i> Priority technical support</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-outline btn-block">Select Plan</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-section" id="booking">
+                <div class="booking-header">
+                    <h3>Reserve Your Executive Pod</h3>
+                    <p>Select your preferred date, time, and duration. You'll receive instant confirmation and preparatory details via email.</p>
+                </div>
+                
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-group">
+                        <label class="form-label" for="booking-name">Full Name *</label>
+                        <input type="text" id="booking-name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="booking-email">Professional Email *</label>
+                        <input type="email" id="booking-email" class="form-control" placeholder="Enter your professional email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="booking-phone">Contact Number *</label>
+                        <input type="tel" id="booking-phone" class="form-control" placeholder="Enter your contact number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="booking-company">Company (Optional)</label>
+                        <input type="text" id="booking-company" class="form-control" placeholder="Enter your company name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="booking-date">Select Date *</label>
+                        <input type="date" id="booking-date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="booking-duration">Duration *</label>
+                        <select id="booking-duration" class="form-control" required>
+                            <option value="">Select duration</option>
+                            <option value="1">1 hour (€12)</option>
+                            <option value="2">2 hours (€24)</option>
+                            <option value="3">3 hours (€36)</option>
+                            <option value="4">4 hours - Professional Half-Day (€45)</option>
+                            <option value="8">8 hours - Executive Full-Day (€80)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Preferred Start Time *</label>
+                        <div class="time-slots" id="timeSlots">
+                            <!-- Time slots will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label class="form-label" for="special-requirements">Special Requirements</label>
+                        <textarea id="special-requirements" class="form-control" rows="4" placeholder="Any specific requirements, equipment needs, or accessibility considerations..."></textarea>
+                    </div>
+                </form>
+                
+                <div style="text-align: center; margin-top: 4rem;">
+                    <button type="submit" form="bookingForm" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-lock"></i> Secure & Confirm Booking
+                    </button>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-light);">
+                        <i class="fas fa-shield-alt"></i> Your booking is secured with 256-bit encryption. Cancel up to 3 hours before your session.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-dark" id="testimonials">
+        <div class="container">
+            <h2 class="text-center">Client Excellence Stories</h2>
+            <p class="lead text-center" style="max-width: 800px; margin: 0 auto 4rem;">Join thousands of professionals, travelers, and residents who trust Milano Multiservice Hub for their essential urban needs.</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "The Executive Office Pod transformed how I work in Milan. As a consultant needing confidential client calls, the acoustic privacy is exceptional. The 1 Gbps connection handles video conferences flawlessly."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--primary);">Alessandro S.</div>
+                            <div style="font-size: 0.9rem; color: var(--text-light);">Management Consultant</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "Moving to Milan was daunting, but the Digital Concierge service helped navigate Italian bureaucracy effortlessly. Their multilingual team saved me weeks of confusion with residency permits and tax forms."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--primary);">Maria J.</div>
+                            <div style="font-size: 0.9rem; color: var(--text-light);">International Relocation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "Our small e-commerce business relies completely on their parcel services. The secure storage, professional packing, and reliable dispatch have streamlined our operations significantly. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">GB</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--primary);">Giovanni B.</div>
+                            <div style="font-size: 0.9rem; color: var(--text-light);">E-commerce Entrepreneur</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="text-center">Visit Our Premium Hub</h2>
+            <p class="lead text-center" style="max-width: 800px; margin: 0 auto 4rem;">Experience our premium services firsthand at our centrally located Milan hub, designed for convenience, comfort, and exceptional service delivery.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Premium Location</h4>
+                            <p>Via Montenapoleone 12, 20121<br>Milano MI, Italy</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">
+                                <i class="fas fa-subway"></i> Metro: M1 (San Babila), M3 (Montenapoleone)<br>
+                                <i class="fas fa-parking"></i> Secure parking available at Garage Montenapoleone
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Contact Center</h4>
+                            <p><a href="tel:+3902128901234" style="color: var(--primary); font-weight: 600;">+39 02 2890 1234</a></p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">
+                                Premium client line: <a href="tel:+393471234567" style="color: var(--primary);">+39 347 123 4567</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp Business</h4>
+                            <p><a href="https://wa.me/3902128901234" target="_blank" style="color: var(--primary); font-weight: 600;">Message us directly</a></p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">
+                                Average response time: < 5 minutes during business hours
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Executive Communications</h4>
+                            <p><a href="mailto:concierge@milanomultiservice.it" style="color: var(--primary); font-weight: 600;">concierge@milanomultiservice.it</a></p>
+                            <p><a href="mailto:executive@milanomultiservice.it" style="color: var(--primary); font-weight: 600;">executive@milanomultiservice.it</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Premium Operating Hours</h4>
+                            <ul class="hours-list">
+                                <li><span>Monday - Friday</span> <span>8:00 - 20:00</span></li>
+                                <li><span>Saturday</span> <span>9:00 - 19:00</span></li>
+                                <li><span>Sunday</span> <span>10:00 - 18:00</span></li>
+                                <li><span>Public Holidays</span> <span>10:00 - 16:00</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <div>Premium Location: Via Montenapoleone</div>
+                            <div style="font-size: 0.9rem; margin-top: 0.5rem;">Milan's Luxury District</div>
+                        </div>
+                        <div class="map-overlay">
+                            <h4 style="margin-bottom: 0.5rem;">Milano Multiservice Hub</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Via Montenapoleone 12, 20121 Milano</p>
+                            <a href="https://maps.google.com/?q=Via+Montenapoleone+12,+Milano" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                                <i class="fas fa-directions"></i> Get Directions
+                            </a>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+                        <a href="https://maps.google.com/?q=Via+Montenapoleone+12,+Milano" target="_blank" class="btn btn-primary" style="flex: 1;">
+                            <i class="fas fa-map-marker-alt"></i> View on Maps
+                        </a>
+                        <a href="tel:+3902128901234" class="btn btn-outline" style="flex: 1;">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <a href="#home" class="logo" style="align-items: flex-start;">
+                        <div class="logo-icon">MH</div>
+                        <div class="logo-text">
+                            <div class="logo-title">Milano Multiservice</div>
+                            <div class="logo-subtitle">Premium Urban Solutions</div>
+                        </div>
+                    </a>
+                    <p class="footer-description">Redefining urban convenience with premium services designed for Milan's discerning residents, professionals, and visitors since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Access</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">All Services</a></li>
+                        <li><a href="#office-pod">Executive Office Pod</a></li>
+                        <li><a href="#testimonials">Client Stories</a></li>
+                        <li><a href="#contact">Visit Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Premium Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#office-pod">Executive Pod Booking</a></li>
+                        <li><a href="#services">Document Excellence Center</a></li>
+                        <li><a href="#services">Financial Services Hub</a></li>
+                        <li><a href="#services">Logistics & Parcel Management</a></li>
+                        <li><a href="#services">Digital Concierge Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Stay Informed</h4>
+                    <p class="footer-description">Subscribe to our premium newsletter for exclusive service updates, Milan urban insights, and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your professional email" required>
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+                    <div>
+                        <p>&copy; 2024 Milano Multiservice Hub. All rights reserved. | Part of Milano Urban Solutions Group</p>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem;">
+                        <a href="#" style="font-size: 0.85rem;">Privacy Policy</a>
+                        <a href="#" style="font-size: 0.85rem;">Terms of Service</a>
+                        <a href="#" style="font-size: 0.85rem;">Accessibility</a>
+                        <span style="font-size: 0.85rem;">P.IVA: IT09876543210</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced JavaScript for luxury interactions
+        
+        // Remove loader when page is loaded
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                
+                // Animate service cards after loading
+                const serviceCards = document.querySelectorAll('.service-card');
+                serviceCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 100);
+                });
+            }, 800);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+        const header = document.getElementById('header');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Active navigation based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Language selector toggle
+        document.querySelector('.lang-selector')?.addEventListener('click', function() {
+            const currentFlag = this.querySelector('.flag');
+            const currentText = this.querySelector('span');
+            
+            if (currentFlag.classList.contains('flag-it')) {
+                currentFlag.className = 'flag flag-en';
+                currentText.textContent = 'EN';
+                currentText.setAttribute('aria-label', 'English');
+            } else {
+                currentFlag.className = 'flag flag-it';
+                currentText.textContent = 'IT';
+                currentText.setAttribute('aria-label', 'Italian');
+            }
+        });
+        
+        // Service category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Filter service cards
+                serviceCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, 100);
+                    } else {
+                        card.classList.remove('animate');
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Generate time slots for booking
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        const startHour = 8;
+        const endHour = 20;
+        
+        if (timeSlotsContainer) {
+            for (let hour = startHour; hour <= endHour; hour++) {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = `${hour.toString().padStart(2, '0')}:00`;
+                timeSlot.dataset.time = `${hour}:00`;
+                timeSlot.setAttribute('tabindex', '0');
+                timeSlot.setAttribute('role', 'button');
+                
+                timeSlot.addEventListener('click', function() {
+                    document.querySelectorAll('.time-slot').forEach(slot => {
+                        slot.classList.remove('selected');
+                        slot.setAttribute('aria-selected', 'false');
+                    });
+                    this.classList.add('selected');
+                    this.setAttribute('aria-selected', 'true');
+                });
+                
+                timeSlot.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+                
+                timeSlotsContainer.appendChild(timeSlot);
+            }
+        }
+        
+        // Set minimum date for booking to today
+        const today = new Date().toISOString().split('T')[0];
+        const bookingDateInput = document.getElementById('booking-date');
+        if (bookingDateInput) {
+            bookingDateInput.min = today;
+            bookingDateInput.value = today;
+        }
+        
+        // Booking form submission with enhanced validation
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('booking-name').value.trim();
+                const email = document.getElementById('booking-email').value.trim();
+                const phone = document.getElementById('booking-phone').value.trim();
+                const date = document.getElementById('booking-date').value;
+                const duration = document.getElementById('booking-duration').value;
+                const selectedTime = document.querySelector('.time-slot.selected');
+                
+                // Validation
+                if (!name || !email || !phone || !date || !duration || !selectedTime) {
+                    showNotification('Please complete all required fields and select a time slot to proceed.', 'error');
+                    return;
+                }
+                
+                if (!validateEmail(email)) {
+                    showNotification('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                if (!validatePhone(phone)) {
+                    showNotification('Please enter a valid phone number.', 'error');
+                    return;
+                }
+                
+                // Calculate price
+                const prices = {1: 12, 2: 24, 3: 36, 4: 45, 8: 80};
+                const price = prices[duration];
+                
+                // Show elegant confirmation modal
+                showBookingConfirmation(name, email, phone, date, duration, price, selectedTime.textContent);
+                
+                // Reset form
+                this.reset();
+                document.querySelectorAll('.time-slot').forEach(slot => {
+                    slot.classList.remove('selected');
+                    slot.setAttribute('aria-selected', 'false');
+                });
+                
+                // Reset date to today
+                if (bookingDateInput) {
+                    bookingDateInput.value = today;
+                }
+            });
+        }
+        
+        // Helper functions
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function validatePhone(phone) {
+            const re = /^[\+]?[0-9\s\-\(\)]+$/;
+            return re.test(phone) && phone.length >= 8;
+        }
+        
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 120px;
+                right: 20px;
+                padding: 1.5rem;
+                background: ${type === 'error' ? '#EF4444' : type === 'success' ? '#10B981' : '#0C1A2D'};
+                color: white;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow-lg);
+                z-index: 9999;
+                animation: slideIn 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                max-width: 400px;
+                border-left: 4px solid ${type === 'error' ? '#DC2626' : type === 'success' ? '#059669' : '#C6A777'};
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : type === 'success' ? 'check-circle' : 'info-circle'}" style="font-size: 1.5rem;"></i>
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 0.25rem;">${type === 'error' ? 'Error' : type === 'success' ? 'Success' : 'Info'}</div>
+                    <div>${message}</div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+            
+            // Add animation keyframes
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+        
+        function showBookingConfirmation(name, email, phone, date, duration, price, time) {
+            const confirmationHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 9999; animation: fadeIn 0.4s ease; backdrop-filter: blur(5px);">
+                    <div style="background: white; padding: 4rem; border-radius: var(--radius-lg); max-width: 700px; width: 90%; box-shadow: var(--shadow-lg); animation: scaleIn 0.4s ease; position: relative; overflow: hidden; border: 1px solid var(--border);">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--secondary), var(--accent));"></div>
+                        <div style="text-align: center; margin-bottom: 3rem;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: white; font-size: 3rem; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 2.5rem;">Booking Confirmed!</h3>
+                            <p style="color: var(--text-medium); max-width: 500px; margin: 0 auto; font-size: 1.1rem;">Your Executive Pod reservation has been successfully processed. You will receive a confirmation email shortly.</p>
+                        </div>
+                        <div style="background: var(--background-alt); padding: 2.5rem; border-radius: var(--radius); margin-bottom: 3rem; border: 1px solid var(--border);">
+                            <h4 style="margin-bottom: 2rem; color: var(--primary); font-size: 1.5rem; text-align: center;">Reservation Details</h4>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                                <div style="background: white; padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+                                    <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Client</div>
+                                    <div style="font-weight: 700; color: var(--primary); font-size: 1.2rem;">${name}</div>
+                                </div>
+                                <div style="background: white; padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+                                    <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Date</div>
+                                    <div style="font-weight: 700; color: var(--primary); font-size: 1.2rem;">${new Date(date).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                                </div>
+                                <div style="background: white; padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+                                    <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Time</div>
+                                    <div style="font-weight: 700; color: var(--primary); font-size: 1.2rem;">${time}</div>
+                                </div>
+                                <div style="background: white; padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+                                    <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Duration</div>
+                                    <div style="font-weight: 700; color: var(--primary); font-size: 1.2rem;">${duration} hour${duration > 1 ? 's' : ''}</div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-size: 1rem; color: var(--text-light);">Total Amount</div>
+                                    <div style="font-size: 3rem; font-weight: 800; color: var(--primary); line-height: 1;">€${price}</div>
+                                </div>
+                                <div style="font-size: 0.9rem; color: var(--text-light); max-width: 200px;">Payment due at location. Credit cards and cash accepted.</div>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button onclick="closeConfirmationModal()" class="btn btn-secondary" style="padding: 1.25rem 3rem; font-size: 1.1rem; font-weight: 600;">Close</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const modal = document.createElement('div');
+            modal.innerHTML = confirmationHTML;
+            document.body.appendChild(modal);
+            
+            // Add animation styles
+            if (!document.querySelector('#modal-styles')) {
+                const style = document.createElement('style');
+                style.id = 'modal-styles';
+                style.textContent = `
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes scaleIn {
+                        from { transform: scale(0.9); opacity: 0; }
+                        to { transform: scale(1); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Add close function to global scope
+            window.closeConfirmationModal = function() {
+                modal.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => modal.remove(), 300);
+                showNotification('Your booking has been confirmed. Check your email for details.', 'success');
+            };
+        }
+        
+        // Newsletter form submission
+        document.querySelector('.newsletter-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value.trim();
+            
+            if (!validateEmail(email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Show success message
+            showNotification('Thank you for subscribing to our premium newsletter!', 'success');
+            this.reset();
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements to animate
+        document.querySelectorAll('.service-card, .price-card, .testimonial-card, .office-feature-item').forEach((element) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add hover effect to service icons
+        document.querySelectorAll('.service-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'rotate(5deg) scale(1.1)';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'rotate(0) scale(1)';
+            });
+        });
+        
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const rate = scrolled * 0.5;
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+        
+        // Initialize with service cards animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const serviceCards = document.querySelectorAll('.service-card');
+                serviceCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
