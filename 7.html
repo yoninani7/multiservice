@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiService Hub Italia | Excellence in Milanese Service</title>
+    
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== ADVANCED DESIGN SYSTEM ========== */
+        :root {
+            --primary: #0f172a;        /* Midnight Navy */
+            --secondary: #1e293b;      /* Slate Blue */
+            --accent: #d4af37;         /* Metallic Gold */
+            --accent-hover: #b8962e;   /* Darker Gold */
+            --text-main: #334155;
+            --text-light: #94a3b8;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f1d572 50%, #d4af37 100%);
+            
+            --shadow-lux: 0 20px 40px rgba(0,0,0,0.1);
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========== RESET & BASE ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            background-color: #fcfcfc;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .luxury-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        
+        /* ========== CUSTOM SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+        /* ========== FLOATING QUICK ACTIONS ========== */
+        .quick-actions {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-lux);
+            transition: var(--transition-smooth);
+            border: 1px solid var(--accent);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1) rotate(360deg);
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* ========== PRELOADER ========== */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--primary);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loader-logo {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .main-header {
+            padding: 25px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .main-header.scrolled {
+            padding: 15px 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'Playfair Display';
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1513584684374-8bdb74a9fe2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .gold-button {
+            padding: 18px 45px;
+            background: var(--gold-gradient);
+            border: none;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .gold-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ========== STATS SECTION ========== */
+        .stats-bar {
+            background: var(--primary);
+            padding: 60px 0;
+            border-top: 1px solid var(--accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        /* ========== LUXURY SERVICES ========== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h3 {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            color: var(--primary);
+        }
+
+        .service-card-lux {
+            background: var(--white);
+            padding: 50px;
+            border: 1px solid #eee;
+            position: relative;
+            transition: var(--transition-smooth);
+            height: 100%;
+        }
+
+        .service-card-lux:hover {
+            background: var(--primary);
+            transform: translateY(-15px);
+        }
+
+        .service-card-lux:hover * {
+            color: var(--white) !important;
+        }
+
+        .service-card-lux .icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .service-card-lux h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display';
+        }
+
+        /* ========== OFFICE PODS - PREMIUM VIEW ========== */
+        .pods-section {
+            background: #f1f5f9;
+            padding: 100px 0;
+        }
+
+        .pod-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .pod-image-stack {
+            position: relative;
+        }
+
+        .main-pod-img {
+            width: 80%;
+            border-radius: 5px;
+            box-shadow: var(--shadow-lux);
+        }
+
+        .sub-pod-img {
+            position: absolute;
+            width: 50%;
+            bottom: -30px;
+            right: 0;
+            border: 10px solid var(--white);
+            border-radius: 5px;
+        }
+
+        .pod-feature-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .pod-feature-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pod-feature-list i {
+            color: var(--accent);
+        }
+
+        /* ========== SPICE BAZAAR ========== */
+        .spice-section {
+            padding: 100px 0;
+            background: #0f172a;
+            color: var(--white);
+        }
+
+        .spice-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .spice-item-premium {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+
+        .spice-item-premium img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .spice-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .spice-item-premium:hover .spice-overlay { opacity: 1; }
+        .spice-item-premium:hover img { transform: scale(1.1); }
+
+        /* ========== CONTACT FORM ========== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            background: var(--white);
+            box-shadow: var(--shadow-lux);
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-info-panel {
+            background: var(--primary);
+            padding: 60px;
+            color: var(--white);
+        }
+
+        .contact-form-panel {
+            padding: 60px;
+        }
+
+        .form-input-lux {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input-lux:focus {
+            border-bottom-color: var(--accent);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #070b15;
+            padding: 100px 0 30px;
+            color: var(--white);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .pod-grid, .contact-wrapper { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Actions -->
+    <div class="quick-actions">
+        <a href="https://wa.me/39021234567" class="action-btn" title="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+39021234567" class="action-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="#home" class="action-btn" id="scrollTop">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-logo"><i class="fas fa-crown"></i></div>
+        <p style="color: var(--accent); letter-spacing: 3px;">MULTISERVICE HUB ITALIA</p>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="header">
+        <div class="container nav-content">
+            <a href="#" class="logo-text">
+                <span style="font-size: 1.5rem;">MH</span> ITALIA
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Excellence</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#office-pods">Workspaces</a></li>
+                <li><a href="#spices">Spice Bazaar</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="gold-button" style="padding: 10px 25px; font-size: 0.7rem;">Book Visit</button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h3 class="animate__animated animate__fadeInDown" style="color: var(--accent); letter-spacing: 5px; margin-bottom: 20px;">EST. 2018 | MILANO</h3>
+            <h1 class="hero-title" id="heroText">Where Global Needs <br>Meet <span>Milanese</span> Elegance</h1>
+            <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">Premium administrative solutions, private executive workspaces, and the finest East African spices. All within the heart of Italy's fashion capital.</p>
+            <div class="animate__animated animate__fadeInUp animate__delay-1s">
+                <button class="gold-button">Explore Our World</button>
+                <a href="#services" style="color: white; margin-left: 30px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; font-size: 0.8rem;">View Catalog <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h2 class="counter" data-target="15000">0</h2>
+                <p>Transactions Monthly</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="counter" data-target="48">0</h2>
+                <p>Hours Support</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="counter" data-target="120">0</h2>
+                <p>Global Partners</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="counter" data-target="99">0</h2>
+                <p>Satisfaction %</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" style="padding: 120px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h3>The Portfolio</h3>
+                <h2>World-Class Solutions</h2>
+            </div>
+            <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Card 1 -->
+                <div class="service-card-lux reveal">
+                    <div class="icon"><i class="fas fa-fingerprint"></i></div>
+                    <h4>Bureaucracy Support</h4>
+                    <p>Expert assistance with Codice Fiscale, Permesso di Soggiorno renewals, and SPID digital identity setup.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; margin-top: 20px; display: block;">Details +</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card-lux reveal">
+                    <div class="icon"><i class="fas fa-vault"></i></div>
+                    <h4>Financial Logistics</h4>
+                    <p>Priority money transfers (Wise, RIA, WU) with dedicated accounts for corporate and private clients.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; margin-top: 20px; display: block;">Details +</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card-lux reveal">
+                    <div class="icon"><i class="fas fa-microchip"></i></div>
+                    <h4>5G Communication</h4>
+                    <p>Exclusive Italian SIM registration with multi-language technical support and global roaming optimization.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; margin-top: 20px; display: block;">Details +</a>
+                </div>
+                <!-- Card 4 -->
+                <div class="service-card-lux reveal">
+                    <div class="icon"><i class="fas fa-box-open"></i></div>
+                    <h4>Global Concierge</h4>
+                    <p>Bespoke parcel management for luxury goods, ensuring secure handling across EU and African corridors.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; margin-top: 20px; display: block;">Details +</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workspaces -->
+    <section class="pods-section" id="office-pods">
+        <div class="container pod-grid">
+            <div class="pod-image-stack reveal">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" class="main-pod-img" alt="Office">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" class="sub-pod-img" alt="Tech">
+            </div>
+            <div class="pod-content reveal">
+                <h3 style="color: var(--accent); letter-spacing: 3px;">EXECUTIVE SUITES</h3>
+                <h2 style="font-size: 3rem; margin: 20px 0;">Focused Productivity in Total Silence</h2>
+                <p>Our soundproof office pods offer a sanctuary for high-stakes meetings or deep work sessions. Available by the hour with full administrative support at your fingertips.</p>
+                <ul class="pod-feature-list">
+                    <li><i class="fas fa-wifi"></i> Gigabit Fiber Optic Connectivity</li>
+                    <li><i class="fas fa-coffee"></i> Complimentary Ethiopian Highland Coffee</li>
+                    <li><i class="fas fa-print"></i> Wireless Laser Cloud Printing</li>
+                    <li><i class="fas fa-user-shield"></i> 24/7 Biometric Security</li>
+                </ul>
+                <button class="gold-button" style="margin-top: 40px;">Check Availability</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spice Bazaar -->
+    <section class="spice-section" id="spices">
+        <div class="container">
+            <div class="section-title">
+                <h3 style="color: var(--accent);">Heritage Flavors</h3>
+                <h2 style="color: white;">The Spice Bazaar</h2>
+            </div>
+            <div class="spice-gallery">
+                <div class="spice-item-premium reveal">
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80" alt="Berbere">
+                    <div class="spice-overlay">
+                        <h4>Organic Berbere</h4>
+                        <p>Sun-dried in Addis Ababa</p>
+                    </div>
+                </div>
+                <div class="spice-item-premium reveal" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1615485290382-441e4d0c9cb5?auto=format&fit=crop&w=500&q=80" alt="Coffee">
+                    <div class="spice-overlay">
+                        <h4>Yirgacheffe Beans</h4>
+                        <p>Grade 1 Specialty Coffee</p>
+                    </div>
+                </div>
+                <div class="spice-item-premium reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1532336414038-cf190501f1f5?auto=format&fit=crop&w=500&q=80" alt="Shuro">
+                    <div class="spice-overlay">
+                        <h4>Premium Shuro</h4>
+                        <p>Spiced Chickpea Flour</p>
+                    </div>
+                </div>
+                <div class="spice-item-premium reveal" style="transition-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=500&q=80" alt="Tea">
+                    <div class="spice-overlay">
+                        <h4>East African Chai</h4>
+                        <p>Artisanal Loose Leaf Blend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="padding: 150px 0 0 0;">
+        <div class="container">
+            <div class="contact-wrapper reveal">
+                <div class="contact-info-panel">
+                    <h2 style="margin-bottom: 40px;">Let's Connect</h2>
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--accent);">HQ LOCATION</h4>
+                        <p>Via Dante Alighieri, 15<br>20121 Milano MI, Italy</p>
+                    </div>
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--accent);">DIRECT LINE</h4>
+                        <p>+39 02 1234 5678</p>
+                    </div>
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--accent);">EMAIL</h4>
+                        <p>concierge@multiservicehub.it</p>
+                    </div>
+                </div>
+                <div class="contact-form-panel">
+                    <form id="luxForm">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <input type="text" placeholder="FULL NAME" class="form-input-lux" required>
+                            <input type="email" placeholder="EMAIL ADDRESS" class="form-input-lux" required>
+                        </div>
+                        <input type="text" placeholder="INTERESTED SERVICE" class="form-input-lux">
+                        <textarea placeholder="HOW CAN WE ASSIST YOU?" class="form-input-lux" rows="4" style="resize: none;"></textarea>
+                        <button type="submit" class="gold-button">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div style="height: 400px; background: #eee; width: 100%; margin-top: 50px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.1264858902584!2d9.18342717688005!3d45.46722883324021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6ad97858999%3A0xe3e6398018e69818!2sVia%20Dante%2C%20Milano%20MI!5e0!3m2!1sen!2sit!4v1700000000000" width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9);" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 50px;">
+            <div>
+                <h3 style="color: var(--accent); margin-bottom: 20px;">MH ITALIA</h3>
+                <p style="color: #666; font-size: 0.9rem;">Elevating everyday service to an art form. Providing the international community in Milan with the tools to thrive.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px;">NAVIGATE</h4>
+                <ul style="list-style: none; color: #666; line-height: 2;">
+                    <li>About Us</li>
+                    <li>Service Tiers</li>
+                    <li>Corporate Bookings</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px;">FOLLOW US</h4>
+                <div style="display: flex; gap: 20px; font-size: 1.2rem; color: var(--accent);">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid #111; padding-top: 30px; text-align: center; color: #444; font-size: 0.8rem;">
+            &copy; 2024 MultiService Hub Italia. All rights reserved. Sede Legale: Milano.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 1500);
+            
+            // Hero Text Animation
+            document.getElementById('heroText').style.opacity = '1';
+            document.getElementById('heroText').style.transform = 'translateY(0)';
+            document.getElementById('heroText').style.transition = 'all 1s ease 0.5s';
+        });
+
+        // 2. Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 3. Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const countSpeed = 200;
+
+        const startCount = (el) => {
+            const target = +el.getAttribute('data-target');
+            const count = +el.innerText;
+            const inc = target / countSpeed;
+
+            if (count < target) {
+                el.innerText = Math.ceil(count + inc);
+                setTimeout(() => startCount(el), 1);
+            } else {
+                el.innerText = target.toLocaleString();
+            }
+        };
+
+        // 4. Reveal Animation on Scroll
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                    if(el.querySelector('.counter')) startCount(el.querySelector('.counter'));
+                }
+            });
+        };
+
+        window.addEventListener('scroll', reveal);
+
+        // 5. Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 6. Form Submission
+        document.getElementById('luxForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerHTML = "SENDING...";
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                alert("Thank you. Our executive concierge will contact you within 2 hours.");
+                btn.innerHTML = "SEND INQUIRY";
+                btn.disabled = false;
+                e.target.reset();
+            }, 2000);
+        });
+
+        // Start Stats observer
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const counterEls = entry.target.querySelectorAll('.counter');
+                    counterEls.forEach(c => startCount(c));
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(document.querySelector('.stats-bar'));
+
+    </script>
+</body>
+</html>
