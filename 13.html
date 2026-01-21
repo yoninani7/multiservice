@@ -1,0 +1,3211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiService Hub Italia | Premium Services in Milan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            --primary-dark: #0a192f;
+            --primary: #1e3a5f;
+            --primary-light: #2d4a7c;
+            --accent-gold: #c5a028;
+            --accent-gold-light: #d8b43a;
+            --accent-blue: #4a90e2;
+            --light: #f8fafc;
+            --light-gray: #e2e8f0;
+            --medium-gray: #94a3b8;
+            --dark-gray: #475569;
+            --dark: #1e293b;
+            --white: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 6px 12px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+            
+            --border-radius-sm: 6px;
+            --border-radius: 10px;
+            --border-radius-md: 14px;
+            --border-radius-lg: 20px;
+            
+            --transition: all 0.25s ease;
+            --transition-slow: all 0.4s ease;
+            
+            --container-max: 1200px;
+            --section-spacing: 80px;
+        }
+
+        /* ========== Base Styles ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-title .subtitle {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: var(--section-spacing) 0;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(30, 58, 95, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: #5a9cec;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========== Preloader ========== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .preloader-content {
+            text-align: center;
+        }
+
+        .logo-loader {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .logo-loader-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s infinite;
+        }
+
+        .logo-loader-inner i {
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        /* ========== Header Styles ========== */
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-info-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-info-item i {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-gold);
+        }
+
+        .language-selector select {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 8px;
+            border-radius: var(--border-radius-sm);
+            outline: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Main Header */
+        .main-header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Header CTA */
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        /* ========== Hero Section ========== */
+        .hero {
+            position: relative;
+            padding: 120px 0 80px;
+            background-color: var(--light);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            color: var(--dark-gray);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-top: 40px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-stat-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(197, 160, 40, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .hero-stat-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--primary);
+        }
+
+        .hero-stat-text p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: var(--dark-gray);
+        }
+
+        /* ========== About Section ========== */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+        }
+
+        .about-features {
+            list-style: none;
+            margin: 25px 0 30px;
+        }
+
+        .about-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .about-features li i {
+            color: var(--accent-gold);
+            font-size: 1rem;
+            margin-top: 3px;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition-slow);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* ========== Services Section ========== */
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .services-intro p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--light-gray);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card-header {
+            padding: 25px 25px 20px;
+            background-color: var(--light);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .service-card-body {
+            padding: 0 25px 25px;
+        }
+
+        .service-card p {
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-features li {
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li i {
+            color: var(--success);
+            margin-right: 10px;
+            margin-top: 4px;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .service-note {
+            background-color: rgba(245, 158, 11, 0.08);
+            padding: 12px;
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid var(--warning);
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        .service-note strong {
+            color: var(--warning);
+        }
+
+        /* ========== Office Pods Section ========== */
+        .office-pods {
+            background-color: var(--white);
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 6px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-toggle-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pricing-toggle-btn.active {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--light-gray);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent-gold);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 6px 30px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transform: rotate(45deg);
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-header {
+            padding: 30px 25px 25px;
+            text-align: center;
+            background-color: var(--light);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .pricing-header p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .price span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .pricing-body {
+            padding: 25px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li.disabled {
+            color: var(--medium-gray);
+        }
+
+        .pricing-features li.disabled i {
+            color: var(--medium-gray);
+        }
+
+        /* ========== Spices Section ========== */
+        .spices {
+            background-color: var(--light);
+        }
+
+        .spices-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .spices-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .spices-text p {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+        }
+
+        .spice-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .spice-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(197, 160, 40, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .spice-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .spice-item i {
+            color: var(--accent-gold);
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+
+        .spice-item-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .spice-item-content p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            color: var(--dark-gray);
+        }
+
+        .spices-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .spices-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition-slow);
+        }
+
+        .spices-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* ========== Features Section ========== */
+        .features {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            padding: 35px 25px;
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue));
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(30, 58, 95, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: rotate(8deg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* ========== Process Section ========== */
+        .process {
+            background-color: var(--light);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--light-gray);
+            z-index: 1;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 18%;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+
+        .process-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* ========== Team Section ========== */
+        .team {
+            background-color: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .member-image {
+            height: 220px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 3.5rem;
+        }
+
+        .member-info {
+            padding: 25px;
+        }
+
+        .member-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .member-info p {
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .member-info .bio {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========== Testimonials Section ========== */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-size: 6rem;
+            font-family: 'Montserrat', sans-serif;
+            color: rgba(30, 58, 95, 0.08);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--medium-gray);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* ========== FAQ Section ========== */
+        .faq {
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .faq-item.active {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            font-size: 1.1rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            color: var(--accent-gold);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+
+        /* ========== Contact Section ========== */
+        .contact {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .contact-info p {
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-details li i {
+            color: var(--accent-gold);
+            margin-right: 15px;
+            margin-top: 3px;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-form {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* ========== Map Section ========== */
+        .map-section {
+            height: 350px;
+            position: relative;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .map-container i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+        }
+
+        .map-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .map-container p {
+            font-size: 1.05rem;
+            max-width: 600px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ========== Footer ========== */
+        .main-footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 70px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            transform: translateX(3px);
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            width: 18px;
+            font-size: 0.8rem;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact li i {
+            color: var(--accent-gold);
+            margin-right: 15px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent-gold);
+            color: var(--white);
+            border: none;
+            padding: 0 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent-gold-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ========== Back to Top Button ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        /* ========== Modal ========== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            width: 100%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin-bottom: 0;
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        /* ========== Responsive Design ========== */
+        @media (max-width: 1100px) {
+            .process-steps {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .process-step {
+                width: 45%;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .spices-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .header-cta .btn-secondary {
+                display: none;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.05rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .spice-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .contact-form {
+                padding: 30px 25px;
+            }
+            
+            .process-step {
+                width: 100%;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 80px 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .pricing-toggle {
+                flex-direction: column;
+                max-width: 300px;
+            }
+            
+            .header-info {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="logo-loader">
+                <div class="logo-loader-inner">
+                    <i class="fas fa-concierge-bell"></i>
+                </div>
+            </div>
+            <h3>MultiService Hub Italia</h3>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="header-info">
+                    <div class="header-info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+39 02 1234 5678</span>
+                    </div>
+                    <div class="header-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@multiservicehub.it</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="language-selector">
+                        <select id="languageSelect">
+                            <option value="en" selected>English</option>
+                            <option value="it">Italiano</option>
+                            <option value="am">አማርኛ</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>MultiService Hub</h1>
+                    <p>Italia | Premium Services</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#office-pods">Office Pods</a></li>
+                    <li><a href="#spices">Spices</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-cta">
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="#" class="btn btn-primary" id="openBookingModal">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Ultimate <span>Service Destination</span> in Italy</h1>
+                <p>MultiService Hub Italia combines elegance with efficiency, offering all essential services in one sophisticated location. Experience premium service with Italian flair, designed for the modern international community.</p>
+                <div class="hero-actions">
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-concierge-bell"></i> Explore Services
+                    </a>
+                    <a href="#contact" class="btn btn-accent">
+                        <i class="fas fa-map-marker-alt"></i> Visit Our Hub
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="hero-stat-text">
+                            <h4>Extended Hours</h4>
+                            <p>Open 7 days until 10 PM</p>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="hero-stat-text">
+                            <h4>Multilingual Staff</h4>
+                            <p>English, Italian, Amharic</p>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="hero-stat-text">
+                            <h4>Secure Services</h4>
+                            <p>All transactions protected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About MultiService Hub Italia</h2>
+                <p class="subtitle">We are a premier service destination in Milan, combining convenience with sophistication to deliver exceptional experiences for both residents and visitors.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Elegant Solutions for Modern Living</h2>
+                    <p>Founded in 2018, MultiService Hub Italia was born from a simple idea: to create a single destination where people could access all essential services with premium quality and efficiency.</p>
+                    <p>Our Milan location serves as a hub for the international community, offering everything from practical daily services to specialized offerings like traditional Ethiopian spices.</p>
+                    
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Premium service quality with attention to detail</li>
+                        <li><i class="fas fa-check-circle"></i> Multilingual staff trained in customer excellence</li>
+                        <li><i class="fas fa-check-circle"></i> Central Milan location with easy access</li>
+                        <li><i class="fas fa-check-circle"></i> Secure, insured, and confidential services</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Learn More About Us
+                    </a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="MultiService Hub interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Services</h2>
+                <p class="subtitle">Each service is designed with elegance and efficiency in mind, delivering exceptional value and convenience to our clients.</p>
+            </div>
+            
+            <div class="services-intro">
+                <p>From communication solutions to logistics support, we offer a comprehensive range of services tailored to meet the needs of Milan's international community.</p>
+            </div>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Pods Section -->
+    <section class="office-pods section-padding" id="office-pods">
+        <div class="container">
+            <div class="section-title">
+                <h2>Elegant Office Pod Rentals</h2>
+                <p class="subtitle">Work in style with our premium office pods, designed for productivity and comfort in the heart of Milan.</p>
+            </div>
+            
+            <div class="pricing-toggle">
+                <button class="pricing-toggle-btn active" data-period="hourly">
+                    <i class="fas fa-clock"></i> Hourly Rental
+                </button>
+                <button class="pricing-toggle-btn" data-period="daily">
+                    <i class="fas fa-calendar-day"></i> Daily Packages
+                </button>
+            </div>
+            
+            <div class="pricing-cards" id="pricingCards">
+                <!-- Pricing cards will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Spices Section -->
+    <section class="spices section-padding" id="spices">
+        <div class="container">
+            <div class="section-title">
+                <h2>Authentic Ethiopian & Eritrean Spices</h2>
+                <p class="subtitle">Discover the rich culinary traditions of East Africa with our carefully sourced authentic spices and ingredients.</p>
+            </div>
+            
+            <div class="spices-content">
+                <div class="spices-text">
+                    <h2>Taste of East Africa in Milan</h2>
+                    <p>Our spice collection is sourced directly from Ethiopia and Eritrea, ensuring authenticity and quality. From traditional Berbere to specialty coffee beans, we bring the flavors of East Africa to Italy.</p>
+                    
+                    <ul class="spice-list">
+                        <li class="spice-item">
+                            <i class="fas fa-pepper-hot"></i>
+                            <div class="spice-item-content">
+                                <h4>Berbere Spice</h4>
+                                <p>Traditional Ethiopian spice blend with chili peppers, garlic, ginger</p>
+                            </div>
+                        </li>
+                        <li class="spice-item">
+                            <i class="fas fa-mortar-pestle"></i>
+                            <div class="spice-item-content">
+                                <h4>Mitmita Powder</h4>
+                                <p>Hot chili powder with cardamom, cloves, and salt</p>
+                            </div>
+                        </li>
+                        <li class="spice-item">
+                            <i class="fas fa-seedling"></i>
+                            <div class="spice-item-content">
+                                <h4>Nigella Seeds</h4>
+                                <p>Black cumin with aromatic, slightly bitter flavor</p>
+                            </div>
+                        </li>
+                        <li class="spice-item">
+                            <i class="fas fa-leaf"></i>
+                            <div class="spice-item-content">
+                                <h4>Koseret Leaves</h4>
+                                <p>Ethiopian oregano with citrusy, minty notes</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-shopping-basket"></i> Inquire About Spices
+                    </a>
+                </div>
+                
+                <div class="spices-image">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ethiopian spices display">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Hub</h2>
+                <p class="subtitle">Experience the difference with our premium approach to essential services in Milan.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>All services delivered with exceptional attention to detail and quality standards.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Trusted Service</h3>
+                    <p>Building relationships based on trust, reliability, and consistent excellence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Efficient Processing</h3>
+                    <p>Streamlined processes ensure minimal wait times and maximum convenience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Dedicated Support</h3>
+                    <p>Multilingual customer support available to assist with all your needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team section-padding" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p class="subtitle">Our dedicated team of professionals is committed to delivering exceptional service with a personal touch.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h4>Marco Rossi</h4>
+                        <p>General Manager</p>
+                        <p class="bio">With over 15 years in service management, Marco ensures our hub operates at the highest standards of excellence.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h4>Sophia Chen</h4>
+                        <p>Customer Experience Director</p>
+                        <p class="bio">Sophia leads our multilingual team, ensuring every client receives personalized attention and support.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h4>Alessandro Conti</h4>
+                        <p>Operations Manager</p>
+                        <p class="bio">Alessandro oversees all service operations, ensuring efficiency and quality across all departments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p class="subtitle">Discover what our clients say about their experience with MultiService Hub Italia.</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonials-container" id="testimonialsContainer">
+                    <!-- Testimonials will be loaded via JavaScript -->
+                </div>
+                
+                <div class="slider-nav" id="sliderNav">
+                    <!-- Navigation dots will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p class="subtitle">Find answers to common questions about our services and operations.</p>
+            </div>
+            
+            <div class="faq-container" id="faqContainer">
+                <!-- FAQ items will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Our Hub</h2>
+                <p class="subtitle">Get in touch with us for inquiries, bookings, or assistance with any of our services.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Visit Our Milan Location</h2>
+                    <p>Our centrally located hub in Milan provides easy access to all our premium services. We look forward to welcoming you.</p>
+                    
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Our Address</h4>
+                                <p>Via Dante Alighieri, 15<br>20121 Milano MI, Italy</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Phone Number</h4>
+                                <p>+39 02 1234 5678</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Address</h4>
+                                <p>info@multiservicehub.it</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Monday-Friday: 8:00-22:00<br>Saturday: 9:00-22:00<br>Sunday: 10:00-20:00</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Full Name *</label>
+                                <input type="text" id="contactName" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address *</label>
+                                <input type="email" id="contactEmail" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number</label>
+                            <input type="tel" id="contactPhone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactService">Service Interested In</label>
+                            <select id="contactService" name="service">
+                                <option value="">Select a service</option>
+                                <option value="mobile">Mobile Accessories & SIM</option>
+                                <option value="payments">Bill Payments & Money Transfer</option>
+                                <option value="print">Print, Copy, Scan & Photos</option>
+                                <option value="parcel">Parcel Pickup/Drop-off</option>
+                                <option value="office">Office Pod Rental</option>
+                                <option value="spices">Ethiopian & Eritrean Spices</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Your Message *</label>
+                            <textarea id="contactMessage" name="message" rows="4" required placeholder="Please provide details about your inquiry..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <div class="map-container">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Via Dante Alighieri, 15, Milan</h3>
+            <p>Central location with excellent transport connections. Easily accessible by metro, bus, and tram.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MultiService Hub Italia</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Your premier destination for all essential services in Milan. Combining elegance with efficiency since 2018.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#office-pods"><i class="fas fa-chevron-right"></i> Office Pods</a></li>
+                        <li><a href="#spices"><i class="fas fa-chevron-right"></i> Traditional Spices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mobile & SIM Cards</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Bill Payments</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Printing Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Parcel Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Office Pods</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>Via Dante Alighieri, 15<br>20121 Milano MI, Italy</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <p>+39 02 1234 5678</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p>info@multiservicehub.it</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="newsletter">
+                        <p>Subscribe to our newsletter for updates on new services and special offers.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> MultiService Hub Italia. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Designed for the international community in Italy</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book a Service</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <!-- Booking form will be loaded dynamically -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== Preloader ====================
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 600);
+        });
+
+        // ==================== Data ====================
+        const servicesData = [
+            {
+                id: 1,
+                title: "Mobile Accessories & SIM Cards",
+                icon: "fas fa-mobile-alt",
+                description: "Premium mobile accessories and Italian SIM cards with comprehensive data plans for tourists and residents.",
+                features: [
+                    "Italian SIM cards (TIM, Vodafone, Wind, Iliad)",
+                    "Premium phone cases, screen protectors, chargers",
+                    "Device repair services for all major brands",
+                    "International calling cards with competitive rates",
+                    "Device unlocking for all carriers worldwide"
+                ],
+                price: "From €10"
+            },
+            {
+                id: 2,
+                title: "Bill Payments & Money Transfer",
+                icon: "fas fa-money-bill-wave",
+                description: "Secure bill payments and international money transfers with competitive rates and instant processing.",
+                features: [
+                    "Utility bill payments (electricity, water, gas, internet)",
+                    "International money transfers to 50+ countries",
+                    "Tax and municipal payments with receipt",
+                    "Secure transactions with instant confirmation",
+                    "Western Union, MoneyGram & Wise partnership"
+                ],
+                price: "Fees vary by service"
+            },
+            {
+                id: 3,
+                title: "Print, Copy, Scan & Passport Photos",
+                icon: "fas fa-print",
+                description: "Professional document services including high-quality printing, scanning, and ICAO-compliant passport photos.",
+                features: [
+                    "High-quality color & B/W printing (A4, A3, large format)",
+                    "Document scanning to USB/email/cloud storage",
+                    "ICAO passport photos for visas and documents",
+                    "Professional binding and laminating services",
+                    "Business card design and printing"
+                ],
+                price: "From €0.10/page"
+            },
+            {
+                id: 4,
+                title: "Parcel Pickup & Drop-off",
+                icon: "fas fa-shipping-fast",
+                description: "Reliable parcel services with major couriers including DHL, UPS, FedEx, and Poste Italiane.",
+                features: [
+                    "DHL, UPS, FedEx, Poste Italiane services",
+                    "Package pickup and drop-off with tracking",
+                    "Professional packing materials available",
+                    "International shipping with customs forms",
+                    "Insurance options for valuable items"
+                ],
+                price: "Based on weight/destination",
+                note: "Valid government-issued ID required for all parcel pickups."
+            },
+            {
+                id: 5,
+                title: "Secure Luggage Storage",
+                icon: "fas fa-suitcase-rolling",
+                description: "Safe luggage storage for travelers with 24/7 security monitoring and flexible storage options.",
+                features: [
+                    "Short-term (hourly) and long-term (weekly) storage",
+                    "24/7 security monitoring with CCTV",
+                    "Insurance options available for valuables",
+                    "Easy online reservation with instant confirmation",
+                    "Flexible pickup/drop-off times"
+                ],
+                price: "From €5/hour"
+            },
+            {
+                id: 6,
+                title: "Office Pod Rental",
+                icon: "fas fa-building",
+                description: "Elegant private office spaces for hourly or daily rental with premium amenities and services.",
+                features: [
+                    "Private soundproof office pods (1-4 people)",
+                    "High-speed WiFi, printing, and scanning",
+                    "Complimentary coffee, tea, and bottled water",
+                    "Conference room access (premium packages)",
+                    "Mail handling and virtual office services"
+                ],
+                price: "From €12/hour"
+            },
+            {
+                id: 7,
+                title: "Smart Assistance",
+                icon: "fas fa-robot",
+                description: "Professional assistance with digital tasks, translations, and administrative paperwork.",
+                features: [
+                    "Digital form filling and online application assistance",
+                    "Italian/English/Amharic translation services",
+                    "Online booking and reservation management",
+                    "Government document assistance (permits, visas)",
+                    "Notary public referrals and document certification"
+                ],
+                price: "From €15/service"
+            },
+            {
+                id: 8,
+                title: "Ethiopian & Eritrean Spices",
+                icon: "fas fa-pepper-hot",
+                description: "Authentic traditional spices and ingredients sourced directly from Ethiopia and Eritrea.",
+                features: [
+                    "Berbere, Mitmita, Awaze traditional spice blends",
+                    "Authentic Injera bread (fresh & frozen options)",
+                    "Specialty coffee beans & traditional tea leaves",
+                    "Cooking advice and authentic recipes",
+                    "Bulk orders available for restaurants and events"
+                ],
+                price: "From €8/pack"
+            }
+        ];
+
+        const pricingData = {
+            hourly: [
+                {
+                    id: 1,
+                    name: "Essential Pod",
+                    price: "€12",
+                    period: "/hour",
+                    description: "Perfect for quick tasks and focused work",
+                    features: [
+                        "Private pod for 1-2 people",
+                        "High-speed WiFi (100 Mbps)",
+                        "20 B&W prints included",
+                        "Coffee & tea service",
+                        "disabled:Conference room access",
+                        "disabled:Scanner access"
+                    ],
+                    popular: false
+                },
+                {
+                    id: 2,
+                    name: "Professional Pod",
+                    price: "€18",
+                    period: "/hour",
+                    description: "Most popular for remote work and client meetings",
+                    features: [
+                        "Spacious pod for 1-3 people",
+                        "WiFi + Ethernet connection",
+                        "50 B&W + 20 color prints",
+                        "Premium coffee & tea selection",
+                        "1 hour conference room access",
+                        "Scanner and copier access"
+                    ],
+                    popular: true
+                },
+                {
+                    id: 3,
+                    name: "Executive Pod",
+                    price: "€25",
+                    period: "/hour",
+                    description: "For important meetings, presentations, and team work",
+                    features: [
+                        "Large pod for up to 4 people",
+                        "WiFi + Ethernet + 24\" monitor",
+                        "Unlimited printing (color & B&W)",
+                        "Premium beverages & snacks",
+                        "3 hours conference room access",
+                        "Scanner, fax & admin support"
+                    ],
+                    popular: false
+                }
+            ],
+            daily: [
+                {
+                    id: 4,
+                    name: "Day Pass",
+                    price: "€65",
+                    period: "/day",
+                    description: "Full day access for focused work and productivity",
+                    features: [
+                        "Private pod for 1-2 people",
+                        "WiFi + Ethernet connection",
+                        "100 B&W + 50 color prints",
+                        "Coffee, tea & light snacks",
+                        "2 hours conference room access",
+                        "Scanner & fax services"
+                    ],
+                    popular: false
+                },
+                {
+                    id: 5,
+                    name: "Business Day",
+                    price: "€95",
+                    period: "/day",
+                    description: "Comprehensive package for business meetings and teams",
+                    features: [
+                        "Spacious pod for up to 4 people",
+                        "WiFi + Ethernet + dual monitors",
+                        "Unlimited printing & scanning",
+                        "Premium lunch voucher included",
+                        "4 hours conference room access",
+                        "Full administrative support"
+                    ],
+                    popular: true
+                },
+                {
+                    id: 6,
+                    name: "Weekly Package",
+                    price: "€350",
+                    period: "/week",
+                    description: "Best value for regular users and small businesses",
+                    features: [
+                        "Dedicated pod for entire week",
+                        "WiFi + Ethernet + office equipment",
+                        "Unlimited printing & office supplies",
+                        "Daily coffee & snack service",
+                        "10 hours conference room access",
+                        "Full office services & mail handling"
+                    ],
+                    popular: false
+                }
+            ]
+        };
+
+        const testimonialsData = [
+            {
+                id: 1,
+                text: "As an international consultant working remotely from Milan, the office pods at MultiService Hub have been a game-changer. The professional environment and amenities allow me to work efficiently while the staff handles my parcel shipments and administrative needs seamlessly.",
+                author: "James Wilson",
+                role: "International Consultant",
+                avatar: "JW"
+            },
+            {
+                id: 2,
+                text: "I've been using their services for over a year for my small import business. The parcel handling is impeccable, and their assistance with customs documentation has saved me countless hours. The Ethiopian spices section is an unexpected bonus that reminds me of home.",
+                author: "Selamawit Tekle",
+                role: "Small Business Owner",
+                avatar: "ST"
+            },
+            {
+                id: 3,
+                text: "The convenience of having all services in one location is unmatched. From getting an Italian SIM card upon arrival to sending documents home, everything is handled professionally. The multilingual staff makes communication effortless for non-Italian speakers.",
+                author: "Sophie Martin",
+                role: "International Student",
+                avatar: "SM"
+            }
+        ];
+
+        const faqData = [
+            {
+                id: 1,
+                question: "What identification do I need for parcel pickup?",
+                answer: "For security and compliance with shipping regulations, you must present a valid government-issued photo ID (passport, driver's license, or Italian identity card) for all parcel pickups. This ensures packages are delivered to the correct recipient."
+            },
+            {
+                id: 2,
+                question: "Can I reserve an office pod in advance?",
+                answer: "Yes, you can reserve office pods through our website booking system, by phone (+39 02 1234 5678), or in person. We recommend booking at least 24 hours in advance, especially during business hours (9 AM-6 PM) and peak seasons. Same-day bookings are subject to availability."
+            },
+            {
+                id: 3,
+                question: "Do you offer Ethiopian coffee ceremonies?",
+                answer: "While we don't conduct full traditional coffee ceremonies on site, we offer authentic Ethiopian coffee beans and the traditional jebena (coffee pot). Our staff can provide guidance on traditional preparation methods. We occasionally host cultural events featuring Ethiopian coffee traditions - check our social media for updates."
+            },
+            {
+                id: 4,
+                question: "What payment methods do you accept?",
+                answer: "We accept cash (Euros), all major credit/debit cards (Visa, MasterCard, American Express), and mobile payments (Apple Pay, Google Pay). For money transfer services, payment methods vary by provider but typically include cash and card payments."
+            },
+            {
+                id: 5,
+                question: "Are your services available in languages other than English?",
+                answer: "Yes, our staff is fluent in English, Italian, and Amharic. We can also arrange for assistance in other languages (French, Spanish, Arabic) with advance notice for specific services like translations or document assistance. Please contact us in advance for language-specific requests."
+            }
+        ];
+
+        // ==================== Initialize Services ====================
+        function initializeServices() {
+            const servicesGrid = document.getElementById('servicesGrid');
+            servicesGrid.innerHTML = '';
+            
+            servicesData.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                
+                let featuresHtml = '';
+                service.features.forEach(feature => {
+                    featuresHtml += `<li><i class="fas fa-check"></i> ${feature}</li>`;
+                });
+                
+                let noteHtml = '';
+                if (service.note) {
+                    noteHtml = `<div class="service-note"><strong>Important:</strong> ${service.note}</div>`;
+                }
+                
+                serviceCard.innerHTML = `
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <h3>${service.title}</h3>
+                        <p style="color: var(--accent-gold); font-weight: 600; margin-top: 10px;">${service.price}</p>
+                    </div>
+                    <div class="service-card-body">
+                        <p>${service.description}</p>
+                        <ul class="service-features">
+                            ${featuresHtml}
+                        </ul>
+                        ${noteHtml}
+                        <button class="btn btn-secondary book-service-btn" data-service="${service.title}" style="width: 100%; margin-top: 20px;">
+                            <i class="fas fa-calendar-alt"></i> Book This Service
+                        </button>
+                    </div>
+                `;
+                
+                servicesGrid.appendChild(serviceCard);
+            });
+        }
+
+        // ==================== Initialize Pricing ====================
+        function initializePricing(period = 'hourly') {
+            const pricingCards = document.getElementById('pricingCards');
+            pricingCards.innerHTML = '';
+            
+            const pricingDataForPeriod = pricingData[period];
+            
+            pricingDataForPeriod.forEach(plan => {
+                const pricingCard = document.createElement('div');
+                pricingCard.className = 'pricing-card';
+                if (plan.popular) {
+                    pricingCard.classList.add('popular');
+                }
+                
+                let featuresHtml = '';
+                plan.features.forEach(feature => {
+                    if (feature.startsWith('disabled:')) {
+                        const featureText = feature.replace('disabled:', '');
+                        featuresHtml += `<li class="disabled"><i class="fas fa-times"></i> ${featureText}</li>`;
+                    } else {
+                        featuresHtml += `<li><i class="fas fa-check"></i> ${feature}</li>`;
+                    }
+                });
+                
+                let popularBadge = '';
+                if (plan.popular) {
+                    popularBadge = '<div class="popular-badge">Most Popular</div>';
+                }
+                
+                pricingCard.innerHTML = `
+                    ${popularBadge}
+                    <div class="pricing-header">
+                        <h3>${plan.name}</h3>
+                        <p>${plan.description}</p>
+                        <div class="price">${plan.price}<span>${plan.period}</span></div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            ${featuresHtml}
+                        </ul>
+                        <button class="btn btn-primary book-office-btn" data-plan="${plan.name}" style="width: 100%;">
+                            <i class="fas fa-calendar-check"></i> Book Now
+                        </button>
+                    </div>
+                `;
+                
+                pricingCards.appendChild(pricingCard);
+            });
+        }
+
+        // ==================== Initialize Testimonials ====================
+        function initializeTestimonials() {
+            const testimonialsContainer = document.getElementById('testimonialsContainer');
+            const sliderNav = document.getElementById('sliderNav');
+            
+            testimonialsContainer.innerHTML = '';
+            sliderNav.innerHTML = '';
+            
+            testimonialsData.forEach((testimonial, index) => {
+                // Create testimonial slide
+                const testimonialSlide = document.createElement('div');
+                testimonialSlide.className = 'testimonial-slide';
+                testimonialSlide.innerHTML = `
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            ${testimonial.text}
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                ${testimonial.avatar}
+                            </div>
+                            <div class="author-info">
+                                <h4>${testimonial.author}</h4>
+                                <p>${testimonial.role}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                testimonialsContainer.appendChild(testimonialSlide);
+                
+                // Create navigation dot
+                const navDot = document.createElement('button');
+                navDot.className = 'slider-dot';
+                if (index === 0) navDot.classList.add('active');
+                navDot.setAttribute('data-index', index);
+                sliderNav.appendChild(navDot);
+            });
+            
+            // Set initial testimonial position
+            currentTestimonialIndex = 0;
+            updateTestimonialPosition();
+        }
+
+        // ==================== Initialize FAQ ====================
+        function initializeFAQ() {
+            const faqContainer = document.getElementById('faqContainer');
+            faqContainer.innerHTML = '';
+            
+            faqData.forEach(faqItem => {
+                const faqElement = document.createElement('div');
+                faqElement.className = 'faq-item';
+                faqElement.innerHTML = `
+                    <div class="faq-question">
+                        <h3>${faqItem.question}</h3>
+                        <div class="faq-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${faqItem.answer}</p>
+                    </div>
+                `;
+                
+                faqContainer.appendChild(faqElement);
+            });
+        }
+
+        // ==================== Testimonial Slider ====================
+        let currentTestimonialIndex = 0;
+        let testimonialInterval;
+        
+        function updateTestimonialPosition() {
+            const testimonialsContainer = document.getElementById('testimonialsContainer');
+            const testimonials = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            testimonialsContainer.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentTestimonialIndex);
+            });
+        }
+        
+        function nextTestimonial() {
+            const testimonials = document.querySelectorAll('.testimonial-slide');
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+            updateTestimonialPosition();
+        }
+        
+        function startTestimonialSlider() {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        }
+
+        // ==================== Booking Modal ====================
+        function openBookingModal(serviceName = '', planName = '') {
+            const modal = document.getElementById('bookingModal');
+            const bookingForm = document.getElementById('bookingForm');
+            
+            // Determine service type from service name
+            let serviceTypeValue = '';
+            if (serviceName.includes('Mobile')) serviceTypeValue = 'mobile';
+            else if (serviceName.includes('Bill') || serviceName.includes('Money')) serviceTypeValue = 'payments';
+            else if (serviceName.includes('Print') || serviceName.includes('Photo')) serviceTypeValue = 'print';
+            else if (serviceName.includes('Parcel')) serviceTypeValue = 'parcel';
+            else if (serviceName.includes('Luggage')) serviceTypeValue = 'luggage';
+            else if (serviceName.includes('Office') || planName) serviceTypeValue = 'office';
+            else if (serviceName.includes('Smart') || serviceName.includes('Assistance')) serviceTypeValue = 'assistance';
+            else if (serviceName.includes('Spice')) serviceTypeValue = 'spices';
+            
+            // Set today and tomorrow for date inputs
+            const today = new Date().toISOString().split('T')[0];
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            
+            bookingForm.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceType">Service Type *</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="">Select a service</option>
+                        <option value="mobile" ${serviceTypeValue === 'mobile' ? 'selected' : ''}>Mobile Accessories & SIM</option>
+                        <option value="payments" ${serviceTypeValue === 'payments' ? 'selected' : ''}>Bill Payments & Money Transfer</option>
+                        <option value="print" ${serviceTypeValue === 'print' ? 'selected' : ''}>Print, Copy, Scan & Photos</option>
+                        <option value="parcel" ${serviceTypeValue === 'parcel' ? 'selected' : ''}>Parcel Pickup/Drop-off</option>
+                        <option value="luggage" ${serviceTypeValue === 'luggage' ? 'selected' : ''}>Luggage Storage</option>
+                        <option value="office" ${serviceTypeValue === 'office' ? 'selected' : ''}>Office Pod Rental</option>
+                        <option value="spices" ${serviceTypeValue === 'spices' ? 'selected' : ''}>Ethiopian & Eritrean Spices</option>
+                    </select>
+                </div>
+                
+                ${planName ? `
+                <div class="form-group">
+                    <label for="planDetails">Selected Plan</label>
+                    <input type="text" id="planDetails" name="planDetails" value="${planName}" readonly>
+                </div>
+                ` : ''}
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date *</label>
+                        <input type="date" id="date" name="date" min="${today}" value="${tomorrowStr}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time *</label>
+                        <select id="time" name="time" required>
+                            <option value="">Select time</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">01:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Notes</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Any specific requirements or questions..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Submit Booking Request
+                    </button>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ==================== Initialize App ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Initialize all sections
+            initializeServices();
+            initializePricing();
+            initializeTestimonials();
+            initializeFAQ();
+            
+            // Start testimonial slider
+            startTestimonialSlider();
+            
+            // Set up pricing tabs
+            const pricingTabs = document.querySelectorAll('.pricing-toggle-btn');
+            pricingTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const period = this.getAttribute('data-period');
+                    
+                    // Update active tab
+                    pricingTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update pricing cards
+                    initializePricing(period);
+                });
+            });
+            
+            // Set up testimonial navigation
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('slider-dot')) {
+                    const index = parseInt(event.target.getAttribute('data-index'));
+                    currentTestimonialIndex = index;
+                    updateTestimonialPosition();
+                    
+                    // Reset autoplay interval
+                    clearInterval(testimonialInterval);
+                    startTestimonialSlider();
+                }
+            });
+            
+            // Set up FAQ toggle
+            document.addEventListener('click', function(event) {
+                if (event.target.closest('.faq-question')) {
+                    const faqItem = event.target.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+                }
+            });
+            
+            // Set up mobile menu
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            const mainHeader = document.getElementById('mainHeader');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                    mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '80px';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = 'var(--white)';
+                    navLinks.style.boxShadow = 'var(--shadow-md)';
+                    navLinks.style.padding = '25px';
+                    navLinks.style.gap = '0';
+                    navLinks.style.zIndex = '10000';
+                    
+                    const navItems = navLinks.querySelectorAll('li');
+                    navItems.forEach(item => {
+                        item.style.padding = '15px 0';
+                        item.style.borderBottom = '1px solid var(--light-gray)';
+                        item.style.width = '100%';
+                    });
+                    
+                    mobileMenuToggle.innerHTML = '<i class="fas fa-times"></i>';
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mainHeader.contains(event.target)) {
+                    if (window.innerWidth <= 992) {
+                        navLinks.style.display = 'none';
+                        mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+            
+            // Set up header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    mainHeader.classList.add('scrolled');
+                } else {
+                    mainHeader.classList.remove('scrolled');
+                }
+                
+                // Back to top button
+                const backToTop = document.getElementById('backToTop');
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+                
+                // Update active nav link based on scroll position
+                updateActiveNavLink();
+            });
+            
+            // Update active nav link based on scroll
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                let currentSectionId = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Set up modal functionality
+            const openModalBtn = document.getElementById('openBookingModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const bookingModal = document.getElementById('bookingModal');
+            
+            openModalBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openBookingModal();
+            });
+            
+            closeModalBtn.addEventListener('click', closeBookingModal);
+            
+            // Close modal when clicking outside
+            bookingModal.addEventListener('click', function(event) {
+                if (event.target === bookingModal) {
+                    closeBookingModal();
+                }
+            });
+            
+            // Set up booking buttons
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('book-service-btn') || 
+                    event.target.closest('.book-service-btn')) {
+                    const serviceName = event.target.getAttribute('data-service') || 
+                                       event.target.closest('.book-service-btn').getAttribute('data-service');
+                    openBookingModal(serviceName);
+                }
+                
+                if (event.target.classList.contains('book-office-btn') || 
+                    event.target.closest('.book-office-btn')) {
+                    const planName = event.target.getAttribute('data-plan') || 
+                                    event.target.closest('.book-office-btn').getAttribute('data-plan');
+                    openBookingModal('Office Pod Rental', planName);
+                }
+            });
+            
+            // Set up booking form submission
+            document.getElementById('bookingForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const bookingData = Object.fromEntries(formData);
+                
+                // In a real application, you would send this data to a server
+                console.log('Booking submitted:', bookingData);
+                
+                // Show success message
+                alert(`Thank you for your booking request, ${bookingData.firstName}! We have received your request for ${bookingData.serviceType} on ${bookingData.date} at ${bookingData.time}. We will contact you within 24 hours to confirm.`);
+                
+                // Close modal and reset form
+                closeBookingModal();
+                this.reset();
+            });
+            
+            // Set up contact form submission
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const contactData = Object.fromEntries(formData);
+                
+                console.log('Contact form submitted:', contactData);
+                alert(`Thank you for your message, ${contactData.name}! We have received your inquiry and will respond within 48 hours.`);
+                this.reset();
+            });
+            
+            // Set up newsletter form submission
+            document.querySelector('.newsletter-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                
+                console.log('Newsletter subscription:', email);
+                alert(`Thank you for subscribing to our newsletter! You will receive our next update at ${email}.`);
+                this.reset();
+            });
+            
+            // Set up language selector
+            const languageSelect = document.getElementById('languageSelect');
+            languageSelect.addEventListener('change', function() {
+                const selectedLanguage = this.value;
+                
+                if (selectedLanguage === 'it') {
+                    alert('Italian version coming soon! Currently available in English.');
+                    this.value = 'en';
+                } else if (selectedLanguage === 'am') {
+                    alert('Amharic version coming soon! Currently available in English.');
+                    this.value = 'en';
+                }
+            });
+            
+            // Set up smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(event) {
+                    if (this.id === 'openBookingModal') return;
+                    
+                    event.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 992) {
+                            navLinks.style.display = 'none';
+                            mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Set up animations on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .feature-card, .pricing-card, .testimonial-card, .spice-item, .team-member').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+            
+            // Initialize active nav link
+            updateActiveNavLink();
+        });
+    </script>
+</body>
+</html>
