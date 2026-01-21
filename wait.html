@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Italia | Urban Multi-Service Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            /* Color Palette */
+            --color-primary: #0056b3; /* Deep Professional Blue */
+            --color-secondary: #00a8e8; /* Sky Blue */
+            --color-accent: #ff6b6b; /* Alert/Action Red */
+            --color-spice: #d35400; /* Ethiopian Spice Orange */
+            --color-spice-dark: #a04000;
+            --color-dark: #1a1a2a;
+            --color-light: #f8f9fa;
+            --color-white: #ffffff;
+            --color-gray-soft: #e9ecef;
+            --color-text-main: #343a40;
+            --color-text-muted: #6c757d;
+
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            /* Shadows & Radius */
+            --shadow-card: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            background-color: var(--color-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* =========================================
+           2. UTILITIES & TYPOGRAPHY
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--color-dark);
+            line-height: 1.2;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .section-title p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn--primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        .btn--primary:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+        }
+
+        .btn--outline {
+            border: 2px solid var(--color-white);
+            color: var(--color-white);
+            background: transparent;
+        }
+
+        .btn--outline:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* =========================================
+           3. NAVIGATION
+           ========================================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-cta {
+            background-color: var(--color-dark);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        /* =========================================
+           4. HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero__content h1 {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-white);
+            letter-spacing: -1px;
+        }
+
+        .hero__content p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-md);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .hero__badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           5. SERVICES GRID
+           ========================================= */
+        .services-section {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--color-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--color-gray-soft);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--color-secondary);
+        }
+
+        .service-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        /* Specific Icon Colors for visual distinction */
+        .icon-parcel { color: var(--color-accent); }
+        .icon-money { color: #27ae60; }
+        .icon-spice { color: var(--color-spice); }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .service-card__link {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Highlight tag for specific cards */
+        .card-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffecec;
+            color: #d63031;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           6. CULTURAL HIGHLIGHT (SPICES)
+           ========================================= */
+        .spice-section {
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, #1e0b00 0%, #5d2402 100%);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract background shapes */
+        .spice-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+
+        .spice-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+
+        .spice-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .spice-content h2 {
+            color: var(--color-white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .spice-content p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .spice-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .spice-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .spice-list i {
+            color: #f39c12;
+        }
+
+        .spice-visual {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .spice-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .spice-box span {
+            display: block;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .spice-box strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #f39c12;
+        }
+
+        /* =========================================
+           7. OFFICE PODS SECTION
+           ========================================= */
+        .pods-section {
+            padding: var(--spacing-xl) 0;
+            background-color: #f1f3f5;
+        }
+
+        .pods-layout {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .pods-info {
+            flex: 1;
+        }
+
+        .price-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--color-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* =========================================
+           8. MODAL SYSTEM (POP-UPS)
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: var(--radius-lg);
+            padding: 0;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid var(--color-gray-soft);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: var(--color-text-main);
+        }
+
+        .modal-footer {
+            background: var(--color-gray-soft);
+            padding: 1rem 2rem;
+            text-align: right;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Styles specifically for content inside Modals */
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 5px;
+        }
+
+        .alert-box {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            color: #c53030;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           9. FOOTER
+           ========================================= */
+        footer {
+            background: var(--color-dark);
+            color: #adb5bd;
+            padding: 4rem 0 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+        }
+
+        /* =========================================
+           10. MOBILE RESPONSIVENESS
+           ========================================= */
+        @media (max-width: 768px) {
+            .hero__content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .navbar__container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .spice-container, .pods-layout {
+                flex-direction: column;
+            }
+
+            .pods-layout {
+                flex-direction: column; /* Reset the reverse */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container navbar__container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                Nexus Italia
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#spices">Spices</a></li>
+                <li><a href="#pods">Coworking</a></li>
+                <li><a href="#contact" class="nav-cta">Find Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero__content">
+            <div class="hero__badges">
+                <span class="badge">Rome • Milan • Florence</span>
+                <span class="badge">English Speaking</span>
+            </div>
+            <h1>Your Essential City Hub</h1>
+            <p>We bridge the gap between complex Italian bureaucracy and your daily needs. From SIM cards to luggage storage, we handle it all.</p>
+            <a href="#services" class="btn btn--primary">View All Services</a>
+        </div>
+    </header>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Everything you need under one roof.</p>
+            </div>
+
+            <div class="services-grid">
+                
+                <article class="service-card" onclick="openModal('mobile')">
+                    <i class="fa-solid fa-mobile-screen-button service-card__icon"></i>
+                    <h3>Mobile & SIM</h3>
+                    <p>Activation for TIM, Vodafone, & WindTre. Tourist data packages and accessories available.</p>
+                    <span class="service-card__link">See Plans <i class="fa-solid fa-arrow-right"></i></span>
+                </article>
+
+                <article class="service-card" onclick="openModal('money')">
+                    <i class="fa-solid fa-money-bill-transfer service-card__icon icon-money"></i>
+                    <h3>Bill Pay & Transfer</h3>
+                    <p>Pay Italian utility bills (Bollettini/PagoPA) and send money via Western Union & Ria.</p>
+                    <span class="service-card__link">Check Rates <i class="fa-solid fa-arrow-right"></i></span>
+                </article>
+
+                <article class="service-card" onclick="openModal('parcel')">
+                    <div class="card-tag">ID REQUIRED</div>
+                    <i class="fa-solid fa-box-open service-card__icon icon-parcel"></i>
+                    <h3>Parcel Pickup</h3>
+                    <p>Official access point for Amazon Hub, DHL, and UPS. Secure drop-off and collection.</p>
+                    <span class="service-card__link">View Requirements <i class="fa-solid fa-arrow-right"></i></span>
+                </article>
+
+                <article class="service-card" onclick="openModal('print')">
+                    <i class="fa-solid fa-print service-card__icon"></i>
+                    <h3>Print, Copy & ID</h3>
+                    <p>Document printing and biometric passport photos valid for all embassies.</p>
+                    <span class="service-card__link">See Pricing <i class="fa-solid fa-arrow-right"></i></span>
+                </article>
+
+                <article class="service-card" onclick="openModal('luggage')">
+                    <i class="fa-solid fa-suitcase service-card__icon"></i>
+                    <h3>Luggage Storage</h3>
+                    <p>Secure, insured hourly and daily storage for your bags while you explore the city.</p>
+                    <span class="service-card__link">Book Slot <i class="fa-solid fa-arrow-right"></i></span>
+                </article>
+
+                <article class="service-card" onclick="openModal('assist')">
+                    <i class="fa-solid fa-hand-holding-heart service-card__icon"></i>
+                    <h3>Smart Assistance</h3>
+                    <p>Help with SPID, PEC emails, and general tech support for smartphones/laptops.</p>
+                    <span class="service-card__link">Get Help <i class="fa-solid fa-arrow-right"></i></span>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="spices" class="spice-section">
+        <div class="container spice-container">
+            <div class="spice-content">
+                <h2>Ethiopian & Eritrean Spices</h2>
+                <p>Experience the authentic warmth of East Africa. We import organic, traditional spices directly to Italy. Perfect for recreating traditional Zigni or Doro Wat at home.</p>
+                <ul class="spice-list">
+                    <li><i class="fa-solid fa-pepper-hot"></i> Premium Berbere Blend (Hot/Mild)</li>
+                    <li><i class="fa-solid fa-bowl-food"></i> Shiro (Chickpea Powder)</li>
+                    <li><i class="fa-solid fa-mug-hot"></i> Traditional Roasted Coffee</li>
+                </ul>
+                <a href="#contact" class="btn btn--outline">Visit Store to Buy</a>
+            </div>
+            
+            <div class="spice-visual">
+                <div class="spice-box">
+                    <span>🌶️</span>
+                    <strong>Berbere</strong>
+                </div>
+                <div class="spice-box" style="margin-top: 30px;">
+                    <span>🥞</span>
+                    <strong>Injera</strong>
+                </div>
+                <div class="spice-box">
+                    <span>☕</span>
+                    <strong>Buna</strong>
+                </div>
+                <div class="spice-box" style="margin-top: 30px;">
+                    <span>🍯</span>
+                    <strong>Tej</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pods" class="pods-section">
+        <div class="container pods-layout">
+            <div class="pods-image" style="flex: 1;">
+                <div style="background: white; height: 350px; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                    <i class="fa-solid fa-person-shelter" style="font-size: 8rem; color: #ced4da;"></i>
+                </div>
+            </div>
+            <div class="pods-info">
+                <h2>Private Office Pods</h2>
+                <p style="margin-bottom: 2rem; color: #666;">Need to take a Zoom call? Our soundproof, ventilated pods are equipped with high-speed fiber internet and power outlets.</p>
+                
+                <div class="price-card">
+                    <div>
+                        <strong>Hourly Pass</strong>
+                        <div style="font-size: 0.8rem; color: #888;">Great for quick calls</div>
+                    </div>
+                    <div class="price-amount">€12<small>/hr</small></div>
+                </div>
+
+                <div class="price-card">
+                    <div>
+                        <strong>Half-Day Pass</strong>
+                        <div style="font-size: 0.8rem; color: #888;">4 Hours Access + Coffee</div>
+                    </div>
+                    <div class="price-amount">€40</div>
+                </div>
+
+                <button class="btn btn--primary" style="width: 100%; margin-top: 1rem;">Check Availability</button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 style="color: white; margin-bottom: 1rem;">Nexus Italia</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">Your bridge to seamless living in Italy. We combine essential utility services with cultural warmth.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li>Mon-Fri: 09:00 - 19:30</li>
+                        <li>Saturday: 10:00 - 18:00</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#" style="color: #adb5bd; text-decoration: none;">Money Transfer</a></li>
+                        <li><a href="#" style="color: #adb5bd; text-decoration: none;">Parcel Point</a></li>
+                        <li><a href="#" style="color: #adb5bd; text-decoration: none;">Co-working</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li class="contact-item"><i class="fa-solid fa-location-dot"></i> Via Roma 101, Rome</li>
+                        <li class="contact-item"><i class="fa-solid fa-phone"></i> +39 06 1234 5678</li>
+                        <li class="contact-item"><i class="fa-solid fa-envelope"></i> help@nexusitalia.it</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Nexus Italia MultiServices. Designed with precision.
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalBox">
+            <div class="modal-header">
+                <i id="modalIcon" class="fa-solid fa-circle-info" style="font-size: 2rem; color: var(--color-primary);"></i>
+                <h3 id="modalTitle" style="margin:0;">Service Title</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+                </div>
+            <div class="modal-footer">
+                <button class="close-btn" onclick="closeModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Data Object for Services
+        // This makes the code modular. To update text, you edit this object, not the HTML.
+        const serviceContent = {
+            'mobile': {
+                title: 'Mobile & SIM Services',
+                icon: 'fa-mobile-screen-button',
+                html: `
+                    <p>Stay connected in Italy without contracts. We offer instant activation.</p>
+                    <br>
+                    <div class="info-row"><span>TIM / Vodafone / Wind</span> <strong>Top-ups Available</strong></div>
+                    <div class="info-row"><span>Tourist SIM (50GB)</span> <strong>€25.00</strong></div>
+                    <div class="info-row"><span>USB-C Cables</span> <strong>From €10.00</strong></div>
+                    <br>
+                    <p><em>Note: Valid Passport required for all SIM activations.</em></p>
+                `
+            },
+            'money': {
+                title: 'Money Services',
+                icon: 'fa-money-bill-transfer',
+                html: `
+                    <p>We are an authorized payment center for PagoPA and Italian postal slips.</p>
+                    <br>
+                    <div class="info-row"><span>Bill Payment Fee</span> <strong>€2.00</strong></div>
+                    <div class="info-row"><span>Western Union</span> <strong>Available</strong></div>
+                    <div class="info-row"><span>Ria Money Transfer</span> <strong>Available</strong></div>
+                `
+            },
+            'parcel': {
+                title: 'Parcel Pickup Point',
+                icon: 'fa-box-open',
+                html: `
+                    <div class="alert-box">
+                        <strong>⚠️ IMPORTANT:</strong> You must present a valid Government ID that matches the name on the package. No photos of IDs accepted.
+                    </div>
+                    <p>We hold packages for Amazon, UPS, and DHL.</p>
+                    <br>
+                    <div class="info-row"><span>Storage (0-3 days)</span> <strong>Free</strong></div>
+                    <div class="info-row"><span>Storage (4+ days)</span> <strong>€1.00/day</strong></div>
+                    <div class="info-row"><span>Label Printing</span> <strong>€0.50</strong></div>
+                `
+            },
+            'print': {
+                title: 'Print & Passport Photos',
+                icon: 'fa-print',
+                html: `
+                    <p>Professional printing and scanning services available.</p>
+                    <br>
+                    <div class="info-row"><span>B&W Print</span> <strong>€0.10 /page</strong></div>
+                    <div class="info-row"><span>Color Print</span> <strong>€0.50 /page</strong></div>
+                    <div class="info-row"><span>Passport Photos (x4)</span> <strong>€10.00</strong></div>
+                    <br>
+                    <p>Send files to: print@nexusitalia.it</p>
+                `
+            },
+            'luggage': {
+                title: 'Luggage Storage',
+                icon: 'fa-suitcase',
+                html: `
+                    <p>Explore the city hands-free. Our storage is CCTV monitored.</p>
+                    <br>
+                    <div class="info-row"><span>Standard Bag (1 hr)</span> <strong>€5.00</strong></div>
+                    <div class="info-row"><span>Standard Bag (Full Day)</span> <strong>€12.00</strong></div>
+                    <div class="info-row"><span>Oversize Items</span> <strong>+€5.00</strong></div>
+                `
+            },
+            'assist': {
+                title: 'Smart Assistance',
+                icon: 'fa-hand-holding-heart',
+                html: `
+                    <p>Struggling with Italian digital bureaucracy? We can help.</p>
+                    <br>
+                    <div class="info-row"><span>SPID Activation</span> <strong>€15.00</strong></div>
+                    <div class="info-row"><span>Email / PEC Setup</span> <strong>€20.00</strong></div>
+                    <div class="info-row"><span>Tech Consultation</span> <strong>€20.00/hr</strong></div>
+                `
+            }
+        };
+
+        // 2. Select DOM Elements
+        const overlay = document.getElementById('modalOverlay');
+        const modalBox = document.getElementById('modalBox');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalIcon = document.getElementById('modalIcon');
+
+        // 3. Open Modal Function
+        function openModal(key) {
+            const data = serviceContent[key];
+            if(!data) return;
+
+            // Populate content
+            modalTitle.innerText = data.title;
+            modalBody.innerHTML = data.html;
+            
+            // Reset Icon class and add new one
+            modalIcon.className = `fa-solid ${data.icon}`;
+            
+            // Show modal
+            overlay.classList.add('active');
+            
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 4. Close Modal Function
+        function closeModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 5. Close when clicking outside the box
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closeModal();
+            }
+        });
+
+        // 6. Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 7. Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+                nav.style.padding = "0.5rem 0";
+            } else {
+                nav.style.boxShadow = "none";
+                nav.style.padding = "1rem 0";
+            }
+        });
+
+    </script>
+</body>
+</html>
