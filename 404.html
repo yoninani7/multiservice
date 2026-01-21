@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | ECHOTONGUE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #000;
+            color: #e0e0e0;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Stars Background */
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Content */
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            color: #c91313;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(201, 19, 19, 0.5);
+        }
+        
+        h2 {
+            color: #fff;
+            margin: 20px 0;
+            font-size: 1.8rem;
+        }
+        
+        p {
+            color: #aaa;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background: radial-gradient(100% 120% at 50% 0%, #df0211 0%, #500D11 100%);
+            color: #fdfdfd;
+            border-radius: 6px;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #b30000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(192, 0, 0, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #df0211;
+            color: #e0e0e0;
+        }
+        
+        .btn-outline:hover {
+            background: radial-gradient(100% 120% at 50% 0%, #df0211 0%, #500D11 100%);
+            box-shadow: 0 10px 20px rgba(192, 0, 0, 0.3);
+            border: 2px solid #500D11;
+            color: #fdfdfd;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            h1 {
+                font-size: 4rem;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div id="stars"></div>
+    
+    <!-- Content -->
+    <div class="container">
+        <h1 style="font-size: 5rem; margin: 0; color: #dfdfdf; font-weight: 900; text-shadow: 0 0 10px rgba(201, 19, 19, 0.5);">ERROR</h1>
+        <h1>404</h1>
+        <h2>Lost in the Galaxian Universe</h2>
+        <p>This page has drifted into uncharted space. Return to the known planets of the Echotongue universe.</p>
+        
+        <div class="buttons">
+            <a href="index.php" style="font-family: 'Cinzel', serif;" class="btn">
+                <i class="fas fa-home" ></i> Return Home
+            </a>
+            <a href="purchasebook.php" style="font-family: 'Cinzel', serif;"  class="btn btn-outline">
+                <i class="fas fa-book-open"></i> Purchase the Book
+            </a>
+        </div>
+        
+        <div class="footer">
+            © 2025 ECHOTONGUE by Hermona Zeleke
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        const starCount = 150;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random position
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            
+            // Random size (1-3px)
+            const size = Math.random() * 2 + 1;
+            
+            // Random twinkle delay
+            const delay = Math.random() * 3;
+            
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animationDelay = delay + 's';
+            
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
