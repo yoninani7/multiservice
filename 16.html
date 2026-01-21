@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE NEXUS MILANO | Professional Multi-Service Architecture</title>
+    
+    <!-- Premium Google Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;300;400;600;800&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* 
+           ================================================================
+           1. THE LINEN & BRONZE THEME (PROFESSIONAL NEUTRAL)
+           ================================================================
+        */
+        :root {
+            --bg-linen: #F5F2ED;         /* Professional warm background */
+            --bg-stone: #EBE7E0;         /* Section separators */
+            --bg-paper: #FFFFFF;         /* Card surfaces */
+            --accent-bronze: #8C7355;    /* Luxury Highlight */
+            --accent-sage: #4A5D4E;      /* Professional Contrast */
+            --text-anthracite: #2A2A2A;  /* Primary Text */
+            --text-clay: #6B6359;        /* Descriptive Text */
+            --border-subtle: #D9D2C5;    /* Layout borders */
+            --transition-main: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-lux: 0 20px 40px rgba(42, 42, 42, 0.05);
+        }
+
+        /* 
+           ================================================================
+           2. GLOBAL CORE STYLES
+           ================================================================
+        */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background-color: var(--bg-linen); 
+            color: var(--text-anthracite); 
+            font-family: 'Lexend Deca', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, .serif { font-family: 'Fraunces', serif; font-weight: 400; color: var(--text-anthracite); }
+        .mono { font-family: 'Space Mono', monospace; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent-bronze); }
+
+        section { padding: 120px 8%; position: relative; }
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-linen); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-bronze); }
+
+        /* 
+           ================================================================
+           3. NAVIGATION (LINEN GLASS)
+           ================================================================
+        */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 5000;
+            padding: 30px 8%; display: flex; justify-content: space-between; align-items: center;
+            transition: var(--transition-main);
+            background: rgba(245, 242, 237, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        nav.scrolled {
+            padding: 15px 8%; border-bottom: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: 5px; text-decoration: none; color: var(--text-anthracite); }
+        .logo span { color: var(--accent-bronze); }
+
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-clay); font-size: 0.75rem; 
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-bronze); }
+
+        /* 
+           ================================================================
+           4. HERO: BOUTIQUE ENTRANCE
+           ================================================================
+        */
+        .hero {
+            height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+            padding: 0 8%; background: var(--bg-linen); gap: 60px;
+        }
+        .hero-content { z-index: 10; }
+        .hero h1 { font-size: clamp(3rem, 6vw, 6rem); line-height: 1.1; margin-bottom: 30px; }
+        .hero h1 b { font-weight: 300; font-style: italic; color: var(--accent-bronze); }
+        .hero p { max-width: 550px; color: var(--text-clay); font-size: 1.15rem; margin-bottom: 45px; }
+
+        .hero-visual {
+            height: 85vh; border-radius: 300px 300px 0 0;
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80') center/cover;
+            filter: sepia(20%) contrast(1.05);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-nexus {
+            padding: 22px 50px; background: var(--text-anthracite); color: #fff;
+            border: none; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 4px; font-size: 0.75rem; cursor: pointer; transition: var(--transition-main);
+        }
+        .btn-nexus:hover { background: var(--accent-bronze); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(140, 115, 85, 0.2); }
+
+        /* 
+           ================================================================
+           5. SERVICE GRID: THE BENTO GALLERY
+           ================================================================
+        */
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3.5rem; margin-bottom: 15px; }
+
+        .service-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 240px; gap: 25px;
+        }
+        .service-card {
+            background: var(--bg-paper); border: 1px solid var(--border-subtle);
+            padding: 45px; transition: var(--transition-main);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            position: relative;
+        }
+        .service-card:hover { border-color: var(--accent-bronze); transform: translateY(-10px); box-shadow: var(--shadow-lux); }
+        .service-card i { position: absolute; top: 45px; right: 45px; font-size: 2rem; color: var(--accent-bronze); opacity: 0.6; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-anthracite); }
+        .service-card p { font-size: 0.85rem; color: var(--text-clay); }
+
+        /* Custom Grid Spans */
+        .card-lg { grid-column: span 6; grid-row: span 2; }
+        .card-md { grid-column: span 4; grid-row: span 1; }
+        .card-sm { grid-column: span 3; grid-row: span 1; }
+
+        /* 
+           ================================================================
+           6. SECURITY STRIP: ID PROTOCOL
+           ================================================================
+        */
+        .security-strip {
+            background: var(--bg-stone); color: var(--text-anthracite); padding: 40px 8%;
+            display: flex; align-items: center; justify-content: center; gap: 40px;
+            border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
+        }
+        .security-strip i { color: #8B0000; font-size: 1.5rem; }
+
+        /* 
+           ================================================================
+           7. PRICING TIERS: DOCUMENT STUDIO
+           ================================================================
+        */
+        .pricing-section { background: var(--bg-paper); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+        .pricing-card {
+            padding: 50px; border: 1px solid var(--border-subtle); background: var(--bg-linen);
+            text-align: center; transition: 0.4s;
+        }
+        .pricing-card:hover { border-color: var(--accent-bronze); background: #fff; }
+        .pricing-card h4 { font-size: 1.8rem; margin-bottom: 20px; }
+        .pricing-card .price { font-size: 3rem; font-weight: 800; color: var(--accent-bronze); margin-bottom: 30px; }
+        .pricing-card ul { list-style: none; margin-bottom: 40px; color: var(--text-clay); font-size: 0.9rem; }
+        .pricing-card li { margin-bottom: 15px; }
+
+        /* 
+           ================================================================
+           8. OFFICE PODS: INTERACTIVE WORKSPACE
+           ================================================================
+        */
+        .pods-section { background: var(--bg-stone); }
+        .pod-interface { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .pod-list { display: flex; flex-direction: column; gap: 20px; }
+        .pod-item {
+            padding: 35px; border: 1px solid var(--border-subtle); cursor: pointer;
+            transition: 0.3s; background: var(--bg-paper);
+        }
+        .pod-item.active { border-color: var(--accent-bronze); border-left: 10px solid var(--accent-bronze); }
+        .pod-item h4 { font-size: 1.3rem; margin-bottom: 5px; }
+
+        /* 
+           ================================================================
+           9. THE BAZAAR: CULTURAL ARCHIVE
+           ================================================================
+        */
+        .spice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
+        .spice-card {
+            background: var(--bg-paper); border: 1px solid var(--border-subtle); padding: 40px;
+            transition: 0.4s; text-align: center;
+        }
+        .spice-card:hover { transform: scale(1.05); border-color: var(--accent-bronze); }
+        .spice-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 5rem; margin-bottom: 20px; }
+        .spice-card h3 { font-family: 'Fraunces', serif; margin-bottom: 15px; }
+
+        /* 
+           ================================================================
+           10. SMART ASSIST: THE CONCIERGE BOT
+           ================================================================
+        */
+        #smart-assist { position: fixed; bottom: 40px; right: 40px; z-index: 9000; }
+        .assist-ball {
+            width: 80px; height: 80px; background: var(--text-anthracite); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+            font-size: 1.8rem; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .assist-window {
+            position: absolute; bottom: 100px; right: 0; width: 400px; height: 600px;
+            background: var(--bg-paper); border: 1px solid var(--border-subtle);
+            display: none; flex-direction: column; box-shadow: 0 30px 60px rgba(0,0,0,0.1); border-radius: 20px; overflow: hidden;
+        }
+        .assist-header { background: var(--accent-bronze); color: #fff; padding: 30px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+        .assist-msgs { flex: 1; padding: 30px; overflow-y: auto; font-size: 0.9rem; background: #fafafa; }
+        .msg { margin-bottom: 20px; padding: 15px 20px; border-radius: 15px; max-width: 85%; line-height: 1.5; }
+        .msg.bot { background: var(--bg-linen); border: 1px solid var(--border-subtle); align-self: flex-start; }
+        .msg.user { background: var(--accent-bronze); color: #fff; align-self: flex-end; margin-left: auto; }
+
+        /* 
+           ================================================================
+           11. FOOTER: THE FINAL SIGNATURE
+           ================================================================
+        */
+        footer { padding: 100px 8% 50px; background: var(--text-anthracite); color: #fff; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 80px; }
+        .footer-col h4 { color: var(--accent-bronze); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 40px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 20px; color: #aaa; font-size: 0.9rem; transition: 0.3s; cursor: pointer; }
+        .footer-col li:hover { color: var(--accent-bronze); }
+
+        /* 
+           ================================================================
+           12. RESPONSIVE ARCHITECTURE
+           ================================================================
+        */
+        @media (max-width: 1100px) {
+            .hero { grid-template-columns: 1fr; height: auto; padding-top: 150px; }
+            .hero-visual { height: 400px; border-radius: 200px 200px 0 0; }
+            .service-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+            .card-lg, .card-md, .card-sm { grid-column: span 2; min-height: 250px; }
+            .pricing-grid, .pod-interface, .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Professional Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">THE<span>nexus</span></a>
+        <ul class="nav-links">
+            <li><a href="#hub">Hub</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#pods">Pods</a></li>
+            <li><a href="#bazaar">Bazaar</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+        <button class="btn-nexus" style="padding: 12px 25px; font-size: 0.65rem;">Priority Access</button>
+    </nav>
+
+    <!-- Boutique Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="mono" style="margin-bottom: 20px;">Milan High-End Service Terminal</div>
+            <h1>Bespoke <b>Efficiency</b>,<br>Cultural <b>Heritage</b>.</h1>
+            <p>A sophisticated convergence of Italian digital infrastructure and the traditional spice-trade legacy of Ethiopia and Eritrea. Professionalism refined.</p>
+            <div style="display: flex; gap: 20px;">
+                <button class="btn-nexus" onclick="location.href='#hub'">Explore Services</button>
+                <button class="btn-nexus" style="background: transparent; color: var(--text-anthracite); border: 1px solid var(--border-subtle);" onclick="location.href='#bazaar'">Heritage Collection</button>
+            </div>
+        </div>
+        <div class="hero-visual"></div>
+    </header>
+
+    <!-- Security Protocol Strip -->
+    <div class="security-strip">
+        <i class="fas fa-id-card-shield"></i>
+        <span>Security Notice: Government-Issued Photo ID is mandatory for all Parcel Pickup & Financial Remittance.</span>
+    </div>
+
+    <!-- Service Hub: The Bento Collection -->
+    <section id="hub">
+        <div class="container">
+            <div class="section-header">
+                <p class="mono">Integrated Digital Services</p>
+                <h2>The Connectivity Hub</h2>
+            </div>
+            <div class="service-grid" id="service-root">
+                <!-- Data rendered by JavaScript Engine -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Logistics Section: Detailed Breakdown -->
+    <section id="logistics" style="background: var(--bg-stone);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+                <div class="log-info">
+                    <p class="mono">Global Logistics</p>
+                    <h2 style="font-size: 3rem; margin: 20px 0;">Parcel Hub & <br>Storage Vault</h2>
+                    <p style="color: var(--text-clay); margin-bottom: 40px;">We serve as the official Milanese node for international courier networks. Our secure vault provides climate-controlled environment for your belongings.</p>
+                    <div style="display: flex; gap: 40px; font-size: 2.5rem; color: var(--accent-bronze); opacity: 0.7;">
+                        <i class="fab fa-ups"></i>
+                        <i class="fab fa-dhl"></i>
+                        <i class="fab fa-amazon"></i>
+                        <i class="fab fa-fedex"></i>
+                    </div>
+                </div>
+                <div style="background: var(--bg-paper); padding: 60px; border: 1px solid var(--border-subtle);">
+                    <h3 style="margin-bottom: 30px;">Luggage Storage Vault</h3>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem;">24/7 Monitored Surveillance • Climate Controlled • Fully Insured</p>
+                    <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-bronze); margin-bottom: 30px;">€5.00 <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-clay);">/ Day</span></div>
+                    <button class="btn-nexus" style="width: 100%;">Reserve Vault Space</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Dashboard: Document Studio -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="mono">Document Studio & Biometrics</p>
+                <h2>Transparent Pricing</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h4>Print & Scan</h4>
+                    <div class="price">€0.25</div>
+                    <ul>
+                        <li>Cloud Print Enabled</li>
+                        <li>Laser Quality Finish</li>
+                        <li>High Speed Scanning</li>
+                        <li>Bulk Discount Available</li>
+                    </ul>
+                    <button class="btn-nexus" style="width: 100%;">Upload Docs</button>
+                </div>
+                <div class="pricing-card" style="border-color: var(--accent-bronze);">
+                    <div class="mono" style="margin-bottom: 10px;">ICAO Certified</div>
+                    <h4>Passport Photos</h4>
+                    <div class="price">€10.00</div>
+                    <ul>
+                        <li>Biometric Compliance</li>
+                        <li>Ready in 5 Minutes</li>
+                        <li>Digital Copy Included</li>
+                        <li>EU/International Standards</li>
+                    </ul>
+                    <button class="btn-nexus" style="width: 100%;">Visit Studio</button>
+                </div>
+                <div class="pricing-card">
+                    <h4>Smart Assist</h4>
+                    <div class="price">€25.00</div>
+                    <ul>
+                        <li>Hardware Diagnostics</li>
+                        <li>Software Optimization</li>
+                        <li>Cloud Integration</li>
+                        <li>Device Cleanup</li>
+                    </ul>
+                    <button class="btn-nexus" style="width: 100%;">Book Tech</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Pods: The Sanctuary -->
+    <section id="pods" class="pods-section">
+        <div class="container">
+            <div class="pod-interface">
+                <div class="pod-info">
+                    <p class="mono">Private Workspace</p>
+                    <h2 style="font-size: 3.5rem; margin: 20px 0;">Office Pods</h2>
+                    <p style="color: var(--text-clay); margin-bottom: 40px;">Fully soundproof capsules equipped with 1Gbps Fiber connection, ergonomic leather seating, and climate control. Perfect for executive calls or deep work.</p>
+                    <div class="pod-list" id="pod-root">
+                        <!-- Packages rendered by JS -->
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="background: var(--bg-paper); padding: 80px; border: 1px solid var(--border-subtle); display: inline-block;">
+                        <p class="mono">Current Total</p>
+                        <div id="pod-total" style="font-size: 5rem; font-weight: 800; color: var(--accent-bronze);">€15.00</div>
+                        <button class="btn-nexus" style="width: 100%; margin-top: 30px;">Book Session</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Bazaar: Heritage Collection -->
+    <section id="bazaar">
+        <div class="container">
+            <div class="section-header">
+                <p class="mono">Ethio-Eritrean Tradition</p>
+                <h2>The Spice Bazaar</h2>
+                <p style="max-width: 600px; margin: 20px auto; color: var(--text-clay);">Sourced directly from the highlands. Authenticity toasted into every blend.</p>
+            </div>
+            <div class="spice-grid" id="spice-root">
+                <!-- Spices rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Heritage Workflow -->
+    <section id="workflow" style="background: var(--bg-stone);">
+        <div class="container">
+            <div class="section-header">
+                <p class="mono">Business Architecture</p>
+                <h2>How the Nexus Works</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center;">
+                <div>
+                    <div style="font-size: 2rem; color: var(--accent-bronze); margin-bottom: 20px;">01</div>
+                    <h4>Inquiry</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-clay);">Contact our concierge via Smart Assist or in-person.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; color: var(--accent-bronze); margin-bottom: 20px;">02</div>
+                    <h4>Verification</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-clay);">Present ID for logistics or select your digital package.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; color: var(--accent-bronze); margin-bottom: 20px;">03</div>
+                    <h4>Processing</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-clay);">Our infrastructure handles the request instantly.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; color: var(--accent-bronze); margin-bottom: 20px;">04</div>
+                    <h4>Completion</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-clay);">Receive your digital confirmation or heritage spices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Concierge Assistant -->
+    <div id="smart-assist">
+        <div class="assist-window" id="assist-ui">
+            <div class="assist-header">Nexus Concierge Bot</div>
+            <div class="assist-msgs" id="assist-flow">
+                <div class="msg bot">Greetings. I can assist you with Hub services, SIM data plans, or our Heritage spice stock. How may I serve you today?</div>
+            </div>
+            <div style="padding: 20px; border-top: 1px solid var(--border-subtle); display: flex; gap: 10px;">
+                <input type="text" id="user-msg" placeholder="Type your query..." style="flex: 1; border: 1px solid var(--border-subtle); padding: 12px; border-radius: 5px;">
+                <button onclick="handleChat()" style="background: var(--text-anthracite); color: #fff; border: none; padding: 0 15px; border-radius: 5px; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="assist-ball" onclick="toggleAssist()">
+            <i class="fas fa-fingerprint"></i>
+        </div>
+    </div>
+
+    <!-- Final Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color: #fff;">THE<span>nexus</span></div>
+                    <p style="margin-top: 30px; line-height: 2;">A premier Milanese multiservice architecture. Bridging digital high-speed infrastructure with ancestral spice heritage.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>The Hub</h4>
+                    <ul>
+                        <li>SIM & Data Activation</li>
+                        <li>Western Union / RIA</li>
+                        <li>PagoPA Bill Payments</li>
+                        <li>Mobile Annex Accessories</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Operations</h4>
+                    <ul>
+                        <li>Parcel Logistics (DHL/UPS)</li>
+                        <li>Luggage Storage Vault</li>
+                        <li>Passport Photo Studio</li>
+                        <li>Smart Tech Support</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Corporate</h4>
+                    <ul>
+                        <li>Office Pod Rental</li>
+                        <li>Heritage Bazaar</li>
+                        <li>Milan Locations</li>
+                        <li>Privacy Protocol</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid #333; display: flex; justify-content: space-between; font-size: 0.75rem; color: #666;">
+                <p>&copy; 2026 THE NEXUS MILANO. ENTERPRISE GRADE MULTISERVICE.</p>
+                <div style="display: flex; gap: 30px;">
+                    <span>INSTAGRAM</span>
+                    <span>LINKEDIN</span>
+                    <span>WHATSAPP SUPPORT</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* 
+           ================================================================
+           MASTER COMPONENT ENGINE
+           ================================================================
+        */
+        
+        const CORE_HUB_DATA = [
+            { id: 1, title: 'SIM & Connectivity', icon: 'fa-sim-card', desc: 'Authorised activation for TIM, Vodafone, and WindTre. 5G International Roaming Specialists.', size: 'card-lg' },
+            { id: 2, title: 'Remittance & Finance', icon: 'fa-money-bill-transfer', desc: 'Secure global money transfer via Western Union & RIA.', size: 'card-md' },
+            { id: 3, title: 'Bill Payments', icon: 'fa-receipt', desc: 'Instant PagoPA, Utilities, MAV/RAV, and Italian Fine payments.', size: 'card-md' },
+            { id: 4, title: 'Document Studio', icon: 'fa-print', desc: 'Cloud printing, high-speed scanning, and bulk copying studio.', size: 'card-sm' },
+            { id: 5, title: 'Biometrics', icon: 'fa-id-card', desc: 'ICAO certified passport photography for all global visas.', size: 'card-sm' },
+            { id: 6, title: 'Smart Support', icon: 'fa-microchip', desc: 'Hardware diagnostics and cloud software integration.', size: 'card-sm' },
+            { id: 7, title: 'The Annex', icon: 'fa-mobile-screen', desc: 'Premium tech accessories and integrated power hubs.', size: 'card-sm' }
+        ];
+
+        const WORKSPACE_DATA = [
+            { id: 1, name: "Power Hour", price: 15, duration: "1 Hour Focus" },
+            { id: 2, name: "Strategic Session", price: 50, duration: "4 Hours Work" },
+            { id: 3, name: "Elite Business Day", price: 90, duration: "8 Hours Unlimited" }
+        ];
+
+        const BAZAAR_DATA = [
+            { name: 'Heritage Berbere', icon: '🌶️', price: 12.50, desc: 'Sacred 16-spice blend from the Ethiopian Highlands.' },
+            { name: 'Shiro Power', icon: '🍲', price: 9.00, desc: 'Stone-ground chickpea flour with traditional herbs.' },
+            { name: 'Mitmita Fire', icon: '🔥', price: 11.50, desc: 'Authentic bird’s eye chili blend with cardamom.' },
+            { name: 'Highland Coffee', icon: '☕', price: 22.00, desc: 'Single-origin sun-dried Arabica beans.' },
+            { name: 'Korerima Pods', icon: '🌿', price: 16.00, desc: 'Traditional black cardamom seeds.' },
+            { name: 'Niter Kibbeh', icon: '🧈', price: 14.00, desc: 'Spiced clarified butter ingredients.' }
+        ];
+
+        /* 
+           RENDERING CONTROLLER
+        */
+        function initializeNexus() {
+            renderBentoHub();
+            renderPodInterface();
+            renderBazaarCatalog();
+            setupInteractionEngines();
+        }
+
+        function renderBentoHub() {
+            const root = document.getElementById('service-root');
+            CORE_HUB_DATA.forEach(s => {
+                const card = document.createElement('div');
+                card.className = `service-card ${s.size}`;
+                card.innerHTML = `
+                    <i class="fas ${s.icon}"></i>
+                    <h3>${s.title}</h3>
+                    <p>${s.desc}</p>
+                `;
+                root.appendChild(card);
+            });
+        }
+
+        function renderPodInterface() {
+            const root = document.getElementById('pod-root');
+            WORKSPACE_DATA.forEach((p, idx) => {
+                const el = document.createElement('div');
+                el.className = `pod-item ${idx === 0 ? 'active' : ''}`;
+                el.innerHTML = `
+                    <h4>${p.name}</h4>
+                    <p style="color:var(--text-clay); font-size:0.8rem;">${p.duration} • €${p.price.toFixed(2)}</p>
+                `;
+                el.onclick = () => {
+                    document.querySelectorAll('.pod-item').forEach(i => i.classList.remove('active'));
+                    el.classList.add('active');
+                    document.getElementById('pod-total').innerText = `€${p.price.toFixed(2)}`;
+                };
+                root.appendChild(el);
+            });
+        }
+
+        function renderBazaarCatalog() {
+            const root = document.getElementById('spice-root');
+            BAZAAR_DATA.forEach(s => {
+                const el = document.createElement('div');
+                el.className = 'spice-card';
+                el.innerHTML = `
+                    <div class="spice-img">${s.icon}</div>
+                    <h3>${s.name}</h3>
+                    <p style="font-size:0.85rem; color:var(--text-clay); margin-bottom:20px;">${s.desc}</p>
+                    <div style="font-weight:800; font-size:1.2rem; margin-bottom:15px; color:var(--accent-bronze);">€${s.price.toFixed(2)}</div>
+                    <button class="btn-nexus" style="width:100%; padding:12px;">Inquire Purchase</button>
+                `;
+                root.appendChild(el);
+            });
+        }
+
+        /* 
+           INTERACTION & CHAT LOGIC
+        */
+        function toggleAssist() {
+            const ui = document.getElementById('assist-ui');
+            ui.style.display = (ui.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function handleChat() {
+            const input = document.getElementById('user-msg');
+            const flow = document.getElementById('assist-flow');
+            if(!input.value) return;
+
+            const uEl = document.createElement('div');
+            uEl.className = 'msg user';
+            uEl.innerText = input.value;
+            flow.appendChild(uEl);
+
+            const q = input.value.toLowerCase();
+            input.value = '';
+
+            setTimeout(() => {
+                const bEl = document.createElement('div');
+                bEl.className = 'msg bot';
+                
+                if(q.includes('sim')) bEl.innerText = "We offer instant activation for TIM, WindTre, and Vodafone. Please have your Passport and Codice Fiscale ready.";
+                else if(q.includes('parcel')) bEl.innerText = "We are an authorised UPS/DHL hub. Note: Government ID is mandatory for all pickups.";
+                else if(q.includes('money')) bEl.innerText = "We process global transfers via RIA and Western Union. We also handle PagoPA utility bills.";
+                else if(q.includes('spice')) bEl.innerText = "Our spices like Berbere and Shiro are authentic, sourced from the Ethiopian highlands.";
+                else if(q.includes('photo')) bEl.innerText = "Our biometric passport photos meet all EU and International standards. Ready in 5 minutes.";
+                else if(q.includes('pod')) bEl.innerText = "Pods feature soundproofing and 1Gbps Fiber. Booking starts at €15/hour.";
+                else bEl.innerText = "I can help you with Hub services. Please specify if you are looking for SIM, Parcel, Office, or Spices.";
+
+                flow.appendChild(bEl);
+                flow.scrollTop = flow.scrollHeight;
+            }, 800);
+        }
+
+        function setupInteractionEngines() {
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if(window.scrollY > 100) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            });
+        }
+
+        // Initialize Application
+        initializeNexus();
+
+    </script>
+</body>
+</html>
