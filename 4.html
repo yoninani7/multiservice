@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE NEXUS | Milanese Multi-Service Hub & Spice Bazaar</title>
+    
+    <!-- External Assets -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@100;300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        /* 
+           ================================================================
+           1. CORE ARCHITECTURE & DESIGN TOKENS
+           ================================================================
+        */
+        :root {
+            --bg-deep: #050505;
+            --bg-accent: #0d0d0d;
+            --primary-gold: #c5a059;
+            --secondary-gold: #8e7341;
+            --accent-green: #006331; /* Ethiopian Flag Green */
+            --accent-red: #ba0c2f;   /* Italian/Ethiopian Red */
+            --glass-white: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #e0e0e0;
+            --text-dim: #888888;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-code: 'Space Grotesk', sans-serif;
+            --transition-ultra: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            --shadow-lux: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        /* 
+           ================================================================
+           2. GLOBAL RESET & SCROLLBAR
+           ================================================================
+        */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 
+           ================================================================
+           3. ADVANCED ANIMATIONS
+           ================================================================
+        */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        @keyframes borderFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* 
+           ================================================================
+           4. NAVIGATION SYSTEM
+           ================================================================
+        */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 2000;
+            padding: 30px 6%; display: flex; justify-content: space-between; align-items: center;
+            transition: var(--transition-ultra); background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            backdrop-filter: blur(0px);
+        }
+        nav.scrolled {
+            padding: 15px 6%; background: rgba(5,5,5,0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .logo { 
+            font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; 
+            letter-spacing: 2px; color: #fff; text-decoration: none; display: flex; align-items: center;
+        }
+        .logo span { color: var(--primary-gold); margin-left: 10px; font-style: italic; }
+        .nav-links { display: flex; list-style: none; gap: 40px; }
+        .nav-links a {
+            text-decoration: none; color: #fff; font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 3px; opacity: 0.5; transition: 0.4s;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--primary-gold); }
+
+        /* 
+           ================================================================
+           5. HERO CINEMA
+           ================================================================
+        */
+        .hero {
+            height: 100vh; width: 100%; position: relative; display: flex; align-items: center;
+            padding: 0 10%; overflow: hidden;
+        }
+        .hero-video-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1920&q=80') center/cover;
+            filter: brightness(0.3) contrast(1.1); transform: scale(1.05); transition: 10s linear;
+        }
+        .hero-content { max-width: 900px; z-index: 10; }
+        .hero h1 { 
+            font-family: var(--font-display); font-size: clamp(4rem, 10vw, 8rem); 
+            line-height: 0.85; margin-bottom: 25px; font-weight: 400;
+        }
+        .hero h1 b { color: var(--primary-gold); font-weight: 400; }
+        .hero-stats { display: flex; gap: 60px; margin-top: 50px; }
+        .stat-item h3 { font-size: 2rem; color: var(--primary-gold); font-family: var(--font-code); }
+        .stat-item p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
+
+        /* 
+           ================================================================
+           6. BENTO SERVICE HUB
+           ================================================================
+        */
+        .section-header { margin-bottom: 80px; text-align: center; }
+        .section-header h2 { font-family: var(--font-display); font-size: 4rem; color: var(--primary-gold); }
+        .section-header p { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; }
+
+        .bento-container {
+            display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 350px;
+            gap: 25px; padding: 0 6%;
+        }
+        .bento-item {
+            background: var(--glass-white); border: 1px solid var(--glass-border);
+            border-radius: 30px; padding: 40px; position: relative; overflow: hidden;
+            transition: var(--transition-ultra); display: flex; flex-direction: column; justify-content: flex-end;
+        }
+        .bento-item:hover { 
+            background: rgba(255,255,255,0.06); transform: translateY(-10px); 
+            border-color: var(--primary-gold); box-shadow: var(--shadow-lux);
+        }
+        .bento-item i { position: absolute; top: 40px; right: 40px; font-size: 2.5rem; color: var(--primary-gold); opacity: 0.4; }
+        .bento-item h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 10px; }
+        .bento-item.wide { grid-column: span 2; }
+        .bento-item.tall { grid-row: span 2; }
+
+        /* Special Card Styling */
+        .card-sim { background: linear-gradient(45deg, #0d0d0d, #1a1a1a); }
+        .card-money { background: radial-gradient(circle at top right, #111, #050505); }
+
+        /* 
+           ================================================================
+           7. LOGISTICS & DOCUMENT STUDIO
+           ================================================================
+        */
+        .id-alert {
+            background: var(--accent-red); color: #fff; padding: 25px; border-radius: 15px;
+            margin: 40px 6%; display: flex; align-items: center; justify-content: center;
+            gap: 20px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(186, 12, 47, 0.3);
+        }
+
+        .dual-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 100px 6%;
+        }
+        .studio-menu { background: var(--bg-accent); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); }
+        .menu-item { 
+            display: flex; justify-content: space-between; padding: 25px 0; 
+            border-bottom: 1px solid var(--glass-border); transition: 0.3s;
+        }
+        .menu-item:hover { color: var(--primary-gold); padding-left: 10px; }
+        .menu-item span:last-child { font-family: var(--font-code); color: var(--primary-gold); }
+
+        /* 
+           ================================================================
+           8. OFFICE POD BOOKING ENGINE UI
+           ================================================================
+        */
+        .pod-booking-system { background: #000; border-radius: 50px; padding: 80px; position: relative; overflow: hidden; }
+        .pod-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-top: 50px; }
+        .pod-card {
+            background: var(--glass-white); padding: 40px; border-radius: 30px; border: 1px solid #222;
+            transition: 0.4s; text-align: center;
+        }
+        .pod-card.active { border-color: var(--primary-gold); background: #0a0a0a; }
+        .pod-card h4 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 15px; }
+        .pod-card .price { font-size: 3rem; font-weight: 800; color: var(--primary-gold); margin: 20px 0; }
+        .pod-card ul { list-style: none; margin-bottom: 30px; opacity: 0.6; font-size: 0.8rem; }
+        .pod-card ul li { margin-bottom: 10px; }
+
+        /* 
+           ================================================================
+           9. ETHIO-ERITREAN SPICE BAZAAR
+           ================================================================
+        */
+        .spice-market { padding: 120px 6%; }
+        .spice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
+        .spice-card {
+            background: #fff; color: #000; border-radius: 40px; overflow: hidden;
+            transition: var(--transition-ultra); display: flex; flex-direction: column;
+        }
+        .spice-card:hover { transform: scale(1.02) translateY(-10px); }
+        .spice-visual { height: 350px; background: #f4f4f4; display: flex; align-items: center; justify-content: center; position: relative; }
+        .spice-visual span { font-size: 6rem; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
+        .spice-info { padding: 40px; }
+        .spice-info h3 { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 10px; }
+        .spice-info p { font-size: 0.9rem; opacity: 0.7; line-height: 1.6; }
+        .spice-btn {
+            background: #000; color: #fff; border: none; padding: 15px 30px; border-radius: 15px;
+            margin-top: 25px; font-weight: 700; width: 100%; cursor: pointer; transition: 0.3s;
+        }
+        .spice-btn:hover { background: var(--primary-gold); color: #000; }
+
+        /* 
+           ================================================================
+           10. SMART ASSISTANT & FOOTER
+           ================================================================
+        */
+        .ai-assistant { position: fixed; bottom: 50px; right: 50px; z-index: 5000; }
+        .ai-trigger {
+            width: 80px; height: 80px; background: var(--primary-gold); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 10px 40px rgba(197, 160, 89, 0.4); transition: 0.4s;
+        }
+        .ai-trigger:hover { transform: rotate(15deg) scale(1.1); }
+        .ai-chat-window {
+            position: absolute; bottom: 100px; right: 0; width: 400px; height: 600px;
+            background: #fff; border-radius: 30px; display: none; flex-direction: column;
+            overflow: hidden; box-shadow: var(--shadow-lux); color: #000;
+        }
+        .chat-header { background: #000; color: #fff; padding: 30px; display: flex; justify-content: space-between; }
+        .chat-messages { flex: 1; padding: 25px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 15px; }
+        .msg { padding: 15px 20px; border-radius: 20px; font-size: 0.85rem; max-width: 85%; }
+        .msg.bot { background: #eee; align-self: flex-start; }
+        .msg.user { background: var(--primary-gold); color: #000; align-self: flex-end; }
+        .chat-input { padding: 20px; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        .chat-input input { flex: 1; border: 1px solid #ddd; padding: 12px; border-radius: 10px; }
+
+        footer { background: #000; padding: 120px 6% 60px; border-top: 1px solid var(--glass-border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 80px; }
+        .footer-logo { font-family: var(--font-display); font-size: 2.5rem; color: #fff; margin-bottom: 30px; }
+        .footer-col h4 { text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 30px; color: var(--primary-gold); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; opacity: 0.5; transition: 0.3s; cursor: pointer; }
+        .footer-col ul li:hover { opacity: 1; color: var(--primary-gold); }
+
+        /* Responsive UI */
+        @media (max-width: 1200px) {
+            .bento-container { grid-template-columns: repeat(2, 1fr); }
+            .dual-section { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Navigation -->
+    <nav id="mainNav">
+        <a href="#" class="logo">THE<b>nexus</b><span>Milano</span></a>
+        <ul class="nav-links">
+            <li><a href="#hub">Service Hub</a></li>
+            <li><a href="#logistics">Logistics</a></li>
+            <li><a href="#pods">Pods</a></li>
+            <li><a href="#bazaar">Bazaar</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+        <div style="display: flex; gap: 15px;">
+            <i class="fas fa-search" style="opacity: 0.5; cursor: pointer;"></i>
+            <i class="fas fa-shopping-bag" style="opacity: 0.5; cursor: pointer;"></i>
+        </div>
+    </nav>
+
+    <!-- Cinematic Hero -->
+    <header class="hero">
+        <div class="hero-video-bg"></div>
+        <div class="hero-content">
+            <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; color: var(--primary-gold);">Based in the heart of Milan</span>
+            <h1 class="animate__animated animate__fadeInUp">Refining <b>Multiservice</b> Complexity.</h1>
+            <p style="font-size: 1.1rem; max-width: 600px; opacity: 0.7; margin-bottom: 40px; line-height: 1.8;">
+                The Nexus is Milan’s premier convergence point. We integrate high-speed digital connectivity, soundproof workspaces, and global logistics with the rich heritage of Ethiopian and Eritrean culture.
+            </p>
+            <div style="display: flex; gap: 20px;">
+                <button class="spice-btn" style="width: auto; padding: 20px 50px; background: var(--primary-gold); color: #000;">Book an Office Pod</button>
+                <button class="spice-btn" style="width: auto; padding: 20px 50px; background: transparent; border: 1px solid #fff; color: #fff;">Visit the Bazaar</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><h3>03<span>m</span></h3><p>Biometric Photos</p></div>
+                <div class="stat-item"><h3>100<span>%</span></h3><p>Secure Money Transfers</p></div>
+                <div class="stat-item"><h3>5.0</h3><p>Google Rating</p></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Service Status Marquee -->
+    <div style="background: var(--primary-gold); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap;">
+        <div style="display: inline-block; animation: marquee 30s linear infinite;">
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● LIVE: WESTERN UNION RATES UPDATED</span>
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● OFFICE PODS: 2 AVAILABLE NOW</span>
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● FRESH SHIPMENT: ETHIOPIAN BERBERE ARRIVED TODAY</span>
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● SIM ACTIVATION: INSTANT TIM/VODAFONE</span>
+        </div>
+        <!-- Duplicate for loop -->
+        <div style="display: inline-block; animation: marquee 30s linear infinite;">
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● LIVE: WESTERN UNION RATES UPDATED</span>
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● OFFICE PODS: 2 AVAILABLE NOW</span>
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● FRESH SHIPMENT: ETHIOPIAN BERBERE ARRIVED TODAY</span>
+            <span style="margin: 0 40px; font-weight: 800; font-size: 0.8rem;">● SIM ACTIVATION: INSTANT TIM/VODAFONE</span>
+        </div>
+    </div>
+
+    <!-- The Bento Service Hub -->
+    <section id="hub" style="padding: 120px 0;">
+        <div class="section-header">
+            <p>Integrated Services</p>
+            <h2>Connectivity & Finance</h2>
+        </div>
+        
+        <div class="bento-container" id="bentoContainer">
+            <!-- Rendered by JS Engine -->
+        </div>
+    </section>
+
+    <!-- Security Warning -->
+    <div class="id-alert">
+        <i class="fas fa-id-shield" style="font-size: 2.5rem;"></i>
+        <div>
+            <strong>Identity Protection & Compliance</strong><br>
+            Official government-issued ID is <u>MANDATORY</u> for all parcel pickups and money transfers. No exceptions will be made.
+        </div>
+    </div>
+
+    <!-- Logistics & Document Studio -->
+    <section id="logistics" class="dual-section">
+        <div class="studio-menu">
+            <h3 style="font-family: var(--font-display); font-size: 3rem; margin-bottom: 20px;">Document Studio</h3>
+            <p style="opacity: 0.5; margin-bottom: 40px;">Professional high-speed laser processing for corporate and personal needs.</p>
+            <div class="menu-item"><span>Cloud Printing & Scanning</span><span>From €0.20</span></div>
+            <div class="menu-item"><span>Bulk Copying (A4/A3)</span><span>From €0.10</span></div>
+            <div class="menu-item"><span>Biometric Passport Photos (ICAO)</span><span>€10.00 / 4px</span></div>
+            <div class="menu-item"><span>Professional Lamination</span><span>€2.50</span></div>
+            <div class="menu-item"><span>Document Binding (Comb/Spiral)</span><span>From €5.00</span></div>
+        </div>
+        <div style="background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000') center/cover; border-radius: 40px;">
+            <div style="background: rgba(0,0,0,0.6); height: 100%; width: 100%; padding: 60px; border-radius: 40px; display: flex; flex-direction: column; justify-content: flex-end;">
+                <h3 style="font-family: var(--font-display); font-size: 3rem;">Parcel & Luggage</h3>
+                <p style="margin: 20px 0; opacity: 0.8;">Authorised pickup point for DHL, UPS, and Amazon Hub. Secure, climate-controlled luggage storage for travelers.</p>
+                <button class="spice-btn" style="width: fit-content; background: #fff; color: #000;">Check My Tracking</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Pods -->
+    <section id="pods" style="padding: 120px 6%;">
+        <div class="pod-booking-system">
+            <div style="max-width: 600px;">
+                <h2 style="font-family: var(--font-display); font-size: 4rem;">Workplace <br><b>Sanctuary</b></h2>
+                <p style="opacity: 0.6; margin: 30px 0;">Soundproof, ergonomic, and fully connected. Our pods provide the ultimate privacy for your digital meetings or deep-work sessions.</p>
+            </div>
+            
+            <div class="pod-grid" id="podGrid">
+                <!-- Rendered by JS Engine -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Spice Bazaar -->
+    <section id="bazaar" class="spice-market">
+        <div class="section-header">
+            <p>Heritage & Flavor</p>
+            <h2>The Ethio-Eritrean Bazaar</h2>
+        </div>
+        <div class="spice-grid" id="spiceGrid">
+            <!-- Rendered by JS Engine -->
+        </div>
+    </section>
+
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <div class="ai-chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 10px; height: 10px; border-radius: 50%; background: #00ff00;"></div>
+                    <strong>NEXUS Smart Assistant</strong>
+                </div>
+                <i class="fas fa-times" onclick="toggleChat()" style="cursor: pointer;"></i>
+            </div>
+            <div class="chat-messages" id="chatMsgs">
+                <div class="msg bot">Welcome to the Nexus Milano. I can help with SIM plans, Money transfer rates, or Spice inventory. How may I assist?</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ask about 'SIM plans' or 'Berbere'...">
+                <button onclick="handleMsg()" style="background: #000; color: #fff; border: none; padding: 10px 20px; border-radius: 10px;"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="ai-trigger" onclick="toggleChat()">
+            <i class="fas fa-comment-dots" style="font-size: 2rem; color: #000;"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">THE<b>nexus</b></div>
+                <p style="opacity: 0.4; line-height: 2; font-size: 0.9rem;">
+                    The premiere service destination in Milan. We bridge the gap between high-speed digital infrastructure and the warmth of traditional East African culture. Professionalism, security, and heritage.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Core Hub</h4>
+                <ul>
+                    <li>International SIM Cards</li>
+                    <li>Western Union / RIA</li>
+                    <li>Bill Payments (PagoPA)</li>
+                    <li>Tech Accessories</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Logistics</h4>
+                <ul>
+                    <li>DHL Service Point</li>
+                    <li>UPS Access Point</li>
+                    <li>Luggage Storage</li>
+                    <li>Biometric Photos</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p style="opacity: 0.4; font-size: 0.9rem; margin-bottom: 20px;">Via Vincenzo Monti, 42<br>20123 Milano MI, Italy</p>
+                <p style="opacity: 0.4; font-size: 0.9rem;">+39 02 876 5432<br>help@nexusmilano.it</p>
+            </div>
+        </div>
+        <div style="margin-top: 100px; padding-top: 40px; border-top: 1px solid #111; display: flex; justify-content: space-between; align-items: center;">
+            <p style="font-size: 0.7rem; opacity: 0.3;">&copy; 2026 THE NEXUS MULTISERVICE HUB MILANO. ALL RIGHTS RESERVED. P.IVA 01298374650</p>
+            <div style="display: flex; gap: 20px; opacity: 0.5;">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+       ================================================================
+       JAVASCRIPT ENGINE: THE BRAIN OF THE NEXUS
+       ================================================================
+    -->
+    <script>
+        /* 
+           DATABASE OBJECTS 
+           In a real scenario, these would come from an API.
+        */
+        const SERVICES = [
+            { id: 1, title: 'SIM & Connectivity', icon: 'fa-sim-card', desc: '5G Activations for WindTre, TIM, and Vodafone.', type: 'wide', color: 'linear-gradient(45deg, #111, #1a1a1a)' },
+            { id: 2, title: 'Money Transfer', icon: 'fa-global', desc: 'Authorised Western Union & RIA partner.', type: 'small', color: 'transparent' },
+            { id: 3, title: 'Bill Payments', icon: 'fa-file-invoice-dollar', desc: 'Pay PagoPA, utilities, and MAV/RAV.', type: 'small', color: 'transparent' },
+            { id: 4, title: 'Tech Accessories', icon: 'fa-plug', desc: 'Premium cables, adapters, and chargers.', type: 'wide', color: 'transparent' },
+            { id: 5, title: 'Smart Assistance', icon: 'fa-microchip', desc: 'Software troubleshooting & digital help.', type: 'tall', color: 'linear-gradient(to bottom, #0d0d0d, #050505)' }
+        ];
+
+        const POD_PACKAGES = [
+            { id: 1, name: 'Power Hour', price: 15, features: ['1 Person Pod', 'High Speed WiFi', 'Mineral Water'] },
+            { id: 2, name: 'Creative Session', price: 50, features: ['4 Hours Access', 'Printing Credit', 'Unlimited Coffee'] },
+            { id: 3, name: 'Founder Package', price: 90, features: ['Full Day (8h)', 'Concierge Support', 'Private Meeting Lock'] }
+        ];
+
+        const BAZAAR_ITEMS = [
+            { id: 101, name: 'Berbere Blend', icon: '🌶️', price: 12.00, desc: 'The fundamental 16-spice Ethiopian blend.' },
+            { id: 102, name: 'Shiro Powder', icon: '🍲', price: 8.50, desc: 'Finely ground chickpeas with sacred herbs.' },
+            { id: 103, name: 'Mitmita', icon: '🔥', price: 9.00, desc: 'Spiced chili blend for the adventurous.' },
+            { id: 104, name: 'Korerima Pods', icon: '🌿', price: 14.50, desc: 'Wild black cardamom from the highlands.' },
+            { id: 105, name: 'Jebena Coffee', icon: '☕', price: 18.00, desc: 'Premium sun-dried Arabica beans.' },
+            { id: 106, name: 'Mekelesha', icon: '✨', price: 11.00, desc: 'Finishing spice blend for rich stews.' }
+        ];
+
+        /* 
+           UI INITIALIZATION ENGINE
+        */
+        function initApp() {
+            renderBento();
+            renderPods();
+            renderBazaar();
+            setupScroll();
+        }
+
+        function renderBento() {
+            const container = document.getElementById('bentoContainer');
+            SERVICES.forEach(s => {
+                const el = document.createElement('div');
+                el.className = `bento-item ${s.type}`;
+                el.style.background = s.color;
+                el.innerHTML = `
+                    <i class="fas ${s.icon}"></i>
+                    <h3>${s.title}</h3>
+                    <p style="opacity: 0.5; font-size: 0.8rem;">${s.desc}</p>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function renderPods() {
+            const container = document.getElementById('podGrid');
+            POD_PACKAGES.forEach(p => {
+                const el = document.createElement('div');
+                el.className = 'pod-card';
+                el.innerHTML = `
+                    <h4>${p.name}</h4>
+                    <div class="price">€${p.price}</div>
+                    <ul>${p.features.map(f => `<li><i class="fas fa-check" style="color:var(--primary-gold); font-size:0.6rem; margin-right:10px;"></i>${f}</li>`).join('')}</ul>
+                    <button class="spice-btn" style="background:var(--primary-gold); color:#000;">Book Now</button>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function renderBazaar() {
+            const container = document.getElementById('spiceGrid');
+            BAZAAR_ITEMS.forEach(i => {
+                const el = document.createElement('div');
+                el.className = 'spice-card';
+                el.innerHTML = `
+                    <div class="spice-visual"><span>${i.icon}</span></div>
+                    <div class="spice-info">
+                        <h3>${i.name}</h3>
+                        <p>${i.desc}</p>
+                        <div style="font-size:1.5rem; font-weight:800; margin-top:20px;">€${i.price.toFixed(2)}</div>
+                        <button class="spice-btn">Add to Bag</button>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function setupScroll() {
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('mainNav');
+                if (window.scrollY > 50) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            });
+        }
+
+        /* 
+           SMART ASSISTANT LOGIC
+        */
+        const chatWindow = document.getElementById('chatWindow');
+        function toggleChat() {
+            chatWindow.style.display = (chatWindow.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function handleMsg() {
+            const input = document.getElementById('chatInput');
+            const msgs = document.getElementById('chatMsgs');
+            if(!input.value) return;
+
+            // User Message
+            const uEl = document.createElement('div');
+            uEl.className = 'msg user';
+            uEl.innerText = input.value;
+            msgs.appendChild(uEl);
+
+            const q = input.value.toLowerCase();
+            input.value = '';
+
+            // AI Simulated Logic
+            setTimeout(() => {
+                const bEl = document.createElement('div');
+                bEl.className = 'msg bot';
+                
+                if(q.includes('sim')) bEl.innerText = "We activate SIM cards from TIM, Vodafone, and WindTre. You need a valid Passport and Codice Fiscale.";
+                else if(q.includes('berbere')) bEl.innerText = "Our Berbere is fresh from Ethiopia. It's a blend of 16 spices. We have 250g and 500g packs available.";
+                else if(q.includes('money')) bEl.innerText = "We offer RIA and Western Union services. Rates change daily. Today's USD rate is approximately 1.08.";
+                else if(q.includes('pod')) bEl.innerText = "Office pods start at €15/hr. They are soundproof and include ultra-fast 1Gbps fiber internet.";
+                else bEl.innerText = "I'm not sure about that. Please visit us in Via Vincenzo Monti or call +39 02 876 5432.";
+
+                msgs.appendChild(bEl);
+                msgs.scrollTop = msgs.scrollHeight;
+            }, 800);
+        }
+
+        // Run Init
+        initApp();
+    </script>
+</body>
+</html>
