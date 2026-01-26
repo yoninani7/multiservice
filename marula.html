@@ -21,7 +21,7 @@
         --bg-ivory: #ffffff;
         --bg-alabaster: #f8f9fa;
         --bg-frost: #f1f3f4;
-        --accent-gold: #8c7355;
+        --accent-gold: #3a972d;
         --accent-dark-gold: #6d5942;
         --accent-sand: #d4c5b9;
         --accent-emerald: #0a7c71;
@@ -90,20 +90,41 @@
            3. ENHANCED NAVIGATION WITH IMPROVED DROPDOWN
            ================================================================
         */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 5000;
-        padding: 15px 8%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: var(--transition-smooth);
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-refined);
-      }
+     nav {
+  position: fixed;
+  top: 15px; /* Slightly more breathing room */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%; /* Slightly narrower for a more elegant floating feel */
+  z-index: 5000;
+  padding: 12px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Glassmorphism: Makes Alabaster feel premium */
+  background: rgba(250, 249, 246, 0.85); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 4px;
+  
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px; /* The border thickness */
+  background: linear-gradient(to bottom, var(--border-refined), transparent);
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+ 
+  pointer-events: none;
+}
+ 
       nav.scrolled {
         padding: 10px 8%;
         background: rgba(255, 255, 255, 0.98);
@@ -184,7 +205,7 @@
         font-size: 1rem;
       }
 
-      /* Improved Services Dropdown - 4x2 Grid */
+      /* Improved Services Dropdown - 3 Columns Centered with 10px top margin */
       .services-dropdown {
         position: relative;
       }
@@ -199,27 +220,28 @@
         position: absolute;
         top: 100%;
         left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        width: 900px; /* Wider */
+        transform: translateX(-50%); /* Keeps it perfectly centered */
+        margin-top: 10px; /* Exact 10px margin from top */
+        width: 750px; /* Adjusted width for 3 columns */
         background: var(--bg-ivory);
         border: 1px solid var(--border-refined);
         border-radius: 4px;
-        padding: 25px; /* Smaller padding */
+        padding: 25px; 
         box-shadow: var(--shadow-elevated);
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 1000;
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns implementation */
         grid-auto-rows: auto;
-        gap: 15px; /* Smaller gap */
+        gap: 15px; 
       }
 
       .services-dropdown:hover .dropdown-menu {
         opacity: 1;
         visibility: visible;
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(-50%); /* Removed vertical shift on hover so it stays at exactly 10px margin */
       }
 
       .dropdown-service {
@@ -271,9 +293,8 @@
            ================================================================
            4. RESTORED HERO SLIDER WITH 4 SLIDES - FIXED IMAGES
            ================================================================
-        */
-      /* FIXED LAYERED HERO */
- /* REFINED HERO STYLE */
+        */ 
+ /* REFINED HERO STYLE - CENTERED & ARTISTIC */
 .hero-wrapper {
     position: relative;
     height: 100vh;
@@ -286,9 +307,11 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
+    justify-content: center; /* Centers content horizontally */
+    text-align: center;      /* Centers text */
 }
 
 .hero-slide.active {
@@ -296,16 +319,15 @@
     z-index: 10;
 }
 
-/* Background Image - Lower brightness for better text readability */
 .slide-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.35); /* Makes image darker so text is clear */
-    transform: scale(1.05);
-    transition: transform 6s ease-out;
+    filter: brightness(0.45); /* Slightly brighter but still readable */
+    transform: scale(1.1);
+    transition: transform 8s ease-out;
 }
 
 .hero-slide.active .slide-bg {
@@ -316,17 +338,102 @@
     position: relative;
     z-index: 30;
     color: white;
-    width: 100%;
-    padding: 0 12%; /* Added padding for space from side navs */
+    max-width: 900px; /* Prevents text from stretching too wide */
+    padding: 0 20px;
+}
+
+/* Text Animations */
+.hero-slide .slide-content h1,
+.hero-slide .slide-content p,
+.hero-slide .slide-content .mono,
+.hero-slide .slide-content .btn-premium {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.hero-slide.active .slide-content h1,
+.hero-slide.active .slide-content p,
+.hero-slide.active .slide-content .mono,
+.hero-slide.active .slide-content .btn-premium {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.hero-slide.active .slide-content .mono { transition-delay: 0.2s; }
+.hero-slide.active .slide-content h1 { transition-delay: 0.4s; }
+.hero-slide.active .slide-content p { transition-delay: 0.6s; }
+.hero-slide.active .slide-content .btn-premium { transition-delay: 0.8s; }
+
+.slide-content .mono {
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    color: var(--accent-sand);
 }
 
 .slide-content h1 {
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
     color: #fff;
-    line-height: 1;
-    margin-bottom: 20px;
+    line-height: 1.1;
+    margin-bottom: 25px;
 }
 
+.slide-content h1 span {
+    display: block; /* Moves the "Experience" or second word to a new line for impact */
+    font-style: italic;
+    font-weight: 200;
+    color: var(--accent-sand);
+}
+
+.slide-content p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    max-width: 600px;
+    margin: 0 auto 40px; /* Centers the paragraph block */
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Redesigned Navigation Labels */
+.hero-nav-labels {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+}
+
+.nav-label {
+    font-family: "Space Mono", monospace;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-label.active {
+    color: var(--accent-gold);
+}
+
+.nav-label::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--accent-gold);
+    transition: 0.3s;
+}
+
+.nav-label.active::after {
+    width: 100%;
+}
 /* SIDE NAVIGATION BUTTONS */
 .nav-btn {
     position: absolute;
@@ -952,7 +1059,7 @@
         .dropdown-menu {
           width: 700px;
           left: 50%;
-          transform: translateX(-50%) translateY(10px);
+          transform: translateX(-50%);
         }
         .hero-nav {
           display: none;
@@ -1884,6 +1991,7 @@
     const labels = document.querySelectorAll('.nav-label');
     const nextBtn = document.getElementById('heroNext');
     const prevBtn = document.getElementById('heroPrev');
+    const heroWrapper = document.querySelector('.hero-wrapper');
     let currentSlide = 0;
     let slideInterval;
 
@@ -1913,15 +2021,19 @@
     }
 
     // Button Listeners
-    nextBtn.addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-        resetTimer();
-    });
+    if(nextBtn) {
+      nextBtn.addEventListener('click', () => {
+          showSlide(currentSlide + 1);
+          resetTimer();
+      });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-        resetTimer();
-    });
+    if(prevBtn) {
+      prevBtn.addEventListener('click', () => {
+          showSlide(currentSlide - 1);
+          resetTimer();
+      });
+    }
 
     // Dot/Label Listeners
     labels.forEach((label, i) => {
@@ -1930,6 +2042,12 @@
             resetTimer();
         });
     });
+
+    // Pause slider on hover
+    if(heroWrapper) {
+      heroWrapper.addEventListener('mouseenter', () => clearInterval(slideInterval));
+      heroWrapper.addEventListener('mouseleave', startTimer);
+    }
 
     startTimer();
 });
@@ -2219,26 +2337,7 @@
 
       /* Initialize Everything */
       function initApp() {
-        // Hero slider
-        document.getElementById('prevHero').addEventListener('click', prevSlide);
-        document.getElementById('nextHero').addEventListener('click', nextSlide);
-        
-        indicators.forEach((indicator, index) => {
-          indicator.addEventListener('click', () => goToSlide(index));
-        });
-        
-        startSlideInterval();
-        
-        // Pause on hover
-        heroSlider.parentElement.addEventListener('mouseenter', () => {
-          clearInterval(slideInterval);
-        });
-        
-        heroSlider.parentElement.addEventListener('mouseleave', () => {
-          startSlideInterval();
-        });
-
-        // Setup other components
+        // Setup components
         setupMobileNavigation();
         setupEventCategories();
         setupOfficePods();
