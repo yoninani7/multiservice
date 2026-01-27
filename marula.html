@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;300;400;600;800&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <style>
       /* 
@@ -22,7 +24,7 @@
         --bg-alabaster: #f8f9fa;
         --bg-frost: #f1f3f4;
         --accent-gold: #3a972d;
-        --accent-dark-gold: #6d5942;
+        --accent-dark-gold: #04be04;
         --accent-sand: #d4c5b9;
         --accent-emerald: #0a7c71;
         --accent-sapphire: #2a5c8b;
@@ -35,6 +37,21 @@
         --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.05);
         --shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.1);
+        --bg-ivory: #ffffff;
+    --bg-alabaster: #faf9f6;
+    --accent-gold: #04be04; /* More professional muted gold */
+    --accent-dark: #1a1a1a;
+    --text-obsidian: #121212;
+    --text-slate: #4a4a4a;
+    --text-muted: #888888;
+    --nav-height: 80px;
+    --transition-premium: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    
+    --nav-bg: rgba(255, 252, 248, 0.85); /* Warm Cream/Ivory */
+ --nav-text:rgb(0, 0, 0);
+    --nav-accent: #04be04; /* Warm Bronze/Gold */
+    --nav-border: rgba(11, 243, 3, 0.15);
+    --transition-soft: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       /* 
@@ -90,204 +107,158 @@
            3. ENHANCED NAVIGATION WITH IMPROVED DROPDOWN
            ================================================================
         */
-     nav {
-  position: fixed;
-  top: 15px; /* Slightly more breathing room */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 92%; /* Slightly narrower for a more elegant floating feel */
-  z-index: 5000;
-  padding: 12px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+   
   
-  /* Glassmorphism: Makes Alabaster feel premium */
-  background: rgba(250, 249, 246, 0.85); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 
-  border-radius: 4px;
-  
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
- 
-nav::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px; /* The border thickness */
-  background: linear-gradient(to bottom, var(--border-refined), transparent);
-  -webkit-mask: 
-     linear-gradient(#fff 0 0) content-box, 
-     linear-gradient(#fff 0 0);
- 
-  pointer-events: none;
-}
- 
-      nav.scrolled {
-        padding: 10px 8%;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      }
-      .logo {
-        font-size: 1.4rem;
-        font-weight: 800;
-        letter-spacing: 4px;
-        text-decoration: none;
-        color: var(--text-obsidian);
-        text-transform: uppercase;
-      }
-      .logo span {
-        color: var(--accent-gold);
-      }
+  /* --- FLOATING BOUTIQUE NAV --- */
+  nav {
+    position: fixed;
+    top: 25px; /* Floats away from the top edge */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    height: 70px;
+    z-index: 5000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--nav-border);
+    border-radius: 100px; /* Pill shape is more modern and friendly */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transition: var(--transition-soft);
+  }
 
-      .nav-links {
-        display: flex;
-        gap: 40px;
-        list-style: none;
-        align-items: center;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: var(--text-muted);
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: 0.3s;
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .nav-links a:after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: var(--accent-gold);
-        transition: width 0.3s ease;
-      }
-      .nav-links a:hover {
-        color: var(--accent-gold);
-      }
-      .nav-links a:hover:after {
-        width: 100%;
-      }
+  nav.scrolled {
+    top: 15px;
+    width: 85%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
 
-      /* WhatsApp Button in Nav */
-      .whatsapp-nav {
-        background-color: #25D366;
-        color: white;
-        padding: 12px 25px;
-        border-radius: 100px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: var(--transition-smooth);
-      }
-      
-      .whatsapp-nav:hover {
-        background-color: #128C7E;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
-      }
-      .whatsapp-nav i {
-        font-size: 1rem;
-      }
+  .logo {
+    font-family: "Fraunces", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--nav-text);
+  }
 
-      /* Improved Services Dropdown - 3 Columns Centered with 10px top margin */
-      .services-dropdown {
-        position: relative;
-      }
+  .logo span {
+    color: var(--nav-accent);
+    font-weight: 300;
+  }
 
-      .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    align-items: center;
+  }
 
-      .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%); /* Keeps it perfectly centered */
-        margin-top: 10px; /* Exact 10px margin from top */
-        width: 750px; /* Adjusted width for 3 columns */
-        background: var(--bg-ivory);
-        border: 1px solid var(--border-refined);
-        border-radius: 4px;
-        padding: 25px; 
-        box-shadow: var(--shadow-elevated);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 columns implementation */
-        grid-auto-rows: auto;
-        gap: 15px; 
-      }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    transition: var(--transition-soft);
+  }
 
-      .services-dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%); /* Removed vertical shift on hover so it stays at exactly 10px margin */
-      }
+  .nav-links a:hover {
+    opacity: 1;
+    color: var(--nav-accent);
+  }
 
-      .dropdown-service {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px; /* Smaller gap */
-        padding: 12px; /* Smaller padding */
-        border-radius: 4px;
-        transition: var(--transition-smooth);
-        min-height: 80px; /* Consistent height */
-      }
+  /* --- REFINED MINI DROPDOWN --- */
+  .services-dropdown {
+    position: relative;
+  }
 
-      .dropdown-service:hover {
-        background: var(--bg-frost);
-      }
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 280px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border: 1px solid var(--nav-border);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-soft);
+    display: block; /* Vertical list instead of grid */
+  }
 
-      .dropdown-service i {
-        font-size: 1rem; /* Smaller icons */
-        color: var(--accent-gold);
-        margin-top: 2px;
-        flex-shrink: 0;
-        width: 20px;
-      }
+  .services-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
 
-      .dropdown-service h4 {
-        font-size: 0.75rem; /* Smaller font */
-        color: var(--text-obsidian);
-        margin-bottom: 5px;
-        font-weight: 600;
-      }
+  .dropdown-service {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--transition-soft);
+  }
 
-      .dropdown-service p {
-        font-size: 0.7rem; /* Smaller font */
-        color: var(--text-muted);
-        line-height: 1.4;
-      }
+  .dropdown-service:hover {
+    background: #fdfaf5;
+  }
 
-      /* Mobile Menu Toggle */
-      .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--accent-gold);
-        cursor: pointer;
-      }
+  .dropdown-service i {
+    font-size: 1rem;
+    color: var(--nav-accent);
+    width: 20px;
+  }
+
+  .dropdown-service h4 {
+    font-size: 0.8rem;
+    color: var(--nav-text);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Soft Contact Button */
+  .whatsapp-nav {
+    background: var(--nav-accent);
+    color: #fff !important;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: var(--transition-soft);
+    box-shadow: 0 8px 15px rgba(166, 137, 102, 0.2);
+  }
+
+  .whatsapp-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(166, 137, 102, 0.3);
+    filter: brightness(1.1);
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 768px) {
+    nav { width: 95%; padding: 0 20px; border-radius: 15px; top: 10px; }
+    .nav-links { display: none; } /* Use original mobile logic for links */
+  }
 
       /* 
            ================================================================
@@ -350,6 +321,8 @@ nav::before {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    border-radius: 100px; /* Pill shape is more modern and friendly */
+
 }
 
 .hero-slide.active .slide-content h1,
@@ -358,13 +331,15 @@ nav::before {
 .hero-slide.active .slide-content .btn-premium {
     opacity: 1;
     transform: translateY(0);
+    border-radius: 100px; /* Pill shape is more modern and friendly */
+
 }
 
 /* Staggered animation delays */
 .hero-slide.active .slide-content .mono { transition-delay: 0.2s; }
 .hero-slide.active .slide-content h1 { transition-delay: 0.4s; }
 .hero-slide.active .slide-content p { transition-delay: 0.6s; }
-.hero-slide.active .slide-content .btn-premium { transition-delay: 0.8s; }
+.hero-slide.active .slide-content .btn-premium { transition-delay: 0.8s;  }
 
 .slide-content .mono {
     display: block;
@@ -1304,89 +1279,41 @@ nav::before {
   </head>
   <body>
     <!-- Navigation with Improved Dropdown -->
-    <nav id="navbar">
-      <a href="#" class="logo">Marula<span> Store</span></a>
-      
-      <button class="mobile-menu-toggle" id="mobileMenuToggle">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#hero">Home</a></li>
-        <li class="services-dropdown" id="servicesDropdown">
-          <a href="#services" class="dropdown-toggle">
-            Services
-            <i class="fas fa-chevron-down" style="font-size: 0.6rem;"></i>
-          </a>
-          <div class="dropdown-menu">
-            <div class="dropdown-service">
-              <i class="fas fa-calendar-check"></i>
-              <div>
-                <h4>Event Organization</h4>
-                <p>Corporate events, private parties, conferences</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-sim-card"></i>
-              <div>
-                <h4>Mobile & SIM Cards</h4>
-                <p>SIM activations, mobile accessories, plans</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-money-bill-transfer"></i>
-              <div>
-                <h4>Bill Payments & Money Transfer</h4>
-                <p>Western Union, RIA, utility bills</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-box-open"></i>
-              <div>
-                <h4>Parcel Pickup</h4>
-                <p>UPS, DHL, Amazon (ID required)</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-suitcase-rolling"></i>
-              <div>
-                <h4>Luggage Storage</h4>
-                <p>Secure storage with 24/7 monitoring</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-door-closed"></i>
-              <div>
-                <h4>Office Pods</h4>
-                <p>Hourly rental, packages available</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-microchip"></i>
-              <div>
-                <h4>Smart Assistant</h4>
-                <p>Digital support and guidance</p>
-              </div>
-            </div>
-            <div class="dropdown-service">
-              <i class="fas fa-print"></i>
-              <div>
-                <h4>Print & Document Services</h4>
-                <p>Print, copy, scan, ID photos</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li><a href="#connectivity">Connectivity</a></li>
-        <li><a href="#events">Promotions</a></li> 
-        <li><a href="#location">Contact</a></li>
-      </ul>
-      
-      <a href="https://wa.me/1234567890" class="whatsapp-nav">
-        <i class="fab fa-whatsapp"></i>
-        WhatsApp
-      </a>
-    </nav>
+   <nav id="navbar">
+  <a href="#" class="logo">Marula <span>Store</span></a>
+  
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li class="services-dropdown">
+      <a href="#services">Services <i class="fas fa-chevron-down" style="font-size: 0.6rem; opacity: 0.5; margin-left: 4px;"></i></a>
+      <div class="dropdown-menu">
+        <a href="#services" class="dropdown-service">
+          <i class="fas fa-calendar-alt"></i>
+          <h4>Event Planning</h4>
+        </a>
+        <a href="#logistics" class="dropdown-service">
+          <i class="fas fa-box"></i>
+          <h4>Shipping Hub</h4>
+        </a>
+        <a href="#logistics" class="dropdown-service">
+          <i class="fas fa-luggage-cart"></i>
+          <h4>Luggage Vault</h4>
+        </a>
+        <a href="#pods" class="dropdown-service">
+          <i class="fas fa-laptop"></i>
+          <h4>Work Pods</h4>
+        </a>
+      </div>
+    </li>
+    <li><a href="#connectivity">Connectivity</a></li>
+    <li><a href="#location">Contact</a></li>
+  </ul>
+  
+  <a href="https://wa.me/1234567890" class="whatsapp-nav">
+   <i class="fa-brands fa-whatsapp"> Whatsapp</i>
+
+  </a>
+</nav>
 
     <!-- Restored Hero Slider -->
 <section class="hero-wrapper" id="hero">
