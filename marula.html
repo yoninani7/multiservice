@@ -33,7 +33,7 @@
         --text-obsidian: #1a1a1a;
         --text-slate: #4a4a4a;
         --text-muted: #666666;
-        --border-refined: rgba(0, 0, 0, 0.08);
+        --border-refined: #04be04;
         --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.05);
         --shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -160,7 +160,7 @@
   .nav-links a {
     text-decoration: none;
     color: var(--nav-text);
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1265,10 +1265,9 @@
         grid-row: 1;
         background: var(--bg-ivory);
         padding: clamp(30px, 5vw, 80px);
-        border: 1px solid var(--border-refined);
+        border: 3px solid var(--border-refined);
         box-shadow: var(--shadow-elevated);
-        z-index: 2;
-        /* Use relative positioning for the overlap */
+        z-index: 2; 
         transform: translateX(0); 
       }
 
@@ -1337,7 +1336,7 @@
   <body>
     <!-- Navigation with Improved Dropdown -->
  <nav id="navbar">
-  <a href="#" class="logo">Marula <span>Store</span></a>
+  <a href="#" class="logo"style="font-weight: 600;">MARULA <span style="font-weight: 800;">STORE</span></a>
   
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
@@ -1443,9 +1442,8 @@
     <button class="nav-btn prev" id="heroPrev"><i class="fas fa-chevron-left"></i></button>
     <button class="nav-btn next" id="heroNext"><i class="fas fa-chevron-right"></i></button>
 
-    <!-- Slide 1: General Introduction -->
     <div class="hero-slide active">
-        <img src="https://images.unsplash.com/photo-1616422285623-13ff0169293c?q=80&w=2000" class="slide-bg">
+        <img src="https://images.pexels.com/photos/3771110/pexels-photo-3771110.jpeg" class="slide-bg">
         <div class="slide-content">
             <span class="mono" style="color: var(--accent-gold)">Marula Milano</span>
             <h1>The Ultimate <span>Urban Hub.</span></h1>
@@ -1454,9 +1452,8 @@
         </div>
     </div>
 
-    <!-- Slide 2: Logistics & Travel (Services 5, 6, 9) -->
     <div class="hero-slide">
-        <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=2000" class="slide-bg">
+        <img src="https://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeg" class="slide-bg">
         <div class="slide-content">
             <span class="mono">Global Logistics</span>
             <h1>Travel & <span>Parcel Point.</span></h1>
@@ -1465,9 +1462,8 @@
         </div>
     </div>
 
-    <!-- Slide 3: Business & Digital (Services 4, 7, 8) -->
     <div class="hero-slide">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" class="slide-bg">
+        <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg" class="slide-bg">
         <div class="slide-content">
             <span class="mono">Professional Workspace</span>
             <h1>Business <span>& Digital.</span></h1>
@@ -1476,9 +1472,8 @@
         </div>
     </div>
 
-    <!-- Slide 4: Financial & Tech (Services 2, 3) -->
     <div class="hero-slide">
-        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2000" class="slide-bg">
+        <img src="https://images.pexels.com/photos/5077067/pexels-photo-5077067.jpeg" class="slide-bg">
         <div class="slide-content">
             <span class="mono">Connectivity & Finance</span>
             <h1>Smart <span>Solutions.</span></h1>
@@ -1487,9 +1482,8 @@
         </div>
     </div>
 
-    <!-- Slide 5: Events (Service 1) -->
     <div class="hero-slide">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000" class="slide-bg">
+        <img src="https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg" class="slide-bg">
         <div class="slide-content">
             <span class="mono">Event Organizing</span>
             <h1>Signature <span>Celebrations.</span></h1>
@@ -1497,7 +1491,6 @@
             <button class="btn-premium" onclick="location.href='#events'">Plan Your Event</button>
         </div>
     </div>
-
     <!-- Bottom Indicator Dots (Updated to 5 dots) -->
     <div class="hero-nav-labels" style="bottom: 30px; right: 50%; transform: translateX(50%); color: white;">
         <div class="nav-label active" data-index="0">01</div>
@@ -1994,7 +1987,7 @@
     <footer>
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="#" class="logo">Marula<span> Store</span></a>
+          <a href="#" class="logo">MARULA<span> STORE</span></a>
           <p style="margin-top: 30px; color: var(--text-muted); font-size: 0.8rem; line-height: 2;">
             Premium Integrated Multi-Services based in Milan. Our facility
             serves as a bridge between professional Italian services and
