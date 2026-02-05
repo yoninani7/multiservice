@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marula Store Milano | The Sovereign Nexus</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@100;300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --marula-green: #15322E;
+            --gold: #C19A6B;
+            --linen: #FDFBF7;
+            --clay: #E2DED0;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --transition-long: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+            --transition-mid: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- FOUNDATION --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--linen); 
+            color: var(--black); 
+            overflow-x: hidden;
+            line-height: 1.4;
+        }
+
+        /* Custom Cursor */
+        #cursor {
+            position: fixed; width: 15px; height: 15px; background: var(--gold);
+            border-radius: 50%; pointer-events: none; z-index: 10000;
+            mix-blend-mode: difference; transition: transform 0.1s;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 9000;
+            background: rgba(253, 251, 247, 0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 90px; padding: 0 5%; }
+        .logo { font-family: 'Syne'; font-size: 1.8rem; font-weight: 800; color: var(--marula-green); letter-spacing: -2px; text-decoration: none !important;   }
+        
+        .nav-links { display: flex; gap: 3.5rem; list-style: none; height: 100%; }
+        .nav-item { position: relative; display: flex; align-items: center; height: 100%; }
+        .nav-item > a { 
+            text-decoration: none; color: var(--black); font-size: 0.75rem; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        /* MEGA DROPDOWN (9 Services) */
+        .dropdown {
+            position: absolute; top: 90px; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 1100px; background: var(--white); padding: 3rem;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; 
+            transition: var(--transition-mid); border: 1px solid var(--clay);
+        }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .drop-link { 
+            text-decoration: none; color: var(--black); border-bottom: 1px solid var(--clay); 
+            padding: 1.5rem 1rem; transition: 0.3s; 
+        }
+        .drop-link:hover { background: var(--linen); border-bottom-color: var(--gold); }
+        .drop-link h4 { font-family: 'Syne'; font-size: 1.1rem; margin-bottom: 5px; color: var(--marula-green); }
+        .drop-link p { font-size: 0.7rem; color: #777; line-height: 1.4; }
+
+        /* --- HERO CINEMATIC --- */
+        .hero { height: 100vh; position: relative; overflow: hidden; background: var(--black); }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: 1.5s ease-in-out; display: flex; align-items: center; padding: 0 10%; visibility: hidden; }
+        .slide.active { opacity: 1; visibility: visible; }
+        .slide-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transform: scale(1.1); transition: 10s transform linear; }
+        .slide.active .slide-img { transform: scale(1); }
+        .hero-content { position: relative; z-index: 10; color: white; max-width: 800px; }
+        .hero-tag { font-family: 'Space Mono'; color: var(--gold); font-size: 0.7rem; letter-spacing: 5px; margin-bottom: 1.5rem; display: block; }
+        .hero-title { font-family: 'Syne'; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; font-weight: 800; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: -1px; }
+        .hero-btn { display: inline-block; padding: 1.2rem 3rem; border: 1px solid white; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; transition: 0.4s; }
+        .hero-btn:hover { background: white; color: var(--black); }
+
+        /* HERO NAVIGATION (Bottom Right) */
+        .slider-nav { position: absolute; bottom: 50px; right: 5%; z-index: 100; display: flex; gap: 20px; }
+        .nav-arrow { width: 60px; height: 60px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: var(--transition-mid); background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
+        .nav-arrow:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-5px); }
+
+        /* --- DATA TICKER --- */
+        .ticker { background: var(--marula-green); color: white; padding: 1.2rem 0; overflow: hidden; display: flex; border-bottom: 1px solid var(--gold); }
+        .ticker-inner { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; font-family: 'Space Mono'; font-size: 0.7rem; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- SECTIONS --- */
+        section { padding: 12rem 10%; position: relative; }
+        .reveal { opacity: 0; transform: translateY(60px); transition: var(--transition-long); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .mono-label { font-family: 'Space Mono'; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; display: block; margin-bottom: 2rem; }
+        .title-large { font-family: 'Syne'; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 3rem; }
+
+        /* Editorial Layouts */
+        .editorial-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 8rem; align-items: center; }
+        .spec-card { background: white; border: 1px solid var(--clay); padding: 4rem; position: relative; }
+        .spec-card::after { content: ''; position: absolute; top: -10px; right: -10px; width: 100px; height: 100px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); z-index: -1; }
+
+        /* The Big 9 Blueprint Grid */
+        .blueprint-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--clay); border: 1px solid var(--clay); }
+        .blueprint-item { background: var(--linen); padding: 5rem 3rem; transition: 0.4s; }
+        .blueprint-item:hover { background: var(--white); transform: scale(1.02); z-index: 10; box-shadow: 0 40px 80px rgba(0,0,0,0.05); }
+        .blueprint-item i { color: var(--gold); margin-bottom: 2.5rem; }
+
+        /* Technical Data Panels */
+        .tech-panel { background: var(--marula-green); color: white; padding: 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; border-radius: 4px; }
+        .spec-list { list-style: none; margin-top: 2rem; }
+        .spec-list li { display: flex; justify-content: space-between; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-family: 'Space Mono'; font-size: 0.75rem; }
+        .spec-list li span:last-child { color: var(--gold); }
+
+        /* Pricing Architecture */
+        .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+        .price-card { background: var(--white); border: 1px solid var(--clay); padding: 4rem 2rem; text-align: center; transition: 0.3s; }
+        .price-card:hover { border-color: var(--gold); transform: translateY(-15px); }
+        .price-val { font-family: 'Syne'; font-size: 3.5rem; color: var(--gold); display: block; margin: 1rem 0; font-weight: 800; }
+
+        /* Image Masking */
+        .editorial-img { width: 100%; height: 750px; object-fit: cover; clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%); transition: 1s; }
+        .editorial-img:hover { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--black); color: var(--white); padding: 12rem 10% 4rem; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 5rem; }
+        .f-logo { font-family: 'Syne'; font-size: 3rem; font-weight: 800; color: var(--gold); letter-spacing: -3px; margin-bottom: 2.5rem; display: block; }
+        .f-col h5 { font-family: 'Space Mono'; color: var(--gold); margin-bottom: 2.5rem; font-size: 0.7rem; }
+        .f-col ul { list-style: none; }
+        .f-col ul li { margin-bottom: 1.2rem; opacity: 0.6; font-size: 0.85rem; transition: 0.3s; }
+        .f-col ul li:hover { opacity: 1; color: var(--gold); }
+        .f-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8rem; padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.7rem; font-family: 'Space Mono'; opacity: 0.4; }
+
+        @media (max-width: 1200px) {
+            .nav-links, .dropdown { display: none; }
+            .editorial-grid, .blueprint-grid, .tech-panel, .price-grid, .f-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <a href="#home" class="logo" style="text-decoration: none;">MARULA</a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#about">Heritage</a></li>
+                <li class="nav-item">
+                    <a href="#services">Services ▾</a>
+                    <!-- THE 9 SERVICES MEGA DROPDOWN -->
+                    <div class="dropdown">
+                        <a href="#events" class="drop-link"><h4>Event Organizing</h4><p>Corporate galas, weddings & restaurant styling in Milan.</p></a>
+                        <a href="#connectivity" class="drop-link"><h4>Mobile & SIM</h4><p>5G Provisioning, accessories & international support.</p></a>
+                        <a href="#finance" class="drop-link"><h4>Financial Hub</h4><p>WU, RIA, Wise & PagoPA remittance protocols.</p></a>
+                        <a href="#business" class="drop-link"><h4>Business Center</h4><p>High-res reproduction & professional ID photography.</p></a>
+                        <a href="#logistics" class="drop-link"><h4>Logistics Hub</h4><p>Official terminal for DHL, FedEx & Amazon Hub.</p></a>
+                        <a href="#vault" class="drop-link"><h4>Luggage Vault</h4><p>Secure, biometric-monitored climate vault.</p></a>
+                        <a href="#pods" class="drop-link"><h4>Office Pods</h4><p>Acoustic isolation chambers with 1Gbps fiber.</p></a>
+                        <a href="#concierge" class="drop-link"><h4>Smart Assistant</h4><p>Bureaucracy, CV writing & professional translations.</p></a>
+                        <a href="#travel" class="drop-link"><h4>Ticket Office</h4><p>Global Rail, Air, and Sea transit bookings.</p></a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="#connectivity">Connectivity</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mono-label" style="color: var(--black); margin: 0;">Milano // 45.4642° N</div>
+        </nav>
+    </header>
+
+    <!-- 01-05 HERO SLIDER -->
+    <section class="hero" id="home">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1616070829624-88405ad4932a?auto=format&fit=crop&q=80" class="slide-img">
+            <div class="hero-content">
+                <span class="hero-tag">Marula Milano Sanctuary</span>
+                <h1 class="hero-title">The Center <br>Of Everyday <br>Needs.</h1>
+                <a href="#services" class="hero-btn">Explore The Portfolio</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&q=80" class="slide-img">
+            <div class="hero-content">
+                <span class="hero-tag">Logistics Terminal</span>
+                <h1 class="hero-title">Global <br>Travel & <br>Parcel Hub.</h1>
+                <a href="#logistics" class="hero-btn">Book Terminal</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=80" class="slide-img">
+            <div class="hero-content">
+                <span class="hero-tag">Workspace Hub</span>
+                <h1 class="hero-title">Business & <br>Digital <br>Nexus.</h1>
+                <a href="#pods" class="hero-btn">Reserve a Pod</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80" class="slide-img">
+            <div class="hero-content">
+                <span class="hero-tag">Financial Nodes</span>
+                <h1 class="hero-title">Smart <br>Global <br>Solutions.</h1>
+                <a href="#finance" class="hero-btn">Transfer Money</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80" class="slide-img">
+            <div class="hero-content">
+                <span class="hero-tag">Event Atelier</span>
+                <h1 class="hero-title">Signature <br>Milanese <br>Celebrations.</h1>
+                <a href="#events" class="hero-btn">Plan Your Gala</a>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="nav-arrow" id="prevSlide"><i data-lucide="chevron-left"></i></div>
+            <div class="nav-arrow" id="nextSlide"><i data-lucide="chevron-right"></i></div>
+        </div>
+    </section>
+
+    <!-- 06. LIVE DATA TICKER -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            • SECURITY PROTOCOL: VALID GOVERNMENT ID MANDATORY FOR PARCEL & FINANCE • TERMINAL STATUS: ACTIVE • 1GBPS FIBER READY • DHL PARTNER HUB • SECURE VAULT ONLINE • 5G CONNECTIVITY ENABLED • WESTERN UNION AUTHORIZED • SECURITY PROTOCOL: VALID GOVERNMENT ID MANDATORY FOR PARCEL & FINANCE •
+        </div>
+    </div>
+
+    <!-- 07. BRAND MANIFESTO -->
+    <section class="reveal">
+        <div style="text-align: center; max-width: 1100px; margin: 0 auto;">
+            <span class="mono-label">Section 01 // Manifesto</span>
+            <h2 class="title-large" style="font-weight: 800;">We are the silent architecture behind your success in Milan.</h2>
+            <p style="font-size: 1.6rem; font-weight: 200; opacity: 0.6; margin-top: 4rem;">Marula Store is an integrated sanctuary for the modern global citizen. We bridge the gap between high-end Italian logistics and your professional requirements.</p>
+        </div>
+    </section>
+
+    <!-- 08. HERITAGE (ABOUT) -->
+    <section class="reveal editorial-grid" id="about">
+        <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="editorial-img">
+        <div>
+            <span class="mono-label">Section 02 // Heritage</span>
+            <h2 class="title-large">Curating <br>Simplicity.</h2>
+            <p style="font-size: 1.1rem; opacity: 0.7; margin-bottom: 2.5rem;">By merging high-end logistics with professional workspace solutions, we act as the silent architecture behind your success in Milan. An integrated sanctuary for the modern global citizen navigating the Lombardy region.</p>
+            <div style="border-left: 2px solid var(--gold); padding-left: 2rem;">
+                <p class="mono-label" style="color: var(--black); margin-bottom: 0.5rem;">Marula Store Milano</p>
+                <p style="font-size: 0.8rem; opacity: 0.5;">Established 2020 — Via della Moscova, 12</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 09. SERVICE BLUEPRINT (THE BIG 9) -->
+    <section class="reveal" id="services">
+        <span class="mono-label" style="text-align: center;">Section 03 // Blueprint</span>
+        <h2 class="title-large" style="text-align: center; margin-bottom: 6rem;">The 9 Pillars Hub.</h2>
+        <div class="blueprint-grid">
+            <div class="blueprint-item"><i data-lucide="party-popper" size="40"></i><h3 class="serif">Event Organizing</h3><p>Corporate galas, weddings, and high-end restaurant decor.</p></div>
+            <div class="blueprint-item"><i data-lucide="smartphone" size="40"></i><h3 class="serif">Mobile & SIM</h3><p>Instant 5G activations and premium international accessories.</p></div>
+            <div class="blueprint-item"><i data-lucide="banknote" size="40"></i><h3 class="serif">Financial Hub</h3><p>PagoPA, Western Union, RIA & Wise encrypted transfers.</p></div>
+            <div class="blueprint-item"><i data-lucide="printer" size="40"></i><h3 class="serif">Business Center</h3><p>Professional document reproduction and visa-grade ID photos.</p></div>
+            <div class="blueprint-item"><i data-lucide="package" size="40"></i><h3 class="serif">Logistics Hub</h3><p>Authorized global terminal for DHL, FedEx, and Amazon Hub.</p></div>
+            <div class="blueprint-item"><i data-lucide="briefcase" size="40"></i><h3 class="serif">Luggage Vault</h3><p>Secure, climate-controlled vaulting for high-value items.</p></div>
+            <div class="blueprint-item"><i data-lucide="mic" size="40"></i><h3 class="serif">Office Pods</h3><p>Soundproof booths with 1Gbps fiber and power integration.</p></div>
+            <div class="blueprint-item"><i data-lucide="languages" size="40"></i><h3 class="serif">Smart Assistant</h3><p>Translations, CV architecture, and digital bureaucracy support.</p></div>
+            <div class="blueprint-item"><i data-lucide="plane" size="40"></i><h3 class="serif">Ticket Office</h3><p>Global Rail, Air, and Sea bookings via professional GDS.</p></div>
+        </div>
+    </section>
+
+    <!-- 10. SECURITY PROTOCOL (HIGH CREATIVE) -->
+    <section class="reveal" style="background: #540D0D; color: white;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4rem;">
+            <div>
+                <span class="mono-label" style="color: white; opacity: 0.5;">Security Clearance Required</span>
+                <h2 class="title-large" style="margin: 0; font-size: 3.5rem;">Valid ID <br>Mandatory.</h2>
+            </div>
+            <p style="max-width: 450px; font-family: 'Space Mono'; opacity: 0.8; font-size: 0.85rem; line-height: 1.8;">MANDATORY PROTOCOL: Valid Government-issued Photo ID is strictly required for all Parcel Logistics & Finance Hub services. No exceptions are permitted under Lombardy compliance laws.</p>
+        </div>
+    </section>
+
+    <!-- 11. LOGISTICS TERMINAL (DETAIL ORIENTED) -->
+    <section class="reveal editorial-grid" id="logistics">
+        <div class="spec-card">
+            <span class="mono-label">Section 04 // Terminal</span>
+            <h2 class="title-large" style="font-size: 3.5rem;">Authorised <br>Collection Hub.</h2>
+            <p>We serve as the official Milanese terminal for the world's leading couriers. Our facility handles high-value shipments with prioritized secure storage.</p>
+            <div style="display: flex; gap: 3rem; margin-top: 3rem; opacity: 0.3;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/DHL_Logo.svg" width="90">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="90">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/United_Parcel_Service_logo_2014.svg" width="45">
+            </div>
+        </div>
+        <div class="tech-panel">
+            <h4 class="mono-label" style="color: white;">Logistics Specs</h4>
+            <ul class="spec-list">
+                <li><span>Verification</span><span>ID Multi-Check</span></li>
+                <li><span>Carrier API</span><span>Live Tracking Hub</span></li>
+                <li><span>Storage Temp</span><span>21°C Regulated</span></li>
+                <li><span>Security</span><span>24/7 CCTV / ID Log</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 12. THE VAULT (PRICE & SECURITY) -->
+    <section class="reveal" id="vault" style="background: var(--clay);">
+        <div class="editorial-grid">
+            <div style="background: var(--white); padding: 6rem; text-align: center;">
+                <span class="mono-label">Vaulting Pricing</span>
+                <h2 class="title-large" style="font-size: 4rem;">The Vault.</h2>
+                <div class="price-val">€5.00 <small style="font-size: 1rem; color: var(--black);">/ DAY</small></div>
+                <p style="opacity: 0.6; margin-bottom: 3rem;">Secure climate-controlled storage vault. Explore Milan hands-free with 100% item insurance.</p>
+                <a href="#" class="hero-btn" style="border-color: var(--black); color: var(--black);">Reserve My Vault</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1549463595-b443b2e907bb?auto=format&fit=crop&q=80" class="editorial-img" style="clip-path: none; height: 100%;">
+        </div>
+    </section>
+
+    <!-- 13. OFFICE POD ANATOMY (TECHNICAL) -->
+    <section class="reveal" id="pods">
+        <span class="mono-label">Section 05 // Workspace</span>
+        <h2 class="title-large">Engineered Focus.</h2>
+        <div class="tech-panel">
+            <div>
+                <p style="font-size: 1.4rem; font-weight: 300; opacity: 0.8; margin-bottom: 3rem;">Professional soundproof deep-work environments equipped with high-speed fiber and ergonomic hubs.</p>
+                <ul class="spec-list">
+                    <li><span>Acoustics</span><span>-38dB STC Isolation</span></li>
+                    <li><span>Fiber Optic</span><span>1.2Gbps Synchronous</span></li>
+                    <li><span>Air Quality</span><span>HEPA Purified Flow</span></li>
+                    <li><span>Charging</span><span>USB-C / Universal AC</span></li>
+                </ul>
+            </div>
+            <div class="price-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr;">
+                <div class="price-card"><h4>Power Hour</h4><span class="price-val" style="font-size: 2rem;">€15</span></div>
+                <div class="price-card"><h4>Full Day</h4><span class="price-val" style="font-size: 2rem;">€70</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. POD PRICING TIERS -->
+    <section class="reveal" style="padding-top: 0;">
+        <div class="price-grid">
+            <div class="price-card"><h4>Morning (9-1)</h4><p class="price-val">€40</p><p class="mono-label" style="font-size: 0.6rem;">4 Hour Access</p></div>
+            <div class="price-card"><h4>Afternoon (2-6)</h4><p class="price-val">€40</p><p class="mono-label" style="font-size: 0.6rem;">4 Hour Access</p></div>
+            <div class="price-card"><h4>Package 5 Days</h4><p class="price-val">€280</p><p class="mono-label" style="font-size: 0.6rem;">Corporate Rate</p></div>
+            <div class="price-card" style="background: var(--marula-green); border: none; color: white;"><h4>Team Session</h4><p class="price-val" style="color: white;">€120</p><p class="mono-label" style="color: white; font-size: 0.6rem;">Up to 4 Persons</p></div>
+        </div>
+    </section>
+
+    <!-- 15. CONNECTIVITY SUITE -->
+    <section class="reveal" id="connectivity">
+        <div class="editorial-grid">
+            <div class="spec-card">
+                <span class="mono-label">Section 06 // Node</span>
+                <h2 class="title-large" style="font-size: 3.5rem;">Connectivity Node.</h2>
+                <p>Instant 5G activations for TIM, Vodafone, WindTre. International roaming solutions and technical device support for the global community.</p>
+            </div>
+            <div style="background: var(--marula-green); padding: 6rem; color: white;">
+                <h4 class="mono-label" style="color: white;">Tech Inventory</h4>
+                <ul class="spec-list">
+                    <li><span>SIM Types</span><span>Physical / eSIM</span></li>
+                    <li><span>Networks</span><span>5G / 4G+ / Roaming</span></li>
+                    <li><span>Support</span><span>Multi-Device Sync</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. FINANCIAL HUB (LEDGER) -->
+    <section class="reveal" id="finance" style="background: var(--linen);">
+        <div style="border-left: 10px solid var(--marula-green); padding: 6rem; background: white;">
+            <span class="mono-label">Section 07 // Financial Hub</span>
+            <h2 class="title-large">Global Remittance.</h2>
+            <p style="font-size: 1.5rem; font-weight: 200; opacity: 0.8;">Authorized Western Union & RIA partner for global money transfers, bill payments, utility payments, and financial document processing.</p>
+            <div class="price-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 4rem;">
+                <div style="text-align: center;"><h4 class="serif">PagoPA</h4><p style="font-size: 0.7rem; opacity: 0.5;">Government Bills</p></div>
+                <div style="text-align: center;"><h4 class="serif">Western Union</h4><p style="font-size: 0.7rem; opacity: 0.5;">Global Cash</p></div>
+                <div style="text-align: center;"><h4 class="serif">Wise / RIA</h4><p style="font-size: 0.7rem; opacity: 0.5;">Digital Remittance</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. EVENT ATELIER (EDITORIAL) -->
+    <section class="reveal" id="events">
+        <span class="mono-label">Section 08 // The Atelier</span>
+        <h2 class="title-large">Signature Celebrations.</h2>
+        <div class="editorial-grid">
+            <img src="https://images.pexels.com/photos/50675/banner-ads-advertising-column-display-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="editorial-img">
+            <div>
+                <p style="font-size: 1.2rem; opacity: 0.7; margin-bottom: 3rem;">Expert coordination for corporate galas, private celebrations, and conferences. From venue selection to high-end restaurant decor in Milan's most exclusive locations.</p>
+                <ul class="spec-list" style="border-top: 1px solid var(--clay);">
+                    <li><span>Corporate Events</span><span>Full Planning</span></li>
+                    <li><span>Wedding Galas</span><span>Design & Decor</span></li>
+                    <li><span>Conferences</span><span>AV & Logistics</span></li>
+                    <li><span>Packages</span><span>From €1,500</span></li>
+                </ul>
+                <a href="#" class="hero-btn" style="border-color: var(--black); color: var(--black); margin-top: 3rem;">Start Planning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. EVENT TECHNICALS -->
+    <section class="reveal" style="padding-top: 0;">
+        <div class="price-grid">
+            <div class="price-card"><h4>Corporate</h4><p style="font-size: 0.8rem; opacity: 0.6;">Meetings, conferences, and coordinating professional gatherings.</p></div>
+            <div class="price-card"><h4>Private</h4><p style="font-size: 0.8rem; opacity: 0.6;">Birthdays, anniversaries, and parties with complete planning.</p></div>
+            <div class="price-card"><h4>Coordination</h4><p style="font-size: 0.8rem; opacity: 0.6;">Venue booking, AV setup, and hospitality services.</p></div>
+            <div class="price-card"><h4>Custom</h4><p style="font-size: 0.8rem; opacity: 0.6;">Custom packages available based on requirements.</p></div>
+        </div>
+    </section>
+
+    <!-- 19. SMART ASSISTANT UI -->
+    <section class="reveal" id="concierge">
+        <div style="background: var(--marula-green); color: white; padding: 8rem; border-radius: 4px;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <span class="mono-label" style="color: white; opacity: 0.5;">Section 09 // Assistant</span>
+                <h2 class="title-large" style="font-size: 3rem;">Digital Concierge.</h2>
+                <p style="margin: 3rem 0; opacity: 0.7; font-size: 1.2rem;">Translations, CV architecture, professional document formatting, and multi-language support for Milanese bureaucracy.</p>
+                <div style="display: flex; gap: 2rem; justify-content: center;">
+                    <span class="mono-label" style="color: var(--gold); border: 1px solid var(--gold); padding: 10px;">Guidance</span>
+                    <span class="mono-label" style="color: var(--gold); border: 1px solid var(--gold); padding: 10px;">Portals</span>
+                    <span class="mono-label" style="color: var(--gold); border: 1px solid var(--gold); padding: 10px;">Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 20. DOCUMENT STUDIO -->
+    <section class="reveal" id="business">
+        <div class="editorial-grid">
+            <img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?auto=format&fit=crop&q=80" class="editorial-img" style="height: 500px;">
+            <div>
+                <span class="mono-label">Section 10 // Print Studio</span>
+                <h2 class="title-large" style="font-size: 3rem;">Document Architecture.</h2>
+                <p>1200 DPI Printing, high-res scanning, and professional ID photography compliant with international visa standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 21. GLOBAL TICKETING BOARD -->
+    <section class="reveal" id="travel">
+        <div style="background: var(--black); color: var(--gold); padding: 6rem; font-family: 'Space Mono';">
+            <p style="margin-bottom: 3rem;">TICKETING BOARD // TRANSIT AUTHORIZED</p>
+            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; border-bottom: 1px solid #333; padding: 15px 0;">
+                <span>TRANSIT</span><span>DESTINATION</span><span>STATUS</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; padding: 15px 0; border-bottom: 1px solid #111;">
+                <span>AIR</span><span>GLOBAL REACH</span><span>AVAILABLE</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; padding: 15px 0; border-bottom: 1px solid #111;">
+                <span>RAIL</span><span>EUROPEAN HUB</span><span>AVAILABLE</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; padding: 15px 0;">
+                <span>SEA</span><span>GENOVA PORT</span><span>AVAILABLE</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 22. MILANO MOSAIC (PEXELS IMAGERY) -->
+    <section class="reveal" style="padding: 0;">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); height: 400px;">
+            <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg" style="width:100%; height:100%; object-fit:cover;">
+            <img src="https://images.pexels.com/photos/3771212/pexels-photo-3771212.jpeg" style="width:100%; height:100%; object-fit:cover;">
+            <img src="https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg" style="width:100%; height:100%; object-fit:cover;">
+            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+    </section>
+
+    <!-- 23. CLIENT PROOF (TESTIMONIALS) -->
+    <section class="reveal">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem;">
+            <div>
+                <p style="font-size: 1.5rem; font-weight: 200; font-style: italic; opacity: 0.7;">"The office pods are the perfect workspace in Milan. Fast fiber and absolute silence. My go-to spot."</p>
+                <p class="mono-label" style="margin-top: 2rem;">— Marco Conti</p>
+            </div>
+            <div>
+                <p style="font-size: 1.5rem; font-weight: 200; font-style: italic; opacity: 0.7;">"Handled our corporate gala flawlessly. The decor and coordination were world-class."</p>
+                <p class="mono-label" style="margin-top: 2rem;">— Alessandro Rossi</p>
+            </div>
+            <div>
+                <p style="font-size: 1.5rem; font-weight: 200; font-style: italic; opacity: 0.7;">"The luggage vault was a lifesaver. Secure, professional, and right in the heart of Brera."</p>
+                <p class="mono-label" style="margin-top: 2rem;">— Sarah Goldberg</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 24. HUB LOCATION (CONTACT) -->
+    <section class="reveal" id="contact">
+        <div class="editorial-grid">
+            <div>
+                <span class="mono-label">Locate the Nexus</span>
+                <h2 class="title-large">Visit Us.</h2>
+                <div style="margin-top: 3rem; line-height: 2;">
+                    <p><strong>Address:</strong> Via della Moscova, 12, 20121 Milano MI</p>
+                    <p><strong>Phone:</strong> +39 02 1234 5678</p>
+                    <p><strong>Hours:</strong> Mon-Fri 8-8, Sat-Sun 9-6</p>
+                </div>
+            </div>
+            <div style="background: var(--clay); height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80" style="width:100%; height:100%; object-fit:cover; filter: grayscale(1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- 25. GRAND FOOTER -->
+    <footer>
+        <div class="f-grid">
+            <div class="f-col">
+                <a href="#home" class="f-logo">MARULA</a>
+                <p style="opacity: 0.5; max-width: 350px;">Premium Integrated Multi-Services based in Milan. Acting as the silent architecture for the global citizen.</p>
+            </div>
+            <div class="f-col">
+                <h5>Logistics Hub</h5>
+                <ul>
+                    <li>Parcel Terminal</li>
+                    <li>Luggage Vault</li>
+                    <li>Ticket Office</li>
+                    <li>Travel Bookings</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h5>Business Hub</h5>
+                <ul>
+                    <li>Office Pods</li>
+                    <li>Document Studio</li>
+                    <li>Smart Assistant</li>
+                    <li>ID Photography</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h5>Connectivity Hub</h5>
+                <ul>
+                    <li>SIM Activations</li>
+                    <li>Remittance Hub</li>
+                    <li>Bill Payments</li>
+                    <li>Event Atelier</li>
+                </ul>
+            </div>
+        </div>
+        <div class="f-bottom">
+            <p>© 2026 MARULA STORE MILANO. INTEGRATED SERVICES HUB.</p>
+            <p>PRIVACY | TERMS | ACCESSIBILITY</p>
+        </div>
+    </footer>
+
+    <script>
+        // Init Lucide
+        lucide.createIcons();
+
+        // Cursor Logic
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        });
+
+         // Hero Slider
+        const slides = document.querySelectorAll('.slide');
+        const nextBtn = document.getElementById('nextSlide');
+        const prevBtn = document.getElementById('prevSlide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        nextBtn.addEventListener('click', () => { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); });
+        prevBtn.addEventListener('click', () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); });
+
+        setInterval(() => { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }, 7000); 
+        // Reveal Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
