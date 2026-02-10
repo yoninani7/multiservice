@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marula Store Milano | The Sovereign Nexus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
-    <!-- Premium Fonts --> 
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@100;300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+
+    <!-- Premium Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@100;300;400;600&family=Space+Mono&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
@@ -23,192 +26,224 @@
         }
 
         /* --- FOUNDATION --- */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
         }
 
-        html { 
-            scroll-behavior: smooth; 
-            overflow-x: hidden; 
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--linen); 
-            color: var(--black); 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--linen);
+            color: var(--black);
             overflow-x: hidden;
             line-height: 1.4;
             width: 100%;
         }
 
-      
+
 
         /* --- FIXED NAVIGATION SYSTEM --- */
         header {
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
+            position: fixed;
+            top: 0;
+            width: 100%;
             z-index: 9000;
-            background: rgba(253, 251, 247, 0.95); 
+            background: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            height: 80px; 
-            padding: 0 5%; 
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 5%;
             position: relative;
         }
 
-        .logo { 
-            font-family: 'Syne'; 
-            font-size: 1.8rem; 
-            font-weight: 800; 
-            color: var(--marula-green); 
-            letter-spacing: -2px; 
+        .logo {
+            font-family: 'Syne';
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--marula-green);
+            letter-spacing: -2px;
             text-decoration: none !important;
             transition: var(--transition-fast);
             z-index: 10002;
         }
 
-        .nav-links { 
-            display: flex; 
-            gap: 3.5rem; 
-            list-style: none; 
-            height: 100%; 
+        .nav-links {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+            height: 100%;
         }
-        
-        .nav-item { 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            height: 100%; 
+
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
-        
-        .nav-item > a { 
-            text-decoration: none; 
-            color: var(--black); 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
+
+        .nav-item>a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
             letter-spacing: 2px;
             transition: var(--transition-fast);
             position: relative;
             padding: 0.5rem 0;
         }
- 
+
         /* Desktop Mega Menu Dropdown */
-@media (min-width: 1201px) {
-    .nav-item.has-dropdown:hover .dropdown {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
-    }
+        @media (min-width: 1201px) {
+            .nav-item.has-dropdown:hover .dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+            }
 
-    .dropdown {
-        position: absolute;
-        top: 90px;
-        left: 50%;
-        transform: translateX(-50%) translateY(20px);
-        width: 950px; /* Slightly wider for better spacing */
-        background: var(--white);
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        padding: 40px;
-        
-        /* Premium Shadow: Layered for depth */
-        box-shadow: 
-            0 10px 30px -5px rgba(21, 50, 46, 0.1),
-            0 30px 60px -10px rgba(0, 0, 0, 0.15);
-        
-        border: 1px solid var(--clay);
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition-mid);
-        z-index: 1000;
-    }
-}
+            .dropdown {
+                position: absolute;
+                top: 90px;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                width: 950px;
+                /* Slightly wider for better spacing */
+                background: var(--white);
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                padding: 40px;
 
-/* Individual Link Component */
-.drop-link {
-    display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    text-decoration: none;
-    transition: var(--transition-fast);
-    border-radius: 4px; /* Subtle rounding */
-    border: 1px solid transparent;
-}
+                /* Premium Shadow: Layered for depth */
+                box-shadow:
+                    0 10px 30px -5px rgba(21, 50, 46, 0.1),
+                    0 30px 60px -10px rgba(0, 0, 0, 0.15);
 
-/* Icon Styling - Matching your theme */
-.drop-link i {
-    font-size: 1.25rem;
-    margin-right: 18px;
-    margin-top: 3px; 
-    color: var(--marula-green); /* Changed from blue to theme green */
-    width: 30px;
-    text-align: center;
-    transition: var(--transition-fast);
-}
+                border: 1px solid var(--clay);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition-mid);
+                z-index: 1000;
+            }
+        }
 
-/* Text Container */
-.drop-text {
-    display: flex;
-    flex-direction: column;
-}
+        /* Individual Link Component */
+        .drop-link {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            border-radius: 4px;
+            /* Subtle rounding */
+            border: 1px solid transparent;
+        }
 
-/* Typography Fixes */
-.dropdown h4 {
-    margin: 0;
-    font-family: 'Syne', sans-serif; /* Matches your brand headers */
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--black);
-    margin-bottom: 4px;
-}
+        /* Icon Styling - Matching your theme */
+        .drop-link i {
+            font-size: 1.25rem;
+            margin-right: 18px;
+            margin-top: 3px;
+            color: var(--marula-green);
+            /* Changed from blue to theme green */
+            width: 30px;
+            text-align: center;
+            transition: var(--transition-fast);
+        }
 
-.dropdown p {
-    margin: 0;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    color: var(--black);
-    opacity: 0.6;
-    line-height: 1.4;
-}
+        /* Text Container */
+        .drop-text {
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Hover State - Interactive */
-.drop-link:hover {
-    background-color: var(--15322E);
-    border-color: var(--clay);
-    transform: translateY(-2px);
-}
+        /* Typography Fixes */
+        .dropdown h4 {
+            margin: 0;
+            font-family: 'Syne', sans-serif;
+            /* Matches your brand headers */
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--black);
+            margin-bottom: 4px;
+        }
 
-.drop-link:hover i {
-    color: #00977e; 
-}
+        .dropdown p {
+            margin: 0;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            color: var(--black);
+            opacity: 0.6;
+            line-height: 1.4;
+        }
+
+        /* Hover State - Interactive */
+        .drop-link:hover {
+            background-color: var(--15322E);
+            border-color: var(--clay);
+            transform: translateY(-2px);
+        }
+
+        .drop-link:hover i {
+            color: #00977e;
+        }
+
         /* Mobile Dropdown Logic */
         @media (max-width: 1200px) {
-            .menu-toggle { display: flex !important; }
-            .nav-links {
-                position: fixed; top: 0; right: 0; width: 100%; height: 100vh; 
-               background: rgba(253, 251, 247, 0.95);  padding: 120px 8% 40px;
-                flex-direction: column; transform: translateX(100%);
-                transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-                z-index: 10001; overflow-y: auto; gap: 0;
+            .menu-toggle {
+                display: flex !important;
             }
-            .nav-links.active { transform: translateX(0); }
-            .nav-item { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); display: block; height: auto; }
-            .nav-item > a { font-size: 1rem; color: var(--marula-green); padding: 20px 0; display: flex; justify-content: space-between; }
-            
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(253, 251, 247, 0.95);
+                padding: 120px 8% 40px;
+                flex-direction: column;
+                transform: translateX(100%);
+                transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+                z-index: 10001;
+                overflow-y: auto;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                display: block;
+                height: auto;
+            }
+
+            .nav-item>a {
+                font-size: 1rem;
+                color: var(--marula-green);
+                padding: 20px 0;
+                display: flex;
+                justify-content: space-between;
+            }
+
             .dropdown {
                 display: none;
                 width: 100%;
@@ -217,11 +252,28 @@
                 border-left: 2px solid green;
                 margin-bottom: 20px;
             }
-            .dropdown.show { display: block; }
-            
-            .drop-link { display: block; padding: 15px 20px; text-decoration: none; }
-            .drop-link h4 { color: var(--gold); font-size: 1rem; margin-bottom: 5px; }
-            .drop-link p { color: var(--linen); opacity: 0.6; font-size: 0.8rem; }
+
+            .dropdown.show {
+                display: block;
+            }
+
+            .drop-link {
+                display: block;
+                padding: 15px 20px;
+                text-decoration: none;
+            }
+
+            .drop-link h4 {
+                color: var(--gold);
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .drop-link p {
+                color: var(--linen);
+                opacity: 0.6;
+                font-size: 0.8rem;
+            }
         }
 
         .menu-toggle {
@@ -234,155 +286,806 @@
         }
 
         /* --- RESTORED ORIGINAL STYLES --- */
-        .hero { height: 100vh; position: relative; overflow: hidden; background: var(--black); }
-        .slide { position: absolute; inset: 0; opacity: 0; transition: 1.5s ease-in-out; display: flex; align-items: center; padding: 0 10%; visibility: hidden; }
-        .slide.active { opacity: 1; visibility: visible; }
-        .slide-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transform: scale(1.1); transition: 10s transform linear; }
-        .slide.active .slide-img { transform: scale(1); }
-        .hero-content { position: relative; z-index: 10; color: white; max-width: 800px; }
-        .hero-tag { font-family: 'Space Mono'; color: var(--gold); font-size: 0.7rem; letter-spacing: 5px; margin-bottom: 1.5rem; display: block; }
-        .hero-title { font-family: 'Syne'; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; font-weight: 800; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: -1px; }
-        
-        .hero-btn { display: inline-block; padding: 1.2rem 3rem; border: 1px solid white; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; transition: var(--transition-mid); }
-        .hero-btn:hover { background: white; color: var(--black); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: var(--black);
+        }
 
-        .slider-nav { position: absolute; bottom: 50px; right: 5%; z-index: 100; display: flex; gap: 20px; }
-        .nav-arrow { width: 60px; height: 60px; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: var(--transition-mid); background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
-        .nav-arrow:hover { background: var(--white); color: var(--black); transform: scale(1.1); }
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            visibility: hidden;
+        }
 
-        .ticker { background: var(--marula-green); color: white; padding: 1.2rem 0; overflow: hidden; display: flex; border-bottom: 1px solid var(--gold); }
-        .ticker-inner { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; font-family: 'Space Mono'; font-size: 0.7rem; }
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-        section { padding: 8rem 10%; position: relative; }
-        .reveal { opacity: 0; transform: translateY(60px); transition: var(--transition-long); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        .mono-label { font-family: 'Space Mono'; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; display: block; margin-bottom: 2rem; }
-        .title-large { font-family: 'Syne'; font-size: clamp(2.5rem, 5vw, 5.5rem); line-height: 0.9; margin-bottom: 3rem; }
+        .slide-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transform: scale(1.1);
+            transition: 10s transform linear;
+        }
 
-        .editorial-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
-        .editorial-img { width: 100%; height: 600px; object-fit: cover; clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); }
-        .editorial-img:hover { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); transform: scale(1.02); }
+        .slide.active .slide-img {
+            transform: scale(1);
+        }
 
-        .blueprint-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--clay); border: 1px solid var(--clay); }
-        .blueprint-item { background: var(--linen); padding: 4rem 2rem; transition: var(--transition-mid); position: relative; overflow: hidden; }
-        .blueprint-item:hover { background: var(--white); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); z-index: 5; }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            max-width: 800px;
+        }
 
-        .spec-card { background: white; border: 1px solid var(--clay); padding: 4rem; position: relative; transition: var(--transition-mid); }
-        .tech-panel { background: var(--marula-green); color: white; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; border-radius: 4px; }
-        .spec-list { list-style: none; margin-top: 2rem; }
-        .spec-list li { display: flex; justify-content: space-between; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-family: 'Space Mono'; font-size: 0.75rem; }
+        .hero-tag {
+            font-family: 'Space Mono';
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
 
-        .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
-        .price-card { background: var(--white); border: 1px solid var(--clay); padding: 3rem 1.5rem; text-align: center; transition: var(--transition-mid); }
-        .price-val { font-family: 'Syne'; font-size: 3rem; color: var(--gold); display: block; margin: 1rem 0; font-weight: 800; }
+        .hero-title {
+            font-family: 'Syne';
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
 
-        footer { background: var(--black); color: var(--white); padding: 8rem 10% 4rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
-        .f-logo { font-family: 'Syne'; font-size: 3rem; font-weight: 800; color: var(--gold); letter-spacing: -3px; margin-bottom: 2.5rem; display: block; text-decoration: none; }
-        .f-col h5 { margin-bottom: 1.5rem; font-family: 'Space Mono'; color: var(--gold); font-size: 0.8rem; }
-        .f-col ul { list-style: none; }
-        .f-col ul li { margin-bottom: 0.8rem; font-size: 0.8rem; opacity: 0.6; transition: 0.3s; }
-        .f-col ul li:hover { opacity: 1; color: var(--gold); transform: translateX(5px); }
-        .f-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 6rem; padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.7rem; font-family: 'Space Mono'; opacity: 0.4; }
+        .hero-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            border: 1px solid white;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            transition: var(--transition-mid);
+        }
 
-       .whatsapp-nav {
-    position: relative; background: linear-gradient(135deg, #059669, #007a4d); color: #fff !important; padding: 10px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; display: flex; align-items: center; gap: 8px;
-    animation: aura-glow 2.5s infinite;
+        .hero-btn:hover {
+            background: white;
+            color: var(--black);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 50px;
+            right: 5%;
+            z-index: 100;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-arrow {
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition-mid);
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-arrow:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 5rem 10%;
+            position: relative;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: var(--transition-long);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mono-label {
+            font-family: 'Space Mono';
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        .title-large {
+            font-family: 'Syne';
+            font-size: clamp(2.5rem, 5vw, 5.5rem);
+            line-height: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .editorial-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .editorial-img:hover {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            transform: scale(1.02);
+        }
+
+        /* Target the description paragraph specifically */
+        .editorial-grid p {
+            font-weight: 300;
+            /* Light weight looks more high-end */
+            line-height: 1.7;
+            max-width: 400px;
+            /* Narrower columns are easier to style */
+            text-align: justify;
+            /* Creates those clean straight edges like a book */
+            hyphens: auto;
+            /* Ensures justification doesn't create big gaps */
+            color: #444;
+            /* Soften the black for a premium feel */
+            margin-bottom: 2rem;
+        }
+
+        /* Refine the footer details */
+        .editorial-grid .mono-label {
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Container styling */
+        .blueprint-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--clay);
+            border: 1px solid var(--clay);
+            overflow: hidden;
+        }
+
+        /* Individual Card */
+        .blueprint-item {
+            position: relative;
+            height: 350px;
+            /* Uniform height for alignment */
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            /* Text at bottom */
+            padding: 2.5rem;
+            cursor: pointer;
+        }
+
+        /* The Background Image Layer */
+        .card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+            z-index: 1;
+        }
+
+        /* Dark Overlay for Readability */
+        .blueprint-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+            z-index: 2;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Content Container */
+        .card-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            /* Contrast against dark overlay */
+        }
+
+        .card-content i {
+            margin-bottom: 1.5rem;
+            display: block;
+            color: #DAA520;
+            /* Gold/Accent color for luxury feel */
+        }
+
+        .blueprint-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Interaction Effects */
+        .blueprint-item:hover .card-bg {
+            transform: scale(1.1);
+        }
+
+        .blueprint-item:hover::after {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 100%);
+        }
+
+        /* Responsive for Mobile */
+        @media (max-width: 992px) {
+            .blueprint-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .blueprint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .spec-card {
+            background: white;
+            border: 1px solid var(--clay);
+            padding: 4rem;
+            position: relative;
+            transition: var(--transition-mid);
+        }
+
+        .tech-panel {
+            background: var(--marula-green);
+            color: white;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            border-radius: 4px;
+        }
+
+        .spec-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .spec-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Space Mono';
+            font-size: 0.75rem;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .price-card {
+            background: var(--white);
+            border: 1px solid var(--clay);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            transition: var(--transition-mid);
+        }
+
+        .price-val {
+            font-family: 'Syne';
+            font-size: 3rem;
+            color: var(--gold);
+            display: block;
+            margin: 1rem 0;
+            font-weight: 800;
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 10% 4rem;
+        }
+
+        .f-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .f-logo {
+            font-family: 'Syne';
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: -3px;
+            margin-bottom: 2.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .f-col h5 {
+            margin-bottom: 1.5rem;
+            font-family: 'Space Mono';
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        .f-col ul {
+            list-style: none;
+        }
+
+        .f-col ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .f-col ul li:hover {
+            opacity: 1;
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .f-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 6rem;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            font-family: 'Space Mono';
+            opacity: 0.4;
+        }
+
+        .whatsapp-nav {
+            position: relative;
+            background: linear-gradient(135deg, #059669, #007a4d);
+            color: #fff !important;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: aura-glow 2.5s infinite;
+        }
+
+        @keyframes aura-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0px rgba(5, 150, 105, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 20px 10px rgba(5, 150, 105, 0);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .whatsapp-nav {
+                display: none;
+            }
+        }
+
+        /* --- LOCATION & CONTACT STYLES --- */
+        .contact-wrap {
+            background-color: var(--linen);
+            border-top: 1px solid var(--clay);
+            padding: 10rem 10%;
+            /* Generous padding for a luxury feel */
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            /* Asymmetric grid for editorial look */
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-content h2 {
+            font-family: 'Syne';
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--marula-green);
+        }
+
+        .contact-description {
+            font-family: 'Inter';
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--black);
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .info-item i {
+            color: var(--gold);
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .info-item h5 {
+            font-family: 'Space Mono';
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+
+        .info-item p {
+            font-family: 'Inter';
+            font-size: 1.1rem;
+            /* Professional size */
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--black);
+        }
+
+        .map-outer {
+            height: 700px;
+            width: 100%;
+            position: relative;
+            border: 1px solid var(--clay);
+            overflow: hidden;
+            filter: grayscale(1) contrast(1.1);
+            /* Matches your premium aesthetic */
+            transition: filter 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .map-outer:hover {
+            filter: grayscale(0);
+            /* Fades into color on hover/touch */
+        }
+
+        .map-outer iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Custom button for Get Directions */
+        .contact-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--marula-green);
+            color: var(--white);
+            padding: 1.4rem 3rem;
+            text-decoration: none;
+            font-family: 'Space Mono';
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            transition: var(--transition-mid);
+        }
+
+        .contact-cta:hover {
+            background: var(--black);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 1100px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .map-outer {
+                height: 450px;
+            }
+        }
+      /* --- HERITAGE GALLERY STYLES --- */
+
+.heritage-gallery {
+    padding: 12rem 5%;
+    background-color: var(--linen);
+    position: relative;
+    overflow: hidden;
 }
 
-@keyframes aura-glow {
-    0%, 100% { box-shadow: 0 0 0 0px rgba(5, 150, 105, 0.5); }
-    50% { box-shadow: 0 0 20px 10px rgba(5, 150, 105, 0); }
+/* Large Ghost Background Text */
+.gallery-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Syne';
+    font-size: 25vw;
+    font-weight: 900;
+    color: rgba(21, 50, 46, 0.03); /* Extremely subtle green */
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: -1rem;
 }
-        @media (max-width: 1200px) { .whatsapp-nav { display: none; } }
+
+.gallery-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Visual Framing */
+.gallery-visual {
+    position: relative;
+}
+
+.image-frame {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    background: var(--clay);
+    padding: 15px; /* Creates the 'Fine Art' border */
+    box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(20%) contrast(1.05); /* Professional color grading */
+    transition: var(--transition-long);
+}
+
+/* Floating Tag on Image */
+.image-tag {
+    position: absolute;
+    top: 40px;
+    right: -30px;
+    background: var(--marula-green);
+    color: white;
+    padding: 20px;
+    font-family: 'Space Mono';
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
+}
+
+.image-tag span { font-size: 0.6rem; opacity: 0.6; letter-spacing: 2px; }
+.image-tag strong { font-size: 0.9rem; letter-spacing: 1px; }
+
+/* Architectural Accent */
+.accent-line {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    border-left: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    z-index: -1;
+}
+
+/* Content Styling */
+.text-gold { color: var(--gold); }
+
+.display-title {
+    font-family: 'Syne';
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    letter-spacing: -2px;
+}
+
+.manifesto-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--black);
+    margin-bottom: 4rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* watch-worthy Feature Grid */
+.feature-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.feature-item {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition-fast);
+}
+
+.feature-item:hover {
+    transform: translateX(10px);
+}
+
+.feature-icon {
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.feature-text h4 {
+    font-family: 'Syne';
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.feature-text p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Responsive Logic */
+@media (max-width: 1100px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .image-frame { height: 500px; }
+    .gallery-bg-text { display: none; }
+    .image-tag { right: 20px; }
+}
     </style>
 </head>
+
 <body>
- 
+
     <!-- NAVIGATION -->
     <header>
         <nav>
-            <a href="#home" class="logo">MARULA</a> 
+            <a href="#home" class="logo">MARULA</a>
             <button class="menu-toggle" id="menuToggle">
                 <i data-lucide="menu" class="menu-icon"></i>
-            </button> 
+            </button>
             <ul class="nav-links" id="navLinks">
                 <li class="nav-item"><a href="#home">Home</a></li>
                 <li class="nav-item"><a href="#about">Heritage</a></li>
-              <li class="nav-item has-dropdown">
-    <a href="javascript:void(0)" class="nav-link-trigger">Services ↓</a>
-    <div class="dropdown">
-        <a href="#events" class="drop-link">
-            <i class="fas fa-glass-cheers"></i>
-            <div class="drop-text">
-                <h4>Event Organizing</h4>
-                <p>Weddings, Birthdays and Restaurant Decor.</p>
-            </div>
-        </a>
-        <a href="#connectivity" class="drop-link">
-            <i class="fas fa-sim-card"></i>
-            <div class="drop-text">
-                <h4>Mobile & SIM</h4>
-                <p>SIM provision & Mobile Accessories.</p>
-            </div>
-        </a>
-        <a href="#finance" class="drop-link">
-            <i class="fas fa-wallet"></i>
-            <div class="drop-text">
-                <h4>Financial Hub</h4>
-                <p>PagoPA, Western Union & Wise Transfers.</p>
-            </div>
-        </a>
-        <a href="#business" class="drop-link">
-            <i class="fas fa-print"></i>
-            <div class="drop-text">
-                <h4>Business Center</h4>
-                <p>Print, Scan & Professional ID Photos</p>
-            </div>
-        </a>
-        <a href="#logistics" class="drop-link">
-            <i class="fas fa-truck-loading"></i>
-            <div class="drop-text">
-                <h4>Logistics & Parcel</h4>
-                <p>Amazon, DHL & FedEx Pickup Point.</p>
-            </div>
-        </a>
-        <a href="#vault" class="drop-link">
-            <i class="fas fa-luggage-cart"></i>
-            <div class="drop-text">
-                <h4>Luggage Vault</h4>
-                <p>Secure and well maintained vault.</p>
-            </div>
-        </a>
-        <a href="#pods" class="drop-link">
-            <i class="fas fa-microphone-alt"></i>
-            <div class="drop-text">
-                <h4>Office Pods</h4>
-                <p>Soundproof booths for hourly rental</p>
-            </div>
-        </a>
-        <a href="#concierge" class="drop-link">
-            <i class="fas fa-language"></i>
-            <div class="drop-text">
-                <h4>Smart Assistant</h4>
-                <p>Bureaucracy, CV Writing & Translations.</p>
-            </div>
-        </a>
-        <a href="#travel" class="drop-link">
-            <i class="fas fa-ticket-alt"></i>
-            <div class="drop-text">
-                <h4>Tickets</h4>
-                <p>Plane, Bus & Train Bookings.</p>
-            </div>
-        </a>
-    </div>
-</li>
+                <li class="nav-item has-dropdown">
+                    <a href="javascript:void(0)" class="nav-link-trigger">Services ↓</a>
+                    <div class="dropdown">
+                        <a href="#events" class="drop-link">
+                            <i class="fas fa-glass-cheers"></i>
+                            <div class="drop-text">
+                                <h4>Event Organizing</h4>
+                                <p>Weddings, Birthdays and Restaurant Decor.</p>
+                            </div>
+                        </a>
+                        <a href="#connectivity" class="drop-link">
+                            <i class="fas fa-sim-card"></i>
+                            <div class="drop-text">
+                                <h4>Mobile & SIM</h4>
+                                <p>SIM provision & Mobile Accessories.</p>
+                            </div>
+                        </a>
+                        <a href="#finance" class="drop-link">
+                            <i class="fas fa-wallet"></i>
+                            <div class="drop-text">
+                                <h4>Financial Hub</h4>
+                                <p>PagoPA, Western Union & Wise Transfers.</p>
+                            </div>
+                        </a>
+                        <a href="#business" class="drop-link">
+                            <i class="fas fa-print"></i>
+                            <div class="drop-text">
+                                <h4>Business Center</h4>
+                                <p>Print, Scan & Professional ID Photos</p>
+                            </div>
+                        </a>
+                        <a href="#logistics" class="drop-link">
+                            <i class="fas fa-truck-loading"></i>
+                            <div class="drop-text">
+                                <h4>Logistics & Parcel</h4>
+                                <p>Amazon, DHL & FedEx Pickup Point.</p>
+                            </div>
+                        </a>
+                        <a href="#vault" class="drop-link">
+                            <i class="fas fa-luggage-cart"></i>
+                            <div class="drop-text">
+                                <h4>Luggage Vault</h4>
+                                <p>Secure and well maintained vault.</p>
+                            </div>
+                        </a>
+                        <a href="#pods" class="drop-link">
+                            <i class="fas fa-microphone-alt"></i>
+                            <div class="drop-text">
+                                <h4>Office Pods</h4>
+                                <p>Soundproof booths for hourly rental</p>
+                            </div>
+                        </a>
+                        <a href="#concierge" class="drop-link">
+                            <i class="fas fa-language"></i>
+                            <div class="drop-text">
+                                <h4>Smart Assistant</h4>
+                                <p>Bureaucracy, CV Writing & Translations.</p>
+                            </div>
+                        </a>
+                        <a href="#travel" class="drop-link">
+                            <i class="fas fa-ticket-alt"></i>
+                            <div class="drop-text">
+                                <h4>Tickets</h4>
+                                <p>Plane, Bus & Train Bookings.</p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item"><a href="#connectivity">Promotion</a></li>
                 <li class="nav-item"><a href="#contact">Contact</a></li>
             </ul>
-            
+
             <a href="https://wa.me/393391234567" class="whatsapp-nav" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> Whatsapp
             </a>
@@ -392,7 +1095,8 @@
     <!-- HERO SLIDER -->
     <section class="hero" id="home">
         <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1920" class="slide-img">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1920"
+                class="slide-img">
             <div class="hero-content">
                 <span class="hero-tag">Marula Milano Sanctuary</span>
                 <h1 class="hero-title">The Center <br>Of your everyday <br>Needs.</h1>
@@ -400,7 +1104,8 @@
             </div>
         </div>
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80" class="slide-img">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80"
+                class="slide-img">
             <div class="hero-content">
                 <span class="hero-tag">Event Atelier</span>
                 <h1 class="hero-title">Signature <br>Eventfull <br>Celebrations.</h1>
@@ -408,7 +1113,8 @@
             </div>
         </div>
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&q=80" class="slide-img">
+            <img src="https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&q=80"
+                class="slide-img">
             <div class="hero-content">
                 <span class="hero-tag">Logistics Terminal</span>
                 <h1 class="hero-title">Global <br>Travel & <br>Parcel Hub.</h1>
@@ -416,7 +1122,8 @@
             </div>
         </div>
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=80" class="slide-img">
+            <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=80"
+                class="slide-img">
             <div class="hero-content">
                 <span class="hero-tag">Workspace Hub</span>
                 <h1 class="hero-title">Business & <br>Digital <br>Center.</h1>
@@ -424,7 +1131,8 @@
             </div>
         </div>
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80" class="slide-img">
+            <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80"
+                class="slide-img">
             <div class="hero-content">
                 <span class="hero-tag">Financial Nodes</span>
                 <h1 class="hero-title">Smart <br>Global <br>Solutions.</h1>
@@ -437,50 +1145,178 @@
         </div>
     </section>
 
-    <!-- LIVE DATA TICKER -->
-    <div class="ticker">
-        <div class="ticker-inner">
-            • SECURITY PROTOCOL: VALID GOVERNMENT ID MANDATORY FOR PARCEL & FINANCE • TERMINAL STATUS: ACTIVE • 1GBPS FIBER READY • DHL PARTNER HUB • SECURE VAULT ONLINE • 5G CONNECTIVITY ENABLED • WESTERN UNION AUTHORIZED •
-        </div>
-    </div>
 
     <!-- BRAND MANIFESTO -->
     <section class="reveal">
-        <div style="text-align: center; max-width: 1100px; margin: 0 auto;">
-            <span class="mono-label">Section 01 // Manifesto</span>
-            <h2 class="title-large" style="font-weight: 800;">We are the silent architecture behind your success in Milan.</h2>
-            <p style="font-size: 1.6rem; font-weight: 200; opacity: 0.6; margin-top: 4rem;">Marula Store is an integrated sanctuary for the modern global citizen. We bridge the gap between high-end Italian logistics and your professional requirements.</p>
+        <div style="text-align: center; max-width: 1300px; margin: 0 auto;">
+            <span class="mono-label"> || Manifesto</span>
+            <h2 class="title-large" style="font-weight: 800;">Hard work made to look effortless.</h2>
         </div>
     </section>
 
-    <!-- HERITAGE (ABOUT) -->
-    <section class="reveal editorial-grid" id="about">
-        <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260" class="editorial-img">
-        <div>
-            <span class="mono-label">Section 02 // Heritage</span>
-            <h2 class="title-large">Curating <br>Simplicity.</h2>
-            <p style="font-size: 1.1rem; opacity: 0.7; margin-bottom: 2.5rem;">By merging high-end logistics with professional workspace solutions, we act as the silent architecture behind your success in Milan.</p>
-            <div style="border-left: 2px solid var(--gold); padding-left: 2rem;">
-                <p class="mono-label" style="color: var(--black); margin-bottom: 0.5rem;">Marula Store Milano</p>
-                <p style="font-size: 0.8rem; opacity: 0.5;">Established 2020 — Via della Moscova, 12</p>
+    <!-- THE HERITAGE GALLERY -->
+<section class="heritage-gallery reveal" id="about">
+    <div class="gallery-bg-text">MARULA</div>
+    
+    <div class="gallery-container">
+        <!-- Visual Masterpiece (The 1 Photo) -->
+        <div class="gallery-visual">
+            <div class="image-frame">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80" alt="Marula Milano Boutique">
+                <!-- Floating Detail Tag -->
+                <div class="image-tag">
+                    <span>LOCATION</span>
+                    <strong>MILANO, IT</strong>
+                </div>
+            </div>
+            <!-- Architectural Accent Line -->
+            <div class="accent-line"></div>
+        </div>
+
+        <!-- Professional Content -->
+        <div class="gallery-content">
+            <div class="content-header">
+                <span class="mono-label">|| The Origins</span>
+                <h2 class="display-title">Creating <br><span class="text-gold">Simplicity.</span></h2>
+            </div>
+
+            <p class="manifesto-text">
+                Marula Store Milano was established to serve as the <strong>Sovereign Nexus</strong> for the modern global citizen. In a world of friction, we provide the architecture of ease.
+            </p>
+
+            <!-- Watch-Worthy Feature Grid -->
+            <div class="feature-rows">
+                <div class="feature-item">
+                    <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+                    <div class="feature-text">
+                        <h4>Milanese Excellence</h4>
+                        <p>Every transaction and service is executed with the high-standard precision synonymous with Milanese craft.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i data-lucide="globe"></i></div>
+                    <div class="feature-text">
+                        <h4>Global Connectivity</h4>
+                        <p>We bridge the gap between local necessity and global logistics, acting as your private terminal in the heart of the city.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i data-lucide="zap"></i></div>
+                    <div class="feature-text">
+                        <h4>Frictionless Utility</h4>
+                        <p>From deep-work pods to financial remittances, our ecosystem is designed to be invisible, efficient, and absolute.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- SERVICE BLUEPRINT -->
     <section class="reveal" id="services">
-        <span class="mono-label" style="text-align: center;">Section 03 // Blueprint</span>
-        <h2 class="title-large" style="text-align: center; margin-bottom: 6rem;">The 9 Pillars Hub.</h2>
+        <span class="mono-label" style="text-align: center; display: block;">|| Blueprint</span>
+        <h2 class="title-large" style="text-align: center; margin-bottom: 6rem;">Our Service Offerings</h2>
+        <span class="mono-label" style="text-align: center; color: #1A1A1A; display: block; margin-bottom: 2rem;">||
+            Choose your service below ||</span>
+
         <div class="blueprint-grid">
-            <div class="blueprint-item"><i data-lucide="party-popper" size="40"></i><h3 class="serif">Event Organizing</h3><p>Corporate galas, weddings, and high-end restaurant decor.</p></div>
-            <div class="blueprint-item"><i data-lucide="smartphone" size="40"></i><h3 class="serif">Mobile & SIM</h3><p>Instant 5G activations and premium international accessories.</p></div>
-            <div class="blueprint-item"><i data-lucide="banknote" size="40"></i><h3 class="serif">Financial Hub</h3><p>PagoPA, Western Union, RIA & Wise transfers.</p></div>
-            <div class="blueprint-item"><i data-lucide="printer" size="40"></i><h3 class="serif">Business Center</h3><p>Document reproduction and visa-grade ID photos.</p></div>
-            <div class="blueprint-item"><i data-lucide="package" size="40"></i><h3 class="serif">Logistics Hub</h3><p>Authorized global terminal for DHL, FedEx, and Amazon Hub.</p></div>
-            <div class="blueprint-item"><i data-lucide="briefcase" size="40"></i><h3 class="serif">Luggage Vault</h3><p>Secure, climate-controlled vaulting for high-value items.</p></div>
-            <div class="blueprint-item"><i data-lucide="mic" size="40"></i><h3 class="serif">Office Pods</h3><p>Soundproof booths with 1Gbps fiber integration.</p></div>
-            <div class="blueprint-item"><i data-lucide="languages" size="40"></i><h3 class="serif">Smart Assistant</h3><p>Translations, CV architecture, and digital bureaucracy support.</p></div>
-            <div class="blueprint-item"><i data-lucide="plane" size="40"></i><h3 class="serif">Ticket Office</h3><p>Global Rail, Air, and Sea bookings via professional GDS.</p></div>
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="party-popper"></i>
+                    <h3 class="serif">Event Organizing</h3>
+                    <p>Corporate galas, weddings, and high-end restaurant decor.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="smartphone"></i>
+                    <h3 class="serif">Mobile & SIM</h3>
+                    <p>Instant 5G activations and Affordable international accessories.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="banknote"></i>
+                    <h3 class="serif">Financial Hub</h3>
+                    <p>PagoPA, Western Union, RIA & Wise transfers.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="printer"></i>
+                    <h3 class="serif">Business Center</h3>
+                    <p>Document reproduction and visa-grade ID photos.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.pexels.com/photos/1556704/pexels-photo-1556704.jpeg?auto=compress&cs=tinysrgb&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="package"></i>
+                    <h3 class="serif">Logistics Hub</h3>
+                    <p>Authorized global terminal for DHL, FedEx, and Amazon.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="briefcase"></i>
+                    <h3 class="serif">Luggage Vault</h3>
+                    <p>Secure, climate-controlled vaulting for high-value items.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg" style="background-image: url('assets/pod.png')"></div>
+                <div class="card-content">
+                    <i data-lucide="mic"></i>
+                    <h3 class="serif">Office Pods</h3>
+                    <p>Soundproof booths with 1Gbps fiber integration.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="languages"></i>
+                    <h3 class="serif">Smart Assistant</h3>
+                    <p>Translations, CV architecture, and digital bureaucracy.</p>
+                </div>
+            </div>
+
+            <div class="blueprint-item">
+                <div class="card-bg"
+                    style="background-image: url('https://images.pexels.com/photos/7234393/pexels-photo-7234393.jpeg?auto=compress&cs=tinysrgb&w=800')">
+                </div>
+                <div class="card-content">
+                    <i data-lucide="plane"></i>
+                    <h3 class="serif">Ticket Office</h3>
+                    <p>Global Rail, Air, and Sea bookings via professional GDS.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -491,7 +1327,9 @@
                 <span class="mono-label" style="color: white; opacity: 0.5;">Security Clearance Required</span>
                 <h2 class="title-large" style="margin: 0; font-size: 3.5rem;">Valid ID <br>Mandatory.</h2>
             </div>
-            <p style="max-width: 450px; font-family: 'Space Mono'; opacity: 0.8; font-size: 0.85rem;">MANDATORY PROTOCOL: Valid Government-issued Photo ID is strictly required for all Parcel Logistics & Finance Hub services.</p>
+            <p style="max-width: 450px; font-family: 'Space Mono'; opacity: 0.8; font-size: 0.85rem;">MANDATORY
+                PROTOCOL: Valid Government-issued Photo ID is strictly required for all Parcel Logistics & Finance Hub
+                services.</p>
         </div>
     </section>
 
@@ -522,9 +1360,10 @@
                 <span class="mono-label">Vaulting Pricing</span>
                 <h2 class="title-large" style="font-size: 4rem;">The Vault.</h2>
                 <div class="price-val">€5.00 <small style="font-size: 1rem; color: var(--black);">/ DAY</small></div>
-                <a href="#" class="hero-btn" style="border-color: var(--black); color: var(--black);">Reserve My Vault</a>
+                <a href="#" class="hero-btn" style="border-color: var(--black); color: var(--black);">Reserve My
+                    Vault</a>
             </div>
-            <img src="suitcases.png" class="editorial-img" style="clip-path: none; height: 100%;">
+            <img src="assets/suitcases.png" class="editorial-img" style="clip-path: none; height: 100%;">
         </div>
     </section>
 
@@ -534,15 +1373,20 @@
         <h2 class="title-large">Engineered Focus.</h2>
         <div class="tech-panel">
             <div>
-                <p style="font-size: 1.4rem; opacity: 0.8; margin-bottom: 3rem;">Professional soundproof deep-work environments equipped with high-speed fiber.</p>
+                <p style="font-size: 1.4rem; opacity: 0.8; margin-bottom: 3rem;">Professional soundproof deep-work
+                    environments equipped with high-speed fiber.</p>
                 <ul class="spec-list">
                     <li><span>Acoustics</span><span>-38dB STC Isolation</span></li>
                     <li><span>Fiber Optic</span><span>1.2Gbps Synchronous</span></li>
                 </ul>
             </div>
             <div class="price-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr;">
-                <div class="price-card"><h4>Power Hour</h4><span class="price-val" style="font-size: 2rem;">€15</span></div>
-                <div class="price-card"><h4>Full Day</h4><span class="price-val" style="font-size: 2rem;">€70</span></div>
+                <div class="price-card">
+                    <h4>Power Hour</h4><span class="price-val" style="font-size: 2rem;">€15</span>
+                </div>
+                <div class="price-card">
+                    <h4>Full Day</h4><span class="price-val" style="font-size: 2rem;">€70</span>
+                </div>
             </div>
         </div>
     </section>
@@ -570,7 +1414,8 @@
         <div style="border-left: 10px solid var(--marula-green); padding: 6rem; background: white;" class="spec-card">
             <span class="mono-label">Section 07 // Financial Hub</span>
             <h2 class="title-large">Global Remittance.</h2>
-            <p style="font-size: 1.5rem; font-weight: 200; opacity: 0.8;">Authorized Western Union & RIA partner for global money transfers.</p>
+            <p style="font-size: 1.5rem; font-weight: 200; opacity: 0.8;">Authorized Western Union & RIA partner for
+                global money transfers.</p>
         </div>
     </section>
 
@@ -579,20 +1424,87 @@
         <span class="mono-label">Section 08 // The Atelier</span>
         <h2 class="title-large">Signature Celebrations.</h2>
         <div class="editorial-grid">
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80" class="editorial-img">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80"
+                class="editorial-img">
             <div>
-                <p style="font-size: 1.2rem; opacity: 0.7; margin-bottom: 3rem;">Expert coordination for corporate galas and private celebrations in Milan.</p>
+                <p style="font-size: 1.2rem; opacity: 0.7; margin-bottom: 3rem;">Expert coordination for corporate galas
+                    and private celebrations in Milan.</p>
                 <a href="#" class="hero-btn" style="border-color: var(--black); color: var(--black);">Start Planning</a>
             </div>
         </div>
     </section>
+    <!-- CONTACT & LOCATION SECTION -->
+    <section class="reveal contact-wrap" id="contact">
+        <div style="text-align: center; margin-bottom: 6rem;">
+            <span class="mono-label">|| The Sovereign Hub</span>
+            <h2 class="title-large" style="font-weight: 800;">Location & Contact</h2>
+        </div>
 
+        <div class="contact-grid">
+            <!-- Left Column: Details -->
+            <div class="contact-content">
+                <h3 style="font-family: 'Syne'; font-size: 2.2rem; margin-bottom: 1.5rem;">Find Us in Addis Ababa</h3>
+                <p class="contact-description">
+                    Our premium integrated services hub is strategically located in the heart of Addis Ababa, designed
+                    to serve the global citizen with efficiency and privacy.
+                </p>
+
+                <div class="info-item">
+                    <i data-lucide="map-pin"></i>
+                    <div>
+                        <h5>Address</h5>
+                        <p>Bole Road, Near Friendship Park,<br>Addis Ababa, Ethiopia</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i data-lucide="clock"></i>
+                    <div>
+                        <h5>Operating Hours</h5>
+                        <p>Mon — Fri: 08:00 AM – 08:00 PM<br>Sat — Sun: 09:00 AM – 06:00 PM</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="info-item">
+                        <i data-lucide="phone"></i>
+                        <div>
+                            <h5>Connect</h5>
+                            <p>+251 11 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i data-lucide="mail"></i>
+                        <div>
+                            <h5>Inquiries</h5>
+                            <p>concierge@marula.et</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Bole+Addis+Ababa" target="_blank"
+                    class="contact-cta">
+                    <i data-lucide="navigation-2" style="width: 16px;"></i>
+                    Get Directions
+                </a>
+            </div>
+
+            <!-- Right Column: Interactive Map -->
+            <div class="map-outer">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15762.645398231!2d38.7831!3d9.01!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24c40!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2set!4v1707558356123!5m2!1sen!2set"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
     <!-- FOOTER -->
     <footer>
         <div class="f-grid">
             <div class="f-col">
                 <a href="#home" class="f-logo">MARULA</a>
-                <p style="opacity: 0.5;">Premium Integrated Multi-Services based in Milan. Acting as the silent architecture for the global citizen.</p>
+                <p style="opacity: 0.5;">Premium Integrated Multi-Services based in Milan. Acting as the silent
+                    architecture for the global citizen.</p>
             </div>
             <div class="f-col">
                 <h5>Logistics Hub</h5>
@@ -628,7 +1540,7 @@
     <script>
         lucide.createIcons();
 
-         
+
         // Fixed Nav & Dropdown Logic
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -648,41 +1560,41 @@
             }
         });
 
-       // 1. Store the interval in a variable
-let slideInterval;
+        // 1. Store the interval in a variable
+        let slideInterval;
 
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
 
-function showSlide(n) {
-    slides.forEach(s => s.classList.remove('active'));
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
 
-// 2. Create a function to start/restart the timer
-function startAutoSlide() {
-    // Clear any existing timer first to prevent "doubling up"
-    clearInterval(slideInterval);
-    // Start a fresh 7-second timer
-    slideInterval = setInterval(() => {
-        showSlide(currentSlide + 1);
-    }, 7000);
-}
+        // 2. Create a function to start/restart the timer
+        function startAutoSlide() {
+            // Clear any existing timer first to prevent "doubling up"
+            clearInterval(slideInterval);
+            // Start a fresh 7-second timer
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 7000);
+        }
 
-// 3. Update event listeners to trigger the reset
-document.getElementById('nextSlide')?.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-    startAutoSlide(); // This resets the timer
-});
+        // 3. Update event listeners to trigger the reset
+        document.getElementById('nextSlide')?.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            startAutoSlide(); // This resets the timer
+        });
 
-document.getElementById('prevSlide')?.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-    startAutoSlide(); // This resets the timer
-});
+        document.getElementById('prevSlide')?.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            startAutoSlide(); // This resets the timer
+        });
 
-// 4. Start the timer for the first time on page load
-startAutoSlide();
+        // 4. Start the timer for the first time on page load
+        startAutoSlide();
 
         // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
@@ -691,4 +1603,5 @@ startAutoSlide();
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
