@@ -64,7 +64,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 67px;
             padding: 0 5%;
             position: relative;
         }
@@ -842,163 +842,187 @@
                 height: 450px;
             }
         }
-      /* --- HERITAGE GALLERY STYLES --- */
 
-.heritage-gallery {
-    padding: 6rem 5%;
-    background-color: var(--linen);
-    position: relative;
-    overflow: hidden;
-}
+        /* --- HERITAGE GALLERY STYLES --- */
 
-/* Large Ghost Background Text */
-.gallery-bg-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Syne';
-    font-size: 25vw;
-    font-weight: 900;
-    color: rgba(21, 50, 46, 0.03); /* Extremely subtle green */
-    z-index: 1;
-    pointer-events: none;
-    letter-spacing: -1rem;
-}
+        .heritage-gallery {
+            padding: 6rem 5%;
+            background-color: var(--linen);
+            position: relative;
+            overflow: hidden;
+        }
 
-.gallery-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
+        /* Large Ghost Background Text */
+        .gallery-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Syne';
+            font-size: 25vw;
+            font-weight: 900;
+            color: rgba(21, 50, 46, 0.03);
+            /* Extremely subtle green */
+            z-index: 1;
+            pointer-events: none;
+            letter-spacing: -1rem;
+        }
 
-/* Visual Framing */
-.gallery-visual {
-    position: relative;
-}
+        .gallery-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
 
-.image-frame {
-    position: relative;
-    width: 100%;
-    height: 700px;
-    background: var(--clay);
-    padding: 15px; /* Creates the 'Fine Art' border */
-    box-shadow: 0 40px 80px rgba(0,0,0,0.1);
-}
+        /* Visual Framing */
+        .gallery-visual {
+            position: relative;
+        }
 
-.image-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: sepia(20%) contrast(1.05); /* Professional color grading */
-    transition: var(--transition-long);
-}
+        .image-frame {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            background: var(--clay);
+            padding: 15px;
+            /* Creates the 'Fine Art' border */
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+        }
 
-/* Floating Tag on Image */
-.image-tag {
-    position: absolute;
-    top: 40px;
-    right: -30px;
-    background: var(--marula-green);
-    color: white;
-    padding: 20px;
-    font-family: 'Space Mono';
-    display: flex;
-    flex-direction: column;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
-}
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(20%) contrast(1.05);
+            /* Professional color grading */
+            transition: var(--transition-long);
+        }
 
-.image-tag span { font-size: 0.6rem; opacity: 0.6; letter-spacing: 2px; }
-.image-tag strong { font-size: 0.9rem; letter-spacing: 1px; }
+        /* Floating Tag on Image */
+        .image-tag {
+            position: absolute;
+            top: 40px;
+            right: -30px;
+            background: var(--marula-green);
+            color: white;
+            padding: 20px;
+            font-family: 'Space Mono';
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+        }
 
-/* Architectural Accent */
-.accent-line {
-    position: absolute;
-    bottom: -30px;
-    left: -30px;
-    width: 150px;
-    height: 150px;
-    border-left: 2px solid var(--gold);
-    border-bottom: 2px solid var(--gold);
-    z-index: -1;
-}
+        .image-tag span {
+            font-size: 0.6rem;
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
 
-/* Content Styling */
-.text-gold { color: var(--gold); }
+        .image-tag strong {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
 
-.display-title {
-    font-family: 'Syne';
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1;
-    font-weight: 800;
-    margin-bottom: 2.5rem;
-    letter-spacing: -2px;
-}
+        /* Architectural Accent */
+        .accent-line {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            border-left: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            z-index: -1;
+        }
 
-.manifesto-text {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--black);
-    margin-bottom: 4rem;
-    font-weight: 300;
-    opacity: 0.9;
-}
+        /* Content Styling */
+        .text-gold {
+            color: var(--gold);
+        }
 
-/* watch-worthy Feature Grid */
-.feature-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-}
+        .display-title {
+            font-family: 'Syne';
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            letter-spacing: -2px;
+        }
 
-.feature-item {
-    display: flex;
-    gap: 20px;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    transition: var(--transition-fast);
-}
+        .manifesto-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--black);
+            margin-bottom: 4rem;
+            font-weight: 300;
+            opacity: 0.8;
+        }
 
-.feature-item:hover {
-    transform: translateX(10px);
-}
+        /* watch-worthy Feature Grid */
+        .feature-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
 
-.feature-icon {
-    color: var(--gold);
-    flex-shrink: 0;
-    margin-top: 5px;
-}
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition-fast);
+        }
 
-.feature-text h4 {
-    font-family: 'Syne';
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
 
-.feature-text p {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: #666;
-}
+        .feature-icon {
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
 
-/* Responsive Logic */
-@media (max-width: 1100px) {
-    .gallery-container {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-    .image-frame { height: 500px; }
-    .gallery-bg-text { display: none; }
-    .image-tag { right: 20px; }
-}
+        .feature-text h4 {
+            font-family: 'Syne';
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Responsive Logic */
+        @media (max-width: 1100px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .image-frame {
+                height: 500px;
+            }
+
+            .gallery-bg-text {
+                display: none;
+            }
+
+            .image-tag {
+                right: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -1113,32 +1137,30 @@
             </div>
         </div>
         <div class="slide">
-    <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=2000"
-        class="slide-img" alt="Global Logistics Hub">
-    <div class="hero-content">
-        <span class="hero-tag">Logistics Terminal</span>
-        <h1 class="hero-title">Global <br>Travel & <br>Parcel Hub.</h1>
-        <a href="#logistics" class="hero-btn">Book Tickets</a>
-    </div>
-</div>
+            <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=2000"
+                class="slide-img" alt="Global Logistics Hub">
+            <div class="hero-content">
+                <span class="hero-tag">Logistics Terminal</span>
+                <h1 class="hero-title">Global <br>Travel & <br>Parcel Hub.</h1>
+                <a href="#logistics" class="hero-btn">Book Tickets</a>
+            </div>
+        </div>
         <div class="slide">
-            <img src="assets/printed.png"
-                class="slide-img">
+            <img src="assets/printed.png" class="slide-img">
             <div class="hero-content">
                 <span class="hero-tag">Workspace Hub</span>
                 <h1 class="hero-title">Business & <br>Digital <br>Center.</h1>
                 <a href="#pods" class="hero-btn">Reserve an office</a>
             </div>
         </div>
-       <div class="slide">
-    <img src="assets/payments.png"  
-        class="slide-img" alt="Global Payment Network Logos">
-    <div class="hero-content">
-        <span class="hero-tag">Financial Nodes</span>
-        <h1 class="hero-title"> Global  <br>Money Transfer Solutions.</h1> 
-        <a href="#finance" class="hero-btn">Transfer Money</a>
-    </div>
-</div>
+        <div class="slide">
+            <img src="assets/payments.png" class="slide-img" alt="Global Payment Network Logos">
+            <div class="hero-content">
+                <span class="hero-tag">Financial Nodes</span>
+                <h1 class="hero-title"> Global <br>Money Transfer Solutions.</h1>
+                <a href="#finance" class="hero-btn">Transfer Money</a>
+            </div>
+        </div>
         <div class="slider-nav">
             <div class="nav-arrow" id="prevSlide"><i data-lucide="chevron-left"></i></div>
             <div class="nav-arrow" id="nextSlide"><i data-lucide="chevron-right"></i></div>
@@ -1146,72 +1168,70 @@
     </section>
 
 
-    <!-- BRAND MANIFESTO -->
-    <section class="reveal" style="padding-top: 50px;padding-bottom: 50px;">
-        <div style="text-align: center; max-width: 1300px; margin: 0 auto;">
-            <span class="mono-label"> || Manifesto</span>
-            <h2 class="title-large" style="font-weight: 800;">Hard work made to look effortless.</h2>
-        </div>
-    </section>
 
     <!-- THE HERITAGE GALLERY -->
-<section class="heritage-gallery reveal" id="about">
-    <div class="gallery-bg-text">MARULA</div>
-    
-    <div class="gallery-container">
-        <!-- Visual Masterpiece (The 1 Photo) -->
-        <div class="gallery-visual">
-            <div class="image-frame">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80" alt="Marula Milano Boutique">
-                <!-- Floating Detail Tag -->
-                <div class="image-tag">
-                    <span>LOCATION</span>
-                    <strong>MILANO, IT</strong>
+    <section class="heritage-gallery reveal" id="about">
+        <div class="gallery-bg-text">MARULA</div>
+
+        <div class="gallery-container">
+            <!-- Visual Masterpiece (The 1 Photo) -->
+            <div class="gallery-visual">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80"
+                        alt="Marula Milano Boutique">
+                    <!-- Floating Detail Tag -->
+                    <div class="image-tag">
+                        <span>LOCATION</span>
+                        <strong>MILANO, IT</strong>
+                    </div>
+                </div>
+                <!-- Architectural Accent Line -->
+                <div class="accent-line"></div>
+            </div>
+
+            <!-- Professional Content -->
+            <div class="gallery-content">
+                <div class="content-header">
+                    <span class="mono-label">|| The Origins</span>
+                    <h2 class="display-title">Creating <br><span class="text-gold">Simplicity.</span></h2>
+                </div>
+
+                <p class="manifesto-text">
+                    <strong> Marula Store is created to provide a single destination where people could access all
+                        essential services with quality and efficiency.</strong>
+
+                </p>
+                <div class="feature-rows">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+                        <div class="feature-text">
+                            <h4>Guaranteed Security</h4>
+                            <p>From secure payments to item protection, we prioritize
+                                safety in every interaction.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="heart"></i></div>
+                        <div class="feature-text">
+                            <h4>Loyalty Rewarded</h4>
+                            <p>We value your trust. Every visit brings you closer to exclusive perks, member discounts,
+                                and personalized rewards.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon"><i data-lucide="banknote"></i></div>
+                        <div class="feature-text">
+                            <h4>Unbeatable Value</h4>
+                            <p>High quality doesn't have to mean high prices. We streamline our services to ensure you
+                                get the most affordable rates in the city.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Architectural Accent Line -->
-            <div class="accent-line"></div>
         </div>
-
-        <!-- Professional Content -->
-        <div class="gallery-content">
-            <div class="content-header">
-                <span class="mono-label">|| The Origins</span>
-                <h2 class="display-title">Creating <br><span class="text-gold">Simplicity.</span></h2>
-            </div>
-
-            <p class="manifesto-text">
-             <strong>  Marula Store  was created to provide a single destination where people could access all essential  services with premium quality and efficiency.</strong>
-                 
-            </p>
-<div class="feature-rows">
-                <div class="feature-item">
-                    <div class="feature-icon"><i data-lucide="shield-check"></i></div>
-                    <div class="feature-text">
-                        <h4>Guaranteed Security</h4>
-                        <p>Shop with total peace of mind. From secure payments to data protection, we prioritize your safety in every interaction.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon"><i data-lucide="heart"></i></div>
-                    <div class="feature-text">
-                        <h4>Loyalty Rewarded</h4>
-                        <p>We value your trust. Every visit brings you closer to exclusive perks, member discounts, and personalized rewards.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon"><i data-lucide="banknote"></i></div>
-                    <div class="feature-text">
-                        <h4>Unbeatable Value</h4>
-                        <p>High quality doesn't have to mean high prices. We streamline our services to ensure you get the most affordable rates in the city.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="reveal" id="services">
         <span class="mono-label" style="text-align: center; display: block;">|| Blueprint</span>
@@ -1296,8 +1316,7 @@
             </div>
 
             <div class="blueprint-item">
-                <div class="card-bg"
-                    style="background-image: url('assets/ai\ assistant.jpg')">
+                <div class="card-bg" style="background-image: url('assets/ai\ assistant.jpg')">
                 </div>
                 <div class="card-content">
                     <i data-lucide="languages"></i>
@@ -1307,8 +1326,7 @@
             </div>
 
             <div class="blueprint-item">
-                <div class="card-bg"
-                    style="
+                <div class="card-bg" style="
             background-size: contain; background-image: url('assets/tas.jpg')">
                 </div>
                 <div class="card-content">
